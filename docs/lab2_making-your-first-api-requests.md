@@ -22,13 +22,13 @@ The Webex Developer Portal is an excellent resource for documentation and quick,
    * Ensure you are logged in with your **lab credentials**. If not, click "Login" and use the provided Webex email and password.
    * Your temporary **Bearer Token** will be displayed. **Copy this token** to your clipboard. This token is valid for 12 hours.
 
-![](assets/docx-image-007.png)
+![docx-image-007](assets/docx-image-007.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 1. **Navigate to the Webex Messaging documentation area:**
    * In the header of the portal, click on the “**Documentation**” drop down to expand the “Mega Nav” bar.
    * Under the “**SUITE**” section, select “**Webex Messaging**”.
 
-![](assets/docx-image-008.png)
+![docx-image-008](assets/docx-image-008.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 1. **Retrieve Your Own User Details (GET /people/me):**
    * In the sidebar navigation, under "**API Reference**", expand the “**All APIs**” section.
@@ -61,13 +61,13 @@ Now, let's explore the Webex Public Workspace in Postman, which provides a much 
 
 1. **Open the Webex Public Workspace:**
    * In your Postman application (where you logged in with lab credentials), navigate to the Webex Public Workspace by searching for **“Webex Public Workspace”**  
-     ![](assets/docx-image-009.png)
+     ![docx-image-009](assets/docx-image-009.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 2. **Observe the Workspace Structure:**
    * On the left sidebar, you'll see the **"Webex Public Workspace"** listed.
    * Below it, notice the various **Collections** available (e.g., "Webex Messaging", "Webex Meetings", "Webex Calling", etc.). These collections organize different sets of Webex APIs.
    * *Remember:* A Postman Workspace can contain multiple Collections, Environments, and other elements.
 
-![](assets/docx-image-010.png)
+![docx-image-010](assets/docx-image-010.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ## Step 1.3: Use the "Webex Messaging" Collection in Postman
 
@@ -111,7 +111,7 @@ We'll now fork the "Webex Messaging" collection into your personal Postman space
    * Replace `{{roomId}}` with the actual id of your lab space (e.g., "roomId": "c2lkOi8v...").
    * Change the text field to something personal, like "text": "Hello from Postman - this is much easier!".
 
-![](assets/docx-image-011.png)
+![docx-image-011](assets/docx-image-011.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 * + Click the blue **"Send"** button.
   + You should receive a 200 OK response. Now, check your Webex Client – you should see the message appear in your lab space!
@@ -134,7 +134,7 @@ Finally, let's see how to make an API call directly from your command line using
    * A "Generate Code Snippets" window will appear. From the dropdown menu, select **"cURL"**.
    * **Copy the entire cURL command** that is displayed.
 
-![](assets/docx-image-012.png)
+![docx-image-012](assets/docx-image-012.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 1. **Open Your Terminal/Command Prompt:**
    * On your lab workstation, open a **Terminal** (macOS/Linux) or **Command Prompt/PowerShell** (Windows).

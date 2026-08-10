@@ -47,14 +47,14 @@ To get a full overview of available status endpoints and summary information, pe
 
 This endpoint provides a summary of the overall status, unresolved incidents, and both active and upcoming scheduled maintenances. It serves as a central resource for quickly accessing all key status information in one response.  
   
-![](assets/docx-image-067.png)
+![docx-image-067](assets/docx-image-067.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 1. Indicator  
      
    To get the status indicator, perform a GET request to:  
    <https://status.webex.com/status.json>  
      
-   ![](assets/docx-image-068.png)  
+   ![docx-image-068](assets/docx-image-068.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }  
      
    The possible values are green, yellow, and red, which indicate the overall status of Webex services:  
    * Green: All systems operational
@@ -70,7 +70,7 @@ In this case, there are no issues reported.
   
 This endpoint returns a list of incidents that are not yet resolved.  
   
-![](assets/docx-image-069.png)  
+![docx-image-069](assets/docx-image-069.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }  
   
 In this case, there are no incidents reported at this time.
 
@@ -82,7 +82,7 @@ In this case, there are no incidents reported at this time.
 
 This endpoint returns a list of all currently active scheduled maintenances  
   
-![](assets/docx-image-070.png)  
+![docx-image-070](assets/docx-image-070.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }  
   
 In this case, there are no active maintenance activities at this time.
 
@@ -114,7 +114,7 @@ Reference:
    To list all available admin audit event categories, send a GET request to:  
    <https://webexapis.com/v1/adminAuditEventCategories>  
      
-   ![](assets/docx-image-071.png)  
+   ![docx-image-071](assets/docx-image-071.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }  
      
    This will give you an overview of all the types of admin activities you can monitor and query, helping you understand the full range of auditing possibilities available.
 2. Get all the logins:  
@@ -125,7 +125,7 @@ Reference:
    * orgId: cf0be353-2dd4-463f-9843-4a3c27a9a9d3
    * eventCategories: LOGINS
 
-![](assets/docx-image-072.png)
+![docx-image-072](assets/docx-image-072.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 1. Organization changes  
      
@@ -135,7 +135,7 @@ Reference:
    * orgId: cf0be353-2dd4-463f-9843-4a3c27a9a9d3
    * eventCategories: ORG_SETTINGS
 
-![](assets/docx-image-073.png)
+![docx-image-073](assets/docx-image-073.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ## Exercise 3: Reports
 
@@ -162,11 +162,11 @@ Let’s walk through each step:
 1. First of all, you need to get the report templates to find the report and its Id:  
    <https://developer.webex.com/admin/docs/api/v1/report-templates/list-report-templates>
 
-![](assets/docx-image-074.png)  
+![docx-image-074](assets/docx-image-074.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }  
   
 Look for the report “User Activity Summary”:  
   
-![](assets/docx-image-075.png)  
+![docx-image-075](assets/docx-image-075.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }  
   
 It has the Id: **115**
 
@@ -177,26 +177,26 @@ The startDate and endDate fields are mandatory. For example, to generate the rep
 * + startDate: 2026-09-01
   + endDate: 2026-09-28
 
-![](assets/docx-image-076.png)  
+![docx-image-076](assets/docx-image-076.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }  
   
 After submitting your request, you will receive the report ID in the response.  
   
-![](assets/docx-image-077.png)
+![docx-image-077](assets/docx-image-077.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 1. Using the previously created report ID, get the report details:  
    <https://developer.webex.com/admin/docs/api/v1/reports/get-report-details>
 
-![](assets/docx-image-078.png)  
+![docx-image-078](assets/docx-image-078.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }  
   
 In the response, you will find the downloadURL for your report:  
   
-![](assets/docx-image-079.png)
+![docx-image-079](assets/docx-image-079.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 1. To download the report, you can use the "Send and Download" option in Postman with the downloadURL you received:
 
-![](assets/docx-image-080.png)  
+![docx-image-080](assets/docx-image-080.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }  
   
-![](assets/docx-image-081.png)
+![docx-image-081](assets/docx-image-081.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ## Exercise 4: Events
 
@@ -204,7 +204,7 @@ To access the Events API, you need to use a user account with the "Compliance Of
 
 * "Compliance role required to get events."
 
-![](assets/docx-image-082.png)
+![docx-image-082](assets/docx-image-082.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 You can use the following credentials for this activity:
 
@@ -226,13 +226,13 @@ Reference:
 You can list all the events from this API  
 <https://developer.webex.com/admin/docs/api/v1/events/list-events>
 
-![](assets/docx-image-083.png)
+![docx-image-083](assets/docx-image-083.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 To track activity related to room memberships—such as when users join or leave rooms—filter by the resource memberships.
 
 This will show all events involving changes to room participation.
 
-![](assets/docx-image-084.png)
+![docx-image-084](assets/docx-image-084.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ## Exercise 5: Calling Troubleshooting
 
@@ -240,7 +240,7 @@ In this exercise, you will work with the Webex Calling APIs to troubleshoot and 
 
 You will need to use a user account with the “Webex Calling Detailed Call History API access” role:
 
-![](assets/docx-image-085.png)  
+![docx-image-085](assets/docx-image-085.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }  
   
 You can use the following credentials for this activity:
 
@@ -262,27 +262,27 @@ Before checking the detailed call history, you will explore the following Callin
 
 * List Calls: Retrieves details for all active calls associated with the user<https://developer.webex.com/calling/docs/api/v1/call-controls/list-calls>  
     
-  ![](assets/docx-image-086.png)
+  ![docx-image-086](assets/docx-image-086.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 You may not see any calls at the moment, but this is how the response will look:  
   
-![](assets/docx-image-087.png)
+![docx-image-087](assets/docx-image-087.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 * List Call History: Retrieves up to 20 call history records for the user.  
   <https://developer.webex.com/calling/docs/api/v1/call-controls/list-call-history>  
     
-  ![](assets/docx-image-088.png)  
+  ![docx-image-088](assets/docx-image-088.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }  
     
   This response won’t contain much detailed information about the calls.  
     
-  ![](assets/docx-image-089.png)
+  ![docx-image-089](assets/docx-image-089.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 These APIs provide only basic information and are limited to the user making the API call.
 
 1. Detail Call history - Provides Webex Calling Detailed Call History data for your organization.  
    <https://developer.webex.com/calling/docs/api/v1/reports-detailed-call-history/get-detailed-call-history>  
      
-   ![](assets/docx-image-090.png)
+   ![docx-image-090](assets/docx-image-090.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 Use the following parameters for your request:
 
@@ -291,11 +291,11 @@ Use the following parameters for your request:
 
 The result contains very detailed information about each call.
 
-![](assets/docx-image-091.png)
+![docx-image-091](assets/docx-image-091.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 The information provided by this call is equivalent to the information provided in CH:  
   
-![](assets/docx-image-092.png)  
+![docx-image-092](assets/docx-image-092.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }  
   
 The response from the Webex Calling Detailed Call History API includes:
 
@@ -333,7 +333,10 @@ References:
 
 <https://analytics.webexapis.com/v1/meeting/qualities?meetingId=><meetingId>
 
-**![](assets/docx-image-093.png) Warning:** You need to use Postman to access Meeting Quality data.
+!!! Warning
+    You need to use Postman to access Meeting Quality data.
+
+    ![docx-image-093](./assets/docx-image-093.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ### Solution
 
@@ -344,11 +347,11 @@ References:
 
 Make sure to filter by meetingType set to "meeting".  
   
-![](assets/docx-image-094.png)  
+![docx-image-094](assets/docx-image-094.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }  
   
 You will receive a list of meetings:  
   
-![](assets/docx-image-095.png)  
+![docx-image-095](assets/docx-image-095.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }  
   
 Pick one and ensure the ID follows a format similar to:
 
@@ -359,7 +362,7 @@ Pick one and ensure the ID follows a format similar to:
    Retrieve quality metrics for a specific meeting using this endpoint:   
    <https://analytics.webexapis.com/v1/meeting/qualities?meetingId=><meetingId>  
      
-   ![](assets/docx-image-096.png)  
+   ![docx-image-096](assets/docx-image-096.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }  
      
    The response from the Meetings API includes detailed information for each meeting participant:
    * **Identification:** Meeting and participant IDs, user name, and email

@@ -21,9 +21,12 @@ Requirements:
 3. Present an Adaptive Card with a text input box for the user to enter the feedback request message.
 4. Collect responses from recipients and send a confirmation or error notification to the requesting user after feedback is submitted.
 
-![](assets/docx-image-049.png)
+![docx-image-049](assets/docx-image-049.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
-**![](assets/docx-image-050.png) Warning:** In this exercise, you will need to add the **spark-admin:people_read** scope to your Service App. Please notify us to have your Service App rights approved.
+!!! Warning
+    In this exercise, you will need to add the **spark-admin:people_read** scope to your Service App. Please notify us to have your Service App rights approved.
+
+    ![warning-icon](assets/docx-image-050.png){ width="150" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ### Pagination
 
@@ -36,7 +39,7 @@ When retrieving a large amount of information, you need to handle pagination. Wi
    * python 01_pagination.py
 3. You will now see all the users listed in the console, displayed in pages of size 2:
 
-![](assets/docx-image-051.png)
+![docx-image-051](assets/docx-image-051.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ### Solution
 
@@ -54,23 +57,26 @@ When retrieving a large amount of information, you need to handle pagination. Wi
 3. Execute the code with the following command and let it run:  
    * python 01_feedback.py
 
-![](assets/docx-image-052.png) **Warning:** Wait until you see the message “WebSocket Opened.” appear in the console.
+!!! Warning
+    Wait until you see the message “WebSocket Opened.” appear in the console.
+
+    ![warning-icon](assets/docx-image-052.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 1. Send any message to your bot to get the following card:  
      
-   ![](assets/docx-image-053.png)
+   ![docx-image-053](assets/docx-image-053.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 2. Once you click **Send feedback card to all users in the organization**, the cards will begin sending. You will receive the following notification message once the process is completed:  
      
-   ![](assets/docx-image-054.png)
+   ![docx-image-054](assets/docx-image-054.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 3. At this point, all users will receive the following feedback card:   
      
-   ![](assets/docx-image-055.png)
+   ![docx-image-055](assets/docx-image-055.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 4. Once users submit their feedback, they will receive the following notification message:  
      
-   ![](assets/docx-image-056.png)
+   ![docx-image-056](assets/docx-image-056.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 5. At the same time, you, as an admin, will be notified with the user's feedback:  
      
-   ![](assets/docx-image-057.png)
+   ![docx-image-057](assets/docx-image-057.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ## Exercise 2: End-User Phone Provisioning Assistant
 
@@ -88,9 +94,12 @@ Requirements:
 3. Use the submitted data (MAC address and selected phone model) to initiate device provisioning through the backend or relevant API.
 4. Notify the user in Webex of the provisioning result (success or error).
 
-![](assets/docx-image-058.png)
+![docx-image-058](assets/docx-image-058.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
-**![](assets/docx-image-059.png) Warning:** In this exercise, you will need to add the **spark-admin:devices_write** scope to your Service App. Please notify us to have your Service App rights approved.
+!!! Warning
+    In this exercise, you will need to add the **spark-admin:devices_write** scope to your Service App. Please notify us to have your Service App rights approved.
+
+    ![warning-icon](assets/docx-image-059.png){ width="150" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ### Solution
 
@@ -108,23 +117,26 @@ Requirements:
 2. Execute the code with the following command and let it run:  
    * python 01_feedback.py
 
-![](assets/docx-image-060.png) **Warning:** Wait until you see the message “WebSocket Opened.” appear in the console.
+!!! Warning
+    Wait until you see the message “WebSocket Opened.” appear in the console.
+
+    ![warning-icon](assets/docx-image-060.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 1. Send any message to your bot to get the following card:  
      
-   ![](assets/docx-image-061.png)
+   ![docx-image-061](assets/docx-image-061.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 2. Click **Provision your new IP Phone** to get the following provisioning card:  
      
-   ![](assets/docx-image-062.png)
+   ![docx-image-062](assets/docx-image-062.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 3. If you submit a MAC address in the wrong format, you will receive a notification about the error:  
      
-   ![](assets/docx-image-063.png)
+   ![docx-image-063](assets/docx-image-063.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 4. If you submit a duplicate MAC address, such as “54A3152300C8”, you will receive a notification about the duplication:  
      
-   ![](assets/docx-image-064.png)
+   ![docx-image-064](assets/docx-image-064.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 5. If you submit a valid MAC address, you will receive a message like the following:   
      
-   ![](assets/docx-image-065.png)
+   ![docx-image-065](assets/docx-image-065.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 6. You can verify the device registration in Control Hub:  
      
-   ![](assets/docx-image-066.png)
+   ![docx-image-066](assets/docx-image-066.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }

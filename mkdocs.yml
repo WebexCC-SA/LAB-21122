@@ -73,8 +73,8 @@ markdown_extensions:
   - tables
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight
   - pymdownx.tabbed:
       alternate_style: true
@@ -86,8 +86,8 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 nav:
   - Home: index.md
-  - Welcome: welcome.md
   - Lab:
+      - Welcome: welcome.md
       - Overview: overview.md
       - Lab 1 - Getting Started: lab1_getting_started.md
       - Lab 2 - Making Your First API Requests: lab2_making-your-first-api-requests.md
@@ -97,15 +97,3 @@ nav:
       - Lab 6 - Use Cases: lab6_use-cases.md
       - Lab 7 - Troubleshooting: lab7_troubleshooting.md
       - Conclusion: conclusion.md
-  - How to use this guide:
-      - Setting up and using the tool:
-        - Initial Setup: howToUse/initialSetup.md
-        - Using the tool after the initial setup: howToUse/postInitial.md
-        - Publishing your changes: howToUse/syncChanges.md
-      - Useful Tools and Resources: howToUse/usefulTools.md
-      - Importing from Word (docx): howToUse/importingFromWord.md
-      - Styling and Advanced Features:
-        - Custom Features: howToUse/customFeatures.md
-        - Custom Admonitions: howToUse/admonition.md
-      - Looking for Inspiration: howToUse/previousEventLabs.md
-      - Before the Event: howToUse/beforeTheEvent.md

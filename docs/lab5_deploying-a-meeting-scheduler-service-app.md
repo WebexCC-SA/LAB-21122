@@ -21,7 +21,7 @@ First is to register a Service App in the Webex Developer portal.
 2. Up on the top right corner of the page, click your avatar and then select ‘My Webex Apps’.
 3. On the ‘Create a New App’ page, find the Service App card and click the ‘Create a Service App’ button.
 
-![](assets/docx-image-044.png)
+![docx-image-044](assets/docx-image-044.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 1. Fill out the webform to register a new service app.  
    1. **App Name:** WebexOne-username
@@ -29,11 +29,11 @@ First is to register a Service App in the Webex Developer portal.
    3. **Description**: “Test app only”
    4. **Contact Email**: Use the email from the Webex login.
 
-![](assets/docx-image-045.png)
+![docx-image-045](assets/docx-image-045.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 * 1. **Select Scopes:** meeting:admin_schedule_write
 
-![](assets/docx-image-046.png)
+![docx-image-046](assets/docx-image-046.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 1. Click the **‘Add Service App’** button to finish registration.
 
@@ -44,7 +44,7 @@ After successfully registering the Service App, you are taken to a page that con
 1. Copy & paste the Client ID and Client Secret values into a notepad for later use. Do note, this client secret is only shown once.
 2. Click the **‘Request admin authorization’** button.
 
-![](assets/docx-image-047.png)
+![docx-image-047](assets/docx-image-047.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 1. *The lab instructor will demonstrate the actions taken by the Webex administrator to authorize a Service App in Control Hub.*
 
@@ -58,7 +58,7 @@ After the admin authorizes your Service App registration, you can retrieve the a
 3. Paste in the *Client Secret* value from your notepad in the field below, then click the ‘Generate tokens’ button.
 4. Copy & paste the refresh_token and access_token values in your notepad for later use. *Both values are only shown once.*
 
-![](assets/docx-image-048.png)
+![docx-image-048](assets/docx-image-048.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ## Step 4.4: Configure the Sample Service App
 

@@ -1,3 +1,10 @@
-# Related Sessions at Cisco Live
+# Conclusion
 
-- [BRKXXX-1111](https://www.ciscolive.com/global/learn/technical-education/session-catalog.html?search=BRKXXX-1111#/) My friend's breakout session
+Thank you for participating in this lab! We hope you have enjoyed the experience and gained valuable insights into the possibilities of Webex APIs, bots, integrations, and service apps.
+
+If you would like to continue practicing or working on similar projects, you can create your own developer sandbox:
+
+- [Sandbox Guide](https://developer.webex.com/create/docs/developer-sandbox-guide/){:target="_blank"}
+
+!!! Warning "Important"
+    To receive this lab guide in PDF format after the event, please remember to submit your feedback through the App!

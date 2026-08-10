@@ -41,7 +41,7 @@ Now, let's manually walk through the steps a user and an application would take 
 
 1. **Use the Authorization URL:**
    * Copy the **“OAuth Authorization URL”** from the Integration Details page  
-     ![](assets/docx-image-013.png)  
+     ![docx-image-013](assets/docx-image-013.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }  
      Paste this URL into your browser's address bar:
    * *Query Params Explanation:*
    * response_type=code: We want an authorization code.
@@ -52,7 +52,7 @@ Now, let's manually walk through the steps a user and an application would take 
 2. **Authorize the Integration (User Consent):**
    * Press Enter to navigate to the constructed URL.
    * You'll be prompted to log in to Webex (if not already) and then asked to grant permission to your [Your Name/ID] - Lab Integration for the requested scopes.  
-     ![](assets/docx-image-014.png)
+     ![docx-image-014](assets/docx-image-014.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
    * Uncheck the **“Only ask when requesting new permissions.”** checkbox. This way, when we authorize again later, we will see the same dialog.
    * Click **"Accept"**
 3. **Capture the Authorization Code:**
@@ -62,9 +62,9 @@ Now, let's manually walk through the steps a user and an application would take 
    * Open Postman.
    * Create a new HTTP Request (click the + tab).
    * If it doesn’t say “HTTP”, you will need to change the type.  
-     ![](assets/docx-image-015.png)
+     ![docx-image-015](assets/docx-image-015.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
    * Set the request method type to **POST**.  
-     ![](assets/docx-image-016.png)
+     ![docx-image-016](assets/docx-image-016.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
    * Set the URL to: https://webexapis.com/v1/access_token
    * Go to the **"Body"** tab, select **x-www-form-urlencoded**.
    * Add the following key-value pairs:
@@ -132,7 +132,7 @@ Manually performing the OAuth flow is cumbersome. Postman has built-in support t
    * Back in the collection's "Authorization" tab, the "Token" field should now show your Webex Lab Integration Token selected.
    * Click **"Save"** for the collection.
 
-![](assets/docx-image-017.png)
+![docx-image-017](assets/docx-image-017.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 (Your auth screen should look like this now)
 
