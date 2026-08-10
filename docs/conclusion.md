@@ -1,6 +1,6 @@
 # Conclusion
 
-Thank you for participating in this lab! We hope you have enjoyed the experience and gained valuable insights into the possibilities of Webex APIs, bots, integrations, and service apps.
+Thank you for participating in this lab! We hope you have enjoyed the experience and gained valuable insights into the Webex Developer Ecosystem — from APIs and OAuth integrations to bots, service apps, agentic apps, and MCP servers.
 
 If you would like to continue practicing or working on similar projects, you can create your own developer sandbox:
 

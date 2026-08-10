@@ -1,6 +1,8 @@
 # Getting Started
 
-Welcome to the Webex API Requests Lab! In this session, you'll learn how to interact with Webex using its powerful APIs. This section will guide you through setting up your environment, ensuring you have everything you need to make your first API calls.
+Welcome to the **Exploring the Webex Developer Ecosystem** lab! In this session, you will explore how Webex APIs, integrations, bots, service apps, agentic apps, and MCP servers can be used to automate workflows and build real-world solutions.
+
+This section will guide you through setting up your environment and logging into the tools you will use throughout the lab.
 
 Please use the specific lab credentials provided to you for all logins. To successfully complete this lab, you will be working with:
 
@@ -39,7 +41,7 @@ To begin, you'll log into your dedicated Webex lab account. This will allow you 
 
 ### Create Your Personal Webex Space
 
-We'll create a dedicated Webex space (known as a "room" in the API world) that you can use for testing your API requests.
+We'll create a dedicated Webex space (known as a "room" in the API world) that you can use for testing your API requests, bots, and integrations.
 
 1. **Start a New Space:** In the Webex client, click the **"+"** icon (or "Create a space" button) to start a new space.
 2. **Name Your Space:** Give your space a clear, unique name, such as **[Your Name/ID] - API Lab Space** (e.g., JaneDoe-API Lab Space).
@@ -48,7 +50,7 @@ We'll create a dedicated Webex space (known as a "room" in the API world) that y
 
 ## Log into Postman
 
-Postman will be our primary tool for making API requests. You'll log into a Postman account that has access to the Webex Public Workspace.
+Postman will be our primary tool for making API requests and working with OAuth 2.0 integrations. You'll log into a Postman account that has access to the Webex Public Workspace.
 
 1. **Open Postman:** Launch the Postman Desktop App on your lab workstation.
 2. **Enter Lab Credentials:** When prompted, enter the **Postman email address and password** provided to you by the lab instructors.
@@ -60,9 +62,11 @@ Navigate to:<br />
 
 - [Webex for Developers](https://developer.webex.com/){:target="_blank"}
 
-Use the same Webex credentials provided for the lab.
+Use the same Webex credentials provided for the lab. You will use the Developer Portal to create integrations, bots, and service apps in later sections.
 
 ## Visual Studio Code
+
+Visual Studio Code will be used for Python-based bot development, service app configuration, and the agentic app and MCP server exercises.
 
 Open Visual Studio Code from the desktop:
 
@@ -89,3 +93,15 @@ Open Visual Studio Code from the desktop:
 7. Install the requirements:
 
     - pip install -r requirements.txt
+
+## Lab flow
+
+| Section | Focus |
+| --- | --- |
+| Lab 1 | Webex API concepts and your first API requests |
+| Lab 2 | Secure integrations with OAuth 2.0 |
+| Lab 3 | Interactive bots with Python and Adaptive Cards |
+| Lab 4 | Service apps for administrative automation |
+| Lab 5 | Real-world use cases |
+| Lab 6 | Agentic Apps |
+| Lab 7 | Webex MCP Servers |

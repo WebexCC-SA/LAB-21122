@@ -95,5 +95,6 @@ nav:
       - Lab 3 - Building a Bot: lab4_building-a-bot.md
       - Lab 4 - Deploying a Meeting Scheduler Service App: lab5_deploying-a-meeting-scheduler-service-app.md
       - Lab 5 - Use Cases: lab6_use-cases.md
-      - Lab 6 - Troubleshooting: lab7_troubleshooting.md
+      - Lab 6 - Agentic Apps: lab7_agentic_apps.md
+      - Lab 7 - Webex MCP Servers: lab8_webex_mcp_servers.md
       - Conclusion: conclusion.md
