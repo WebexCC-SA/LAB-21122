@@ -1,0 +1,1235 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="LAB-21122: Exploring the Webex Developer Ecosystem">
+      
+      
+        <meta name="author" content="Diego Manuel Jimenez Moreno">
+      
+      
+      
+        <link rel="prev" href="../lab2_making-your-first-api-requests-bruno/">
+      
+      
+        <link rel="next" href="../lab3_creating-an-integration-bruno/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../template_assets/webex75.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Lab 1 - Making Your First API Requests (Old) - LAB-21122: Exploring the Webex Developer Ecosystem</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-making-your-first-api-requests-postman" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LAB-21122: Exploring the Webex Developer Ecosystem" class="md-header__button md-logo" aria-label="LAB-21122: Exploring the Webex Developer Ecosystem" data-md-component="logo">
+      
+  <img src="../template_assets/webexLogo91.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LAB-21122: Exploring the Webex Developer Ecosystem
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 1 - Making Your First API Requests (Old)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../welcome/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LAB-21122: Exploring the Webex Developer Ecosystem" class="md-nav__button md-logo" aria-label="LAB-21122: Exploring the Webex Developer Ecosystem" data-md-component="logo">
+      
+  <img src="../template_assets/webexLogo91.png" alt="logo">
+
+    </a>
+    LAB-21122: Exploring the Webex Developer Ecosystem
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../welcome/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1_getting_started-bruno/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1_getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started (Old)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2_making-your-first-api-requests-bruno/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 1 - Making Your First API Requests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 1 - Making Your First API Requests (Old)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 1 - Making Your First API Requests (Old)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#step-11-quick-test-webex-developer-portal-try-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1.1: Quick Test: Webex Developer Portal "Try It"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-12-explore-the-webex-public-workspace-in-postman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1.2: Explore the Webex Public Workspace in Postman
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-13-use-the-webex-messaging-collection-in-postman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1.3: Use the "Webex Messaging" Collection in Postman
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-14-make-an-api-request-with-curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1.4: Make an API Request with cURL
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3_creating-an-integration-bruno/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2 - Creating an Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3_creating-an-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2 - Creating an Integration (Old)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4_building-a-bot-websockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3 - Building a Bot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4_building-a-bot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3 - Building a Bot (Old)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab5_deploying-a-meeting-scheduler-service-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 4 - Deploying a Meeting Scheduler Service App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab6_use-cases-websockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 5 - Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab6_use-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 5 - Use Cases (Old)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab7_agentic_apps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 6 - Agentic Apps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab8_webex_mcp_servers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 7 - Webex MCP Servers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conclusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conclusion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="1-making-your-first-api-requests-postman">1 – Making Your First API Requests (Postman)</h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is the <strong>legacy Postman version</strong>. For the 2026 lab, use <strong><a href="../lab2_making-your-first-api-requests-bruno/">Lab 1 - Making Your First API Requests</a></strong> with Bruno instead.</p>
+</div>
+<p>In this chapter, you'll dive into the exciting world of Webex APIs by making your very first requests. We'll explore different methods, starting with a quick test on the Webex Developer Portal, then moving to the powerful Postman environment, and finally, making a direct call using cURL.</p>
+<p>Upon completion of this section, you will be able to:</p>
+<ol>
+<li>Test Webex API requests on the Webex Developer Portal</li>
+<li>Send Webex API requests using Postman</li>
+<li>Execute Webex API calls with cURL from the command line</li>
+</ol>
+<p>Reference:<br>
+<a href="https://www.postman.com/webexdev/webex-public-workspace-beta">https://www.postman.com/webexdev/webex-public-workspace-beta</a></p>
+<h2 id="step-11-quick-test-webex-developer-portal-try-it">Step 1.1: Quick Test: Webex Developer Portal "Try It"</h2>
+<p>The Webex Developer Portal is an excellent resource for documentation and quick, one-off API tests. Let's get a temporary access token and make a simple call directly from the browser.</p>
+<ol>
+<li><strong>Open the Webex Developer Portal:</strong></li>
+<li>Navigate to&nbsp;<a href="https://developer.webex.com/">https://developer.webex.com/</a> in your browser.</li>
+<li><strong>Get Your Temporary Access Token:</strong></li>
+<li>On the developer portal homepage, locate the&nbsp;"<strong>Profile</strong>"&nbsp;section (usually at the top right).</li>
+<li>Ensure you are logged in with your&nbsp;<strong>lab credentials</strong>. If not, click "Login" and use the provided Webex email and password.</li>
+<li>Your temporary&nbsp;<strong>Bearer Token</strong>&nbsp;will be displayed.&nbsp;<strong>Copy this token</strong>&nbsp;to your clipboard. This token is valid for 12 hours.</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/docx-image-007.png" data-title="docx-image-007" data-desc-position="top"><img alt="docx-image-007" src="../assets/docx-image-007.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="700"></a></p>
+<ol>
+<li><strong>Navigate to the Webex Messaging documentation area:</strong></li>
+<li>In the header of the portal, click on the “<strong>Documentation</strong>” drop down to expand the “Mega Nav” bar.</li>
+<li>Under the “<strong>SUITE</strong>” section, select “<strong>Webex Messaging</strong>”.</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/docx-image-008.png" data-title="docx-image-008" data-desc-position="top"><img alt="docx-image-008" src="../assets/docx-image-008.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="850"></a></p>
+<ol>
+<li><strong>Retrieve Your Own User Details (GET /people/me):</strong></li>
+<li>In the sidebar navigation, under "<strong>API Reference</strong>", expand the “<strong>All APIs</strong>” section.</li>
+<li>Then expand&nbsp;"<strong>People</strong>"&nbsp;from the left-hand menu.</li>
+<li>Scroll down to find the ‘<strong>Get My Own Details</strong>”&nbsp;GET endpoint and select it.</li>
+<li>On the right side of the page, in the&nbsp;"<strong>Try It</strong>"&nbsp;section, paste your copied&nbsp;<strong>Bearer</strong> Token&nbsp;into the "Authorization" field (if it's not already populated with the “<strong>Use personal access token</strong>” toggle).</li>
+<li>Click the&nbsp;"<strong>Run</strong>"&nbsp;button.</li>
+<li>You should see a&nbsp;200 OK&nbsp;status and a JSON response containing your Webex user details.</li>
+<li>Congratulations! You just made your first API request!</li>
+<li><strong>Find Your Lab Space ID (GET /rooms):</strong></li>
+<li>In the left-hand menu, expand&nbsp;"<strong>Rooms</strong>".</li>
+<li>Scroll down to find the “<strong>List Rooms</strong>”&nbsp;GET endpoint and select it.</li>
+<li>Click the&nbsp;"<strong>Run</strong>"&nbsp;button.</li>
+<li>You'll get a&nbsp;200 OK&nbsp;response with a list of your Webex spaces.&nbsp;<strong>Carefully locate your personal lab space</strong>&nbsp;(e.g.,&nbsp;[Your Name/ID] - API Lab Space) and&nbsp;<strong>copy its&nbsp;id&nbsp;value</strong>. You'll need this in the next step!</li>
+<li><strong>Send a Message to Your Lab Space (POST /v1/messages):</strong></li>
+<li>In the left-hand menu, select&nbsp;"<strong>Messages</strong>".</li>
+<li>Scroll down to find the “<strong>Create a Message</strong>”&nbsp;POST endpoint and select it.</li>
+<li>In the "Request Body" section, you'll see a JSON structure.</li>
+<li>Replace the placeholder for&nbsp;roomId&nbsp;with the&nbsp;id&nbsp;of your lab space that you just copied.</li>
+<li>Change the&nbsp;text&nbsp;field to a message like:&nbsp;"text": "Hello from the Webex Developer Portal 'Try It' tool!"</li>
+<li>Click the&nbsp;"<strong>Run</strong>"&nbsp;button.</li>
+<li>You should see a&nbsp;200 OK&nbsp;response.</li>
+<li><strong>Verify Message in Webex Client:</strong></li>
+<li>Switch back to your Webex client. You should see the message you just sent appear in your personal lab space!</li>
+<li><em>Note:</em>&nbsp;While great for quick tests, this "Try It" feature doesn't save your token or allow for complex workflows, which is why we'll use Postman next!</li>
+</ol>
+<h2 id="step-12-explore-the-webex-public-workspace-in-postman">Step 1.2: Explore the Webex Public Workspace in Postman</h2>
+<p>Now, let's explore the Webex Public Workspace in Postman, which provides a much richer environment for API development.</p>
+<ol>
+<li><strong>Open the Webex Public Workspace:</strong></li>
+<li>In your Postman application (where you logged in with lab credentials), navigate to the Webex Public Workspace by searching for <strong>“Webex Public Workspace”</strong><br>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/docx-image-009.png" data-title="docx-image-009" data-desc-position="top"><img alt="docx-image-009" src="../assets/docx-image-009.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="850"></a></li>
+<li><strong>Observe the Workspace Structure:</strong></li>
+<li>On the left sidebar, you'll see the&nbsp;<strong>"Webex Public Workspace"</strong>&nbsp;listed.</li>
+<li>Below it, notice the various&nbsp;<strong>Collections</strong>&nbsp;available (e.g., "Webex Messaging", "Webex Meetings", "Webex Calling", etc.). These collections organize different sets of Webex APIs.</li>
+<li><em>Remember:</em>&nbsp;A Postman Workspace can contain multiple Collections, Environments, and other elements.</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/docx-image-010.png" data-title="docx-image-010" data-desc-position="top"><img alt="docx-image-010" src="../assets/docx-image-010.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="850"></a></p>
+<h2 id="step-13-use-the-webex-messaging-collection-in-postman">Step 1.3: Use the "Webex Messaging" Collection in Postman</h2>
+<p>We'll now fork the "Webex Messaging" collection into your personal Postman space, set up your authentication, and make some practical API calls.</p>
+<ol>
+<li><strong>Fork the "Webex Messaging" Collection:</strong></li>
+<li>In the Webex Public Workspace, locate the&nbsp;<strong>"Webex Messaging"</strong>&nbsp;collection in the left sidebar.</li>
+<li>Hover over the collection name and click the&nbsp;<strong>"..." (ellipsis)</strong>&nbsp;icon, then select&nbsp;<strong>"Fork"</strong>.</li>
+<li>In the dialog box, give the <strong>Fork label</strong> a name of <strong>“Webex API Fork”</strong>.</li>
+<li>Choose your&nbsp;<strong>personal workspace</strong>&nbsp;(it should be selected by default if you're in your own workspace).</li>
+<li>Also include the <strong>“Webex Prod US1”</strong> environment in the fork (we will use this environment later).</li>
+<li>Click&nbsp;<strong>"Fork Collection"</strong>.</li>
+<li>You should now see a copy of "Webex Messaging" in your personal workspace (usually listed under "Collections" in the left sidebar).</li>
+<li><strong>Configure Collection Authentication and Variable:</strong></li>
+<li>Click on your forked&nbsp;<strong>"Webex Messaging"</strong>&nbsp;collection in the left sidebar.</li>
+<li>In the main Postman window, click the&nbsp;<strong>"Variables"</strong>&nbsp;tab.</li>
+<li>Add a new variable:</li>
+<li><strong>VARIABLE:</strong>&nbsp;webex_token</li>
+<li><strong>VALUE:</strong>&nbsp;Paste the&nbsp;<strong>Bearer Token</strong>&nbsp;you copied from the Webex Developer Portal in Step 1.1.2 here.</li>
+<li>Now, click the&nbsp;<strong>"Authorization"</strong>&nbsp;tab for the collection.</li>
+<li>For the&nbsp;<strong>TYPE</strong>, select&nbsp;<strong>"Bearer Token"</strong>.</li>
+<li>In the&nbsp;<strong>Token</strong>&nbsp;field, enter&nbsp;<em><code>{{ webex_token }}</code></em>.</li>
+<li><em>Explanation:</em>&nbsp;This sets up the collection to automatically use your&nbsp;<em>webex_token</em>&nbsp;variable for all requests within it!</li>
+<li><strong>Make Your First API Call with Postman (Get My Own Details):</strong></li>
+<li>In your forked "Webex Messaging" collection, expand the&nbsp;<strong>"People"</strong>&nbsp;folder.</li>
+<li>Click on the&nbsp;<strong>GET Get My Own Details</strong>&nbsp;request (which corresponds to&nbsp;GET /v1/people/me).</li>
+<li>In the main request window, ensure the "Authorization" tab shows "Inherit auth from parent" or "Bearer Token" and that&nbsp;<code>{{ access_token }}</code>&nbsp;is in the Token field (if not inheriting).</li>
+<li>Click the blue&nbsp;<strong>"Send"</strong>&nbsp;button.</li>
+<li>You should receive a&nbsp;200 OK&nbsp;response with your user details, just like in the Developer Portal.</li>
+<li><strong>List Your Webex Spaces (Rooms):</strong></li>
+<li>In your forked "Webex Messaging" collection, expand the&nbsp;<strong>"Rooms"</strong>&nbsp;folder.</li>
+<li>Click on the&nbsp;<strong>GET List Rooms</strong>&nbsp;request (which corresponds to&nbsp;GET /v1/rooms).</li>
+<li>Uncheck all the <strong>Query Params</strong> in the <strong>Params</strong> tab.</li>
+<li>Click the blue&nbsp;<strong>"Send"</strong>&nbsp;button.</li>
+<li>You should receive a&nbsp;200 OK&nbsp;response. In the JSON body, you'll see a list of your Webex spaces.&nbsp;<strong>Carefully locate your personal lab space</strong>&nbsp;(e.g.,&nbsp;[Your Name/ID] - API Lab Space) and&nbsp;<strong>copy its&nbsp;id&nbsp;value</strong>. You'll need this in the next steps!</li>
+<li><strong>Send a Message to Your Lab Space (POST Create a Message):</strong></li>
+<li>In your forked "Webex Messaging" collection, expand the&nbsp;<strong>"Messages"</strong>&nbsp;folder.</li>
+<li>Click on the&nbsp;<strong>POST Create a Message</strong>&nbsp;request (which corresponds to&nbsp;POST /v1/messages).</li>
+<li>In the main request window, click the&nbsp;<strong>"Body"</strong>&nbsp;tab.</li>
+<li>You'll see a JSON body. Remove all fields except for <strong>“roomId”</strong> and <strong>“text”</strong>.</li>
+<li>Replace&nbsp;<code>{{ roomId }}</code>&nbsp;with the actual&nbsp;id&nbsp;of your lab space (e.g.,&nbsp;"roomId": "c2lkOi8v...").</li>
+<li>Change the&nbsp;text&nbsp;field to something personal, like&nbsp;"text": "Hello from Postman - this is much easier!".</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/docx-image-011.png" data-title="docx-image-011" data-desc-position="top"><img alt="docx-image-011" src="../assets/docx-image-011.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="850"></a></p>
+<ul>
+<li>
+<ul>
+<li>Click the blue&nbsp;<strong>"Send"</strong>&nbsp;button.</li>
+</ul>
+</li>
+<li>
+<p>You should receive a&nbsp;200 OK&nbsp;response. Now, check your Webex Client – you should see the message appear in your lab space!</p>
+</li>
+<li>
+<p><strong>Read Messages in Your Lab Space (GET List Messages):</strong></p>
+</li>
+<li>Click on the&nbsp;<strong>GET List Messages</strong>&nbsp;request (which corresponds to&nbsp;GET /v1/messages).</li>
+<li>In the main request window, click the&nbsp;<strong>"Params"</strong>&nbsp;tab.</li>
+<li>Uncheck all <strong>Query Params</strong>.</li>
+<li>Check the&nbsp;<strong>roomId</strong>&nbsp;parameter, enter the&nbsp;id&nbsp;of your lab space that you copied earlier into the <strong>Value</strong>.</li>
+<li>Click the blue&nbsp;<strong>"Send"</strong>&nbsp;button.</li>
+<li>You should receive a&nbsp;200 OK&nbsp;response with a list of messages in that space. You should see the message you just sent via Postman, and potentially the one you sent via the Developer Portal "Try It" tool!</li>
+</ul>
+<h2 id="step-14-make-an-api-request-with-curl">Step 1.4: Make an API Request with cURL</h2>
+<p>Finally, let's see how to make an API call directly from your command line using cURL. Postman can even generate the cURL command for you!</p>
+<ol>
+<li><strong>Generate cURL from Postman:</strong></li>
+<li>Go back to the&nbsp;<strong>GET Get My Own Details</strong>&nbsp;request you successfully ran in Postman (under "People API").</li>
+<li>On the right side of the request window, to the right of the "Send" button, click the&nbsp;<strong>"Code"</strong>&nbsp;link.</li>
+<li>A "Generate Code Snippets" window will appear. From the dropdown menu, select&nbsp;<strong>"cURL"</strong>.</li>
+<li><strong>Copy the entire cURL command</strong>&nbsp;that is displayed.</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/docx-image-012.png" data-title="docx-image-012" data-desc-position="top"><img alt="docx-image-012" src="../assets/docx-image-012.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="850"></a></p>
+<ol>
+<li><strong>Open Your Terminal/Command Prompt:</strong></li>
+<li>On your lab workstation, open a&nbsp;<strong>Terminal</strong>&nbsp;(macOS/Linux) or&nbsp;<strong>Command Prompt/PowerShell</strong>&nbsp;(Windows).</li>
+<li><strong>Execute the cURL Command:</strong></li>
+<li>Paste the copied cURL command into your terminal/command prompt.</li>
+<li><strong>Important:</strong>&nbsp;The cURL command generated by Postman will likely include your actual&nbsp;access_token&nbsp;value directly since it was set as the current value. If it still shows a placeholder, manually replace it with your&nbsp;<strong>Bearer Token</strong>&nbsp;that you copied in Step 1.1.2.</li>
+<li><em>Example:</em>&nbsp;curl --location --request GET 'https://api.webex.com/v1/people/me' \ --header 'Authorization: Bearer YOUR_ACTUAL_BEARER_TOKEN'</li>
+<li>Press&nbsp;<strong>Enter</strong>&nbsp;to execute the command.</li>
+<li><strong>Observe the Output:</strong></li>
+<li>The JSON response containing your user details will be printed directly in your terminal.</li>
+</ol>
+<p>Congratulations! You've now made Webex API requests using the Developer Portal, Postman, and cURL. You're well on your way to becoming a Webex API pro!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../lab2_making-your-first-api-requests-bruno/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lab 1 - Making Your First API Requests">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Lab 1 - Making Your First API Requests
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../lab3_creating-an-integration-bruno/" class="md-footer__link md-footer__link--next" aria-label="Next: Lab 2 - Creating an Integration">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Lab 2 - Creating an Integration
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Cisco
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.instant", "navigation.top", "navigation.footer", "search.suggest", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../template_assets/js/newLoad.js"></script>
+      
+        <script src="../template_assets/js/setInfo.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": false, "openEffect": "fade", "closeEffect": "fade", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

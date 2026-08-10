@@ -1,0 +1,1240 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="LAB-21122: Exploring the Webex Developer Ecosystem">
+      
+      
+        <meta name="author" content="Diego Manuel Jimenez Moreno">
+      
+      
+      
+        <link rel="prev" href="../lab3_creating-an-integration-bruno/">
+      
+      
+        <link rel="next" href="../lab4_building-a-bot-websockets/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../template_assets/webex75.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Lab 2 - Creating an Integration (Old) - LAB-21122: Exploring the Webex Developer Ecosystem</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-creating-an-integration-postman" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LAB-21122: Exploring the Webex Developer Ecosystem" class="md-header__button md-logo" aria-label="LAB-21122: Exploring the Webex Developer Ecosystem" data-md-component="logo">
+      
+  <img src="../template_assets/webexLogo91.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LAB-21122: Exploring the Webex Developer Ecosystem
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 2 - Creating an Integration (Old)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../welcome/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LAB-21122: Exploring the Webex Developer Ecosystem" class="md-nav__button md-logo" aria-label="LAB-21122: Exploring the Webex Developer Ecosystem" data-md-component="logo">
+      
+  <img src="../template_assets/webexLogo91.png" alt="logo">
+
+    </a>
+    LAB-21122: Exploring the Webex Developer Ecosystem
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../welcome/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1_getting_started-bruno/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1_getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started (Old)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2_making-your-first-api-requests-bruno/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 1 - Making Your First API Requests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2_making-your-first-api-requests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 1 - Making Your First API Requests (Old)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3_creating-an-integration-bruno/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2 - Creating an Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2 - Creating an Integration (Old)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2 - Creating an Integration (Old)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#step-21-create-your-webex-integration-on-the-developer-portal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2.1: Create Your Webex Integration on the Developer Portal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-22-manual-oauth-20-authorization-code-flow-browser-api-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2.2: Manual OAuth 2.0 Authorization Code Flow (Browser + API Call)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-23-configure-oauth-20-in-postman-for-your-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2.3: Configure OAuth 2.0 in Postman for Your Integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-24-make-api-requests-with-your-integration-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2.4: Make API Requests with Your Integration Token
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4_building-a-bot-websockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3 - Building a Bot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4_building-a-bot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3 - Building a Bot (Old)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab5_deploying-a-meeting-scheduler-service-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 4 - Deploying a Meeting Scheduler Service App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab6_use-cases-websockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 5 - Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab6_use-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 5 - Use Cases (Old)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab7_agentic_apps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 6 - Agentic Apps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab8_webex_mcp_servers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 7 - Webex MCP Servers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conclusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conclusion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="2-creating-an-integration-postman">2 – Creating an Integration (Postman)</h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is the <strong>legacy Postman version</strong>. For the 2026 lab, use <strong><a href="../lab3_creating-an-integration-bruno/">Lab 2 - Creating an Integration</a></strong> with Bruno instead.</p>
+</div>
+<p>In Chapter 1, you used a temporary developer token for quick API tests. While convenient, this isn't how real-world applications securely access user data. This chapter introduces <strong>Webex Integrations</strong> and the <strong>OAuth 2.0 Authorization Code Flow</strong>, the standard for third-party applications to get secure, user-consented access to Webex APIs. You'll create your own integration, perform a manual OAuth flow, and then configure Postman to handle it seamlessly.</p>
+<p>Upon completion of this section, you will be able to:</p>
+<ol>
+<li>Create a Webex Integration</li>
+<li>Perform a manual OAuth 2.0 authorization flow</li>
+<li>Configure OAuth 2.0 authentication in Postman</li>
+<li>Make API requests with the obtained token in Postman</li>
+</ol>
+<h2 id="step-21-create-your-webex-integration-on-the-developer-portal">Step 2.1: Create Your Webex Integration on the Developer Portal</h2>
+<p>First, you need to register your "application" (in this case, our Postman setup) with Webex. This process gives you a Client ID and Client Secret, which are essential for the OAuth flow.</p>
+<ol>
+<li><strong>Navigate to "My Apps" on the Developer Portal:</strong></li>
+<li>Open your browser and go to&nbsp;https://developer.webex.com/my-apps.</li>
+<li>Ensure you are logged in with your&nbsp;<strong>lab credentials</strong>.</li>
+<li><strong>Create a New Integration:</strong></li>
+<li>Click the&nbsp;<strong>"Create an Integration"</strong>&nbsp;button.</li>
+<li><strong>Fill in Integration Details:</strong></li>
+<li><strong>Integration Name:</strong>&nbsp;[Your Name/ID] - Lab Integration&nbsp;(e.g.,&nbsp;JaneDoe-Lab Integration)</li>
+<li><strong>Description:</strong>&nbsp;Webex One Lab Integration for API testing.</li>
+<li><strong>Icon:</strong>&nbsp;Pick your favorite color icon.</li>
+<li><strong>App Hub Description:</strong> “Postman Integration for the Webex One 2026 Lab”</li>
+<li><strong>Redirect URI(s):</strong>&nbsp;This is critical! For Postman's built-in OAuth helper, we'll use a specific callback URL. Enter:&nbsp;https://oauth.pstmn.io/v1/callback</li>
+<li><strong>Scopes:</strong>&nbsp;These define what permissions your integration will request from the user. Check the following boxes:</li>
+<li>spark:messages_write</li>
+<li>spark:messages_read</li>
+<li>spark:people_read</li>
+<li>spark:rooms_read</li>
+<li>Click&nbsp;<strong>"Add Integration"</strong>.</li>
+<li><strong>Record Your Client ID and Client Secret:</strong></li>
+<li>After creation, you'll see your integration's details.&nbsp;<strong>Copy and save your&nbsp;Client ID&nbsp;and&nbsp;Client Secret and OAuth Authorization URL</strong>&nbsp;to a temporary text file or notepad. These are sensitive credentials and will be needed shortly.</li>
+<li>For best results, leave this page open for the rest of the lab.</li>
+<li><em>Note:</em>&nbsp;The Client Secret is only shown once. If you lose it, you'll have to regenerate it.</li>
+</ol>
+<h2 id="step-22-manual-oauth-20-authorization-code-flow-browser-api-call">Step 2.2: Manual OAuth 2.0 Authorization Code Flow (Browser + API Call)</h2>
+<p>Now, let's manually walk through the steps a user and an application would take to get an access token using the Authorization Code flow. This will help you understand the underlying mechanics.</p>
+<ol>
+<li><strong>Use the Authorization URL:</strong></li>
+<li>Copy the <strong>“OAuth Authorization URL”</strong> from the Integration Details page<br>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/docx-image-013.png" data-title="docx-image-013" data-desc-position="top"><img alt="docx-image-013" src="../assets/docx-image-013.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="850"></a><br>
+     Paste this URL into your browser's address bar:</li>
+<li><em>Query Params Explanation:</em></li>
+<li>response_type=code: We want an authorization code.</li>
+<li>client_id: Your integration's unique ID.</li>
+<li>redirect_uri: Where Webex sends the user back after authorization. Must match what you registered.</li>
+<li>scope: The permissions we're requesting.</li>
+<li>state: An optional parameter for security, usually a random string.?</li>
+<li><strong>Authorize the Integration (User Consent):</strong></li>
+<li>Press Enter to navigate to the constructed URL.</li>
+<li>You'll be prompted to log in to Webex (if not already) and then asked to grant permission to your&nbsp;[Your Name/ID] - Lab Integration&nbsp;for the requested scopes.<br>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/docx-image-014.png" data-title="docx-image-014" data-desc-position="top"><img alt="docx-image-014" src="../assets/docx-image-014.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="700"></a></li>
+<li>Uncheck the <strong>“Only ask when requesting new permissions.”</strong> checkbox. This way, when we authorize again later, we will see the same dialog.</li>
+<li>Click&nbsp;<strong>"Accept"</strong></li>
+<li><strong>Capture the Authorization Code:</strong></li>
+<li>Webex will redirect your browser to&nbsp;https://oauth.pstmn.io/v1/callback?code=YOUR_AUTHORIZATION_CODE&amp;state=set_by_app.</li>
+<li><strong>Copy the&nbsp;authorization code&nbsp;value</strong>&nbsp;from the URL in your browser's address bar. This is your temporary authorization code.</li>
+<li><strong>Exchange the Code for an Access Token (Postman API Call):</strong></li>
+<li>Open Postman.</li>
+<li>Create a new HTTP Request (click the&nbsp;+&nbsp;tab).</li>
+<li>If it doesn’t say “HTTP”, you will need to change the type.<br>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/docx-image-015.png" data-title="docx-image-015" data-desc-position="top"><img alt="docx-image-015" src="../assets/docx-image-015.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="400"></a></li>
+<li>Set the request method type to&nbsp;<strong>POST</strong>.<br>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/docx-image-016.png" data-title="docx-image-016" data-desc-position="top"><img alt="docx-image-016" src="../assets/docx-image-016.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="400"></a></li>
+<li>Set the URL to:&nbsp;https://webexapis.com/v1/access_token</li>
+<li>Go to the&nbsp;<strong>"Body"</strong>&nbsp;tab, select&nbsp;<strong>x-www-form-urlencoded</strong>.</li>
+<li>Add the following key-value pairs:<ul>
+<li>Grant Type</li>
+<li><strong>KEY:</strong>&nbsp;grant_type</li>
+<li><strong>VALUE:</strong>&nbsp;authorization_code</li>
+<li>Client ID</li>
+<li><strong>KEY:</strong>&nbsp;client_id</li>
+<li><strong>VALUE:</strong>&nbsp;YOUR_CLIENT_ID&nbsp;(Paste your Client ID)</li>
+<li>Client Secret</li>
+<li><strong>KEY:</strong>&nbsp;client_secret</li>
+<li><strong>VALUE:</strong>&nbsp;YOUR_CLIENT_SECRET&nbsp;(Paste your Client Secret)</li>
+<li>Auth Code</li>
+<li><strong>KEY:</strong>&nbsp;code</li>
+<li><strong>VALUE:</strong>&nbsp;YOUR_AUTHORIZATION_CODE&nbsp;(Paste the code you captured in step 3)</li>
+<li>Redirect</li>
+<li><strong>KEY:</strong>&nbsp;redirect_uri</li>
+<li><strong>VALUE:</strong>&nbsp;https://oauth.pstmn.io/v1/callback</li>
+</ul>
+</li>
+<li>Click&nbsp;<strong>"Send"</strong>.</li>
+<li><strong>Observe the Token Response:</strong></li>
+<li>You should receive a&nbsp;200 OK&nbsp;response containing your&nbsp;access_token,&nbsp;refresh_token,&nbsp;expires_in&nbsp;(how long the access token is valid), and&nbsp;scope.</li>
+<li><strong>Copy your new&nbsp;access_token</strong>. This token was generated via your integration and user consent, making it a more secure way to access Webex APIs on behalf of a user.</li>
+<li><strong>Update Postman Collection with New Token:</strong></li>
+<li>In your personal Postman workspace, navigate to your forked&nbsp;<strong>"Webex Messaging"</strong>&nbsp;collection.</li>
+<li>Click on the collection name in the left sidebar, then select the&nbsp;<strong>"Variables"</strong>&nbsp;tab in the main window.</li>
+<li>Find the&nbsp;webex_token&nbsp;variable you created in Chapter 1.</li>
+<li>Paste the&nbsp;webex_token&nbsp;you just copied from step 5 into the&nbsp;<strong>" Value"</strong>&nbsp;column for&nbsp;webex_token.</li>
+<li><strong>Make an API Call with the Integration Token (List Rooms):</strong></li>
+<li>In your forked "Webex Messaging" collection, expand the&nbsp;<strong>"Rooms"</strong>&nbsp;folder.</li>
+<li>Click on the&nbsp;<strong>GET List Rooms</strong>&nbsp;request (which corresponds to&nbsp;GET /v1/rooms).</li>
+<li>Click the blue&nbsp;<strong>"Send"</strong>&nbsp;button.</li>
+<li>You should receive a&nbsp;200 OK&nbsp;response. Verify that the rooms listed are correct for your lab account. This call was made using the&nbsp;access_token&nbsp;obtained through your integration!</li>
+</ol>
+<h2 id="step-23-configure-oauth-20-in-postman-for-your-integration">Step 2.3: Configure OAuth 2.0 in Postman for Your Integration</h2>
+<p>Manually performing the OAuth flow is cumbersome. Postman has built-in support to automate much of this. Let's configure your forked "Webex Messaging" collection to use your new integration.</p>
+<ol>
+<li><strong>Open Your Forked "Webex Messaging" Collection:</strong></li>
+<li>In your personal Postman workspace, navigate to your forked "Webex Messaging" collection.</li>
+<li><strong>Access Collection Authorization Settings:</strong></li>
+<li>Click on your forked&nbsp;<strong>"Webex Messaging"</strong>&nbsp;collection in the left sidebar.</li>
+<li>In the main Postman window, click the&nbsp;<strong>"Authorization"</strong>&nbsp;tab.</li>
+<li><strong>Configure OAuth 2.0:</strong></li>
+<li>For the&nbsp;<strong>TYPE</strong>, select&nbsp;<strong>"OAuth 2.0"</strong>.</li>
+<li>Fill in the following details in the "GET NEW ACCESS TOKEN" window:<ul>
+<li><strong>Token Name:</strong>&nbsp;Webex Lab Integration Token</li>
+<li><strong>Grant Type:</strong>&nbsp;Authorization Code</li>
+<li><strong>Callback URL:</strong>&nbsp;https://oauth.pstmn.io/v1/callback&nbsp;(This must match your registered Redirect URI)</li>
+<li><strong>Auth URL:</strong>&nbsp;https://webexapis.com/v1/authorize</li>
+<li><strong>Access Token URL:</strong>&nbsp;https://webexapis.com/v1/access_token</li>
+<li><strong>Client ID:</strong>&nbsp;YOUR_CLIENT_ID&nbsp;(Paste your Client ID from 2.1.4)</li>
+<li><strong>Client Secret:</strong>&nbsp;YOUR_CLIENT_SECRET&nbsp;(Paste your Client Secret from 2.1.4)</li>
+<li><strong>Scope:</strong>&nbsp;spark:people_read spark:rooms_read spark:messages_write spark:messages_read&nbsp;(Ensure these match what you registered, separated by spaces)</li>
+<li><strong>Client Authentication:</strong>&nbsp;Send client credentials in body</li>
+</ul>
+</li>
+<li>Scroll down and click&nbsp;<strong>"Get New Access Token"</strong>.</li>
+<li>Click&nbsp;<strong>"Proceed"</strong>.</li>
+<li><strong>Authorize in Browser:</strong></li>
+<li>Postman will open a browser window. You'll be prompted to log in to Webex (if necessary) and grant permission to your&nbsp;[Your Name/ID] - Lab Integration.</li>
+<li>Click&nbsp;<strong>"Accept"</strong>&nbsp;or&nbsp;<strong>"Authorize"</strong>.</li>
+<li><strong>Postman Retrieves Token:</strong></li>
+<li>The browser will redirect, and Postman will automatically capture the authorization code and exchange it for an access token.</li>
+<li>In the "MANAGE ACCESS TOKENS" window, you should see your&nbsp;Webex Lab Integration Token&nbsp;listed.</li>
+<li>Click&nbsp;<strong>"Use Token"</strong>.</li>
+<li><strong>Verify Collection Authorization:</strong></li>
+<li>Back in the collection's "Authorization" tab, the "Token" field should now show your&nbsp;Webex Lab Integration Token&nbsp;selected.</li>
+<li>Click&nbsp;<strong>"Save"</strong>&nbsp;for the collection.</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/docx-image-017.png" data-title="docx-image-017" data-desc-position="top"><img alt="docx-image-017" src="../assets/docx-image-017.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="850"></a></p>
+<p>(Your auth screen should look like this now)</p>
+<h2 id="step-24-make-api-requests-with-your-integration-token">Step 2.4: Make API Requests with Your Integration Token</h2>
+<p>Now that your Postman collection is configured to use the OAuth 2.0 flow, all requests within it will automatically use the access token obtained through your integration.</p>
+<ol>
+<li><strong>Retrieve Your Own User Details (GET /v1/people/me):</strong></li>
+<li>In your forked “Webex Messaging” collection, expand the&nbsp;<strong>“People API”</strong>&nbsp;folder.</li>
+<li>Click on the&nbsp;<strong>GET Get My Own Details</strong>&nbsp;request.</li>
+<li>In the main request window, ensure the “Authorization” tab shows “Inherit auth from parent” or “Bearer Token” with the&nbsp;Webex Lab Integration Token&nbsp;selected.</li>
+<li>Click the blue&nbsp;<strong>“Send”</strong>&nbsp;button.</li>
+<li>You should receive a&nbsp;200 OK&nbsp;response with your user details. This time, the token came from your integration!</li>
+<li><strong>Send a Message to Your Lab Space (POST Create a Message):</strong></li>
+<li>In your forked “Webex Messaging” collection, expand the&nbsp;<strong>“Messages API”</strong>&nbsp;folder.</li>
+<li>Click on the&nbsp;<strong>POST Create a Message</strong>&nbsp;request.</li>
+<li>In the “Body” tab, replace&nbsp;<code>{{ roomId }}</code>&nbsp;with the&nbsp;id&nbsp;of your lab space (you can get this from the&nbsp;GET List Rooms&nbsp;request if you don’t have it handy from Chapter 1).</li>
+<li>Change the&nbsp;text&nbsp;field to:&nbsp;“text”: “Hello from my Webex Integration via Postman!”.</li>
+<li>Click the blue&nbsp;<strong>“Send”</strong>&nbsp;button.</li>
+<li>Check your Webex client – the message should appear, sent using your integration’s permissions.</li>
+</ol>
+<p>Congratulations! You've successfully created a Webex Integration, understood the OAuth 2.0 flow, and used it to securely make API requests. This is a fundamental concept for building robust Webex applications.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../lab3_creating-an-integration-bruno/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lab 2 - Creating an Integration">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Lab 2 - Creating an Integration
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../lab4_building-a-bot-websockets/" class="md-footer__link md-footer__link--next" aria-label="Next: Lab 3 - Building a Bot">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Lab 3 - Building a Bot
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Cisco
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.instant", "navigation.top", "navigation.footer", "search.suggest", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../template_assets/js/newLoad.js"></script>
+      
+        <script src="../template_assets/js/setInfo.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": false, "openEffect": "fade", "closeEffect": "fade", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
