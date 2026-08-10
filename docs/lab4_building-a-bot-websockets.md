@@ -1,6 +1,6 @@
-# 3 – Building a Bot with WebSockets
+# 3 – Building a Bot
 
-This is the **WebSocket-based version** of Lab 3. Steps 3.1 to 3.4 are the same as in [Lab 3 - Building a Bot (Old)](lab4_building-a-bot.md). Steps 3.5 to 3.7 use a **native WebSocket connection to Webex Mercury** instead of the `webex_bot` library.
+In this section, you will create a Webex bot and build it into an interactive assistant using Python. You will register the bot, send messages, create rooms, work with Adaptive Cards, and connect to Webex Mercury to receive and respond to events in real time.
 
 Upon completion of this section, you will be able to:
 
@@ -8,24 +8,21 @@ Upon completion of this section, you will be able to:
 2. Send a message and find people using the Bot using Python.
 3. Create a room and add a person using the Bot using Python.
 4. Create and send an Adaptive Card.
-5. Build an interactive bot using a **WebSocket connection** to receive events in real time.
+5. Build an interactive bot that receives and responds to events in real time.
 
 Reference:
 
 - [Webex Bots Guide](https://developer.webex.com/messaging/docs/bots){:target="_blank"}
 - [Webhooks Guide](https://developer.webex.com/messaging/docs/api/guides/webhooks){:target="_blank"}
 
-!!! Note
-    The original Lab 3 section using the `webex_bot` library is still available in the guide. This section is the recommended WebSocket-first approach for 2026.
-
-## Why WebSockets?
+## Receiving events in real time
 
 Webex bots can receive events in two main ways:
 
 - **Webhooks:** Webex sends HTTP callbacks to a public URL. This works well in production, but usually requires a public endpoint or a tunnel such as ngrok during development.
-- **WebSockets (Mercury):** Your bot opens a persistent connection to Webex and receives events in real time. This is a better fit for lab environments and corporate networks because no public URL is required.
+- **WebSockets (Mercury):** Your bot opens a persistent connection to Webex and receives events in real time. This works well in lab environments and corporate networks because no public URL is required.
 
-In this section, you will use the WebSocket approach directly so you can see how event handling, message parsing, and Adaptive Card actions work without a third-party bot framework.
+In this lab, your bot connects to Webex Mercury. You will implement event handling, message parsing, and Adaptive Card actions directly in Python.
 
 ## Step 3.1: Create a Bot
 
@@ -130,56 +127,31 @@ If you have used the example card, you should receive the following:
 
 ![docx-image-027](assets/docx-image-027.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
-## Step 3.5: Connect your bot using WebSockets
+## Step 3.5: Connect your bot
 
-In this step, you will open a persistent WebSocket connection to Webex Mercury and handle incoming messages without using the `webex_bot` library.
+In this step, you will open a persistent connection to Webex Mercury and handle incoming messages.
 
 1. Navigate to `03-bots/05_websocket_bot.py` and review the code.
 
-    The sample follows this flow:
+    The script follows this flow:
 
     - Register the bot device with Webex
-    - Open a Mercury WebSocket connection
+    - Open a Mercury connection
     - Listen for `message` events
     - Reply to the user through the REST API
 
-    ```
-    import asyncio
-    import os
+    Key functions to review:
 
-    from dotenv import load_dotenv
-
-    load_dotenv()
-    BOT_TOKEN = os.getenv("BOT_TOKEN")
-
-    async def handle_message(event):
-        room_id = event["data"]["roomId"]
-        person_email = event["data"].get("personEmail")
-        text = event["data"].get("text", "")
-
-        print(f"Message from {person_email}: {text}")
-
-        # Example: echo the message back using the REST API
-        # send_message(room_id, f"You said: {text}")
-
-    async def main():
-        # connect_mercury(BOT_TOKEN, handle_message)
-        # await listen_forever()
-        pass
-
-    if __name__ == "__main__":
-        asyncio.run(main())
-    ```
-
-    !!! Note
-        The lab repository will provide the full working implementation. The important part is understanding the event loop and where your business logic lives.
+    - **`handle_message()`** — processes incoming message events
+    - **`connect_mercury()`** — registers the device and opens the connection
+    - **`send_message()`** — sends a reply through the Webex REST API
 
 2. Execute the code with the following command and let it run:
 
     - python 05_websocket_bot.py
 
 !!! Warning
-    Wait until you see a message such as **WebSocket connected** or **Mercury connected** appear in the console.
+    Wait until you see **WebSocket connected** appear in the console.
 
 3. Send any message to your bot, and it will respond using the handler defined in the script:
 
@@ -189,30 +161,29 @@ In this step, you will open a persistent WebSocket connection to Webex Mercury a
 
     ![docx-image-030](assets/docx-image-030.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
-5. Trigger a card action or follow the sample prompt and verify that the bot response is sent through the REST API rather than by the framework itself.
+5. Trigger a card action or follow the sample prompt and verify that the bot response is sent through the REST API.
 
-## Step 3.6: WebSockets – Create your own handler
+## Step 3.6: Create your own handler
 
 In this step, you will replace the generic echo behavior with your own command handler.
 
 1. Navigate to `03-bots/06_websocket_bot-2.py` and review the code.
 
-    !!! Note
-        The WebSocket version replaces `webex_bot` concepts with explicit handler logic:
+    Key concepts in this script:
 
-        - **allowed_domains** validates the sender's email domain before executing commands
-        - **command_keyword** maps user text such as `message` to a specific handler
-        - **send_message()** sends responses through the Webex REST API
-        - **delete_message()** optionally removes the previous card before sending a new one
+    - **`allowed_domains`** validates the sender's email domain before executing commands
+    - **`command_keyword`** maps user text such as `message` to a specific handler
+    - **`send_message()`** sends responses through the Webex REST API
+    - **`delete_message()`** optionally removes the previous card before sending a new one
 
-        ![docx-image-035](./assets/docx-image-035.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![docx-image-035](./assets/docx-image-035.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 2. Execute the code with the following command and let it run:
 
     - python 06_websocket_bot-2.py
 
 !!! Warning
-    Wait until you see the message **WebSocket connected** appear in the console.
+    Wait until you see **WebSocket connected** appear in the console.
 
 3. Send any message to your bot and you should receive a card with your custom function **Send Hello!**:
 
@@ -226,27 +197,28 @@ In this step, you will replace the generic echo behavior with your own command h
 
     ![docx-image-039](assets/docx-image-039.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
-## Step 3.7: WebSockets – Adaptive card processing
+## Step 3.7: Adaptive card processing
 
-In this final step, you will handle Adaptive Card submissions through WebSocket events.
+In this final step, you will handle Adaptive Card submissions through incoming events.
 
 1. Navigate to `03-bots/07_websocket_bot-3.py` and review the code.
 
-    !!! Note
-        Instead of `chained_commands` from `webex_bot`, the WebSocket version listens for **`attachmentActions`** events and routes them to a handler:
+    Key concepts in this script:
 
-        - **on_attachment_action()** receives card submission data
-        - **extract_input_values()** reads the fields submitted by the user
-        - **send_card_response()** sends the confirmation or next step
+    - **`on_attachment_action()`** receives card submission data
+    - **`extract_input_values()`** reads the fields submitted by the user
+    - **`send_card_response()`** sends the confirmation or next step
 
-        ![docx-image-040](./assets/docx-image-040.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    The bot listens for **`attachmentActions`** events and routes them to the appropriate handler.
+
+    ![docx-image-040](./assets/docx-image-040.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 2. Execute the code with the following command and let it run:
 
     - python 07_websocket_bot-3.py
 
 !!! Warning
-    Wait until you see the message **WebSocket connected** appear in the console.
+    Wait until you see **WebSocket connected** appear in the console.
 
 3. Text **message** to your bot to invoke your function directly:
 
@@ -257,19 +229,3 @@ In this final step, you will handle Adaptive Card submissions through WebSocket 
     The previous card will be deleted. You should then receive both your message and a formatted notification confirming that your message has been sent:
 
     ![docx-image-043](assets/docx-image-043.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
-
-## Compare with the webex_bot version
-
-| Topic | `webex_bot` version | WebSocket version |
-| --- | --- | --- |
-| Event transport | WebSocket via library | WebSocket via Mercury directly |
-| Command routing | Built-in commands / cards | Your own handler functions |
-| Card actions | `chained_commands` | `attachmentActions` event handler |
-| Dependencies | `webex_bot`, `webexpythonsdk` | WebSocket client + REST API calls |
-| Best for | Fast prototyping | Understanding the underlying platform |
-
-## Repository work still needed
-
-- [ ] Add `05_websocket_bot.py`, `06_websocket_bot-2.py`, and `07_websocket_bot-3.py` to the lab repo
-- [ ] Remove `webex_bot` dependency from the WebSocket path in `requirements.txt`
-- [ ] Decide whether to keep the legacy Postman and `webex_bot` sections after the 2026 event

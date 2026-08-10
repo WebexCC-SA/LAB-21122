@@ -95,7 +95,7 @@ nav:
       - Lab 1 - Making Your First API Requests (Old): lab2_making-your-first-api-requests.md
       - Lab 2 - Creating an Integration: lab3_creating-an-integration-bruno.md
       - Lab 2 - Creating an Integration (Old): lab3_creating-an-integration.md
-      - Lab 3 - Building a Bot with WebSockets: lab4_building-a-bot-websockets.md
+      - Lab 3 - Building a Bot: lab4_building-a-bot-websockets.md
       - Lab 3 - Building a Bot (Old): lab4_building-a-bot.md
       - Lab 4 - Deploying a Meeting Scheduler Service App: lab5_deploying-a-meeting-scheduler-service-app.md
       - Lab 5 - Use Cases: lab6_use-cases-websockets.md

@@ -1,7 +1,7 @@
 # 3 – Building a Bot (webex_bot)
 
 !!! Note
-    This is the **legacy `webex_bot` version**. For the 2026 lab, use **[Lab 3 - Building a Bot with WebSockets](lab4_building-a-bot-websockets.md)** instead.
+    This section has been superseded. Use **[Lab 3 - Building a Bot](lab4_building-a-bot-websockets.md)** instead.
 
 Upon completion of this section, you will be able to:
 

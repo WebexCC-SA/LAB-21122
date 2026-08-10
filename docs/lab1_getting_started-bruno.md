@@ -104,10 +104,8 @@ Open Visual Studio Code from the desktop:
 | --- | --- |
 | Lab 1 | Webex API concepts and your first API requests with Bruno |
 | Lab 2 | Secure integrations with OAuth 2.0 in Bruno |
-| Lab 3 (WebSockets) | Interactive bots with Python and Adaptive Cards |
-| Lab 3 (Old) | Same bot lab using the legacy `webex_bot` library |
+| Lab 3 | Interactive bots with Python and Adaptive Cards |
 | Lab 4 | Service apps for administrative automation |
-| Lab 5 | Real-world use cases with WebSocket handlers |
-| Lab 5 (Old) | Same use cases using the legacy `webex_bot` library |
+| Lab 5 | Real-world use cases with bots |
 | Lab 6 | Agentic Apps |
 | Lab 7 | Webex MCP Servers |

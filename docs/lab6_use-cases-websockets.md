@@ -1,17 +1,14 @@
-# 5 – Use Cases (WebSockets)
+# 5 – Use Cases
 
-This is the **WebSocket-based version** of Lab 5. The exercises and Adaptive Card flows are the same as in [Lab 5 - Use Cases (Old)](lab6_use-cases.md), but the bot logic uses **native Mercury WebSocket handlers** instead of the `webex_bot` library.
+In this section, you will put your Webex API knowledge into practice by building real-world solutions. You will explore how bots and integrations can streamline communication and automate device provisioning in an organization.
 
 Upon completion of this section, you will be able to:
 
 1. Apply the concepts that you have learned to create practical solutions using Webex APIs.
-2. Build a WebSocket bot that enables permitted users to collect feedback from all users in the organization.
-3. Build a WebSocket bot that enables permitted users to send targeted or organization-wide messages.
-4. Develop an interactive WebSocket bot for end-users to provision their own devices using a MAC address.
-5. Integrate API calls, handle pagination, and manage bot interactions through WebSocket event handlers.
-
-!!! Note
-    The original Lab 5 section using the `webex_bot` library is still available as **Lab 5 - Use Cases (Old)**. This section is the recommended WebSocket-first approach for 2026.
+2. Build a bot that enables permitted users to collect feedback from all users in the organization.
+3. Build a bot that enables permitted users to send targeted or organization-wide messages.
+4. Develop an interactive bot for end-users to provision their own devices using a MAC address.
+5. Integrate API calls, handle pagination, and manage bot interactions for real-world scenarios.
 
 ## Exercise 1: Create a feedback bot for your organization
 
@@ -157,19 +154,3 @@ Requirements:
 6. You can verify the device registration in Control Hub:
 
    ![docx-image-066](assets/docx-image-066.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
-
-## Compare with the webex_bot version
-
-| Topic | `webex_bot` version (Old) | WebSocket version |
-| --- | --- | --- |
-| Event transport | WebSocket via library | WebSocket via Mercury directly |
-| Command routing | Built-in commands / cards | Your own handler functions |
-| Card actions | `chained_commands` | `on_attachment_action()` handler |
-| Sample scripts | `01_feedback.py`, `02_device.py` | `01_feedback_websocket.py`, `02_device_websocket.py` |
-| Console ready message | "WebSocket Opened." | "WebSocket connected" |
-
-## Repository work still needed
-
-- [ ] Add `01_feedback_websocket.py` and `02_device_websocket.py` to the lab repo under `06-usecases/`
-- [ ] Reuse Mercury connection helpers from Lab 3 WebSocket scripts where possible
-- [ ] Remove `webex_bot` dependency from the WebSocket use-case path in `requirements.txt`
