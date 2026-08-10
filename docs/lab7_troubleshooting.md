@@ -336,8 +336,6 @@ References:
 !!! Warning
     You need to use Postman to access Meeting Quality data.
 
-    ![docx-image-093](./assets/docx-image-093.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
-
 ### Solution
 
 1. Get MeetingId:  

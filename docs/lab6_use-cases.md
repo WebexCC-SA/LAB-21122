@@ -26,8 +26,6 @@ Requirements:
 !!! Warning
     In this exercise, you will need to add the **spark-admin:people_read** scope to your Service App. Please notify us to have your Service App rights approved.
 
-    ![warning-icon](assets/docx-image-050.png){ width="150" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
-
 ### Pagination
 
 When retrieving a large amount of information, you need to handle pagination. With pagination, the API returns a limited set of results per request. If more data is available, the response includes a link labeled rel="next", which provides the URL to fetch the next page of results. This process continues until all results have been retrieved.
@@ -59,8 +57,6 @@ When retrieving a large amount of information, you need to handle pagination. Wi
 
 !!! Warning
     Wait until you see the message “WebSocket Opened.” appear in the console.
-
-    ![warning-icon](assets/docx-image-052.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 1. Send any message to your bot to get the following card:  
      
@@ -99,8 +95,6 @@ Requirements:
 !!! Warning
     In this exercise, you will need to add the **spark-admin:devices_write** scope to your Service App. Please notify us to have your Service App rights approved.
 
-    ![warning-icon](assets/docx-image-059.png){ width="150" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
-
 ### Solution
 
 1. Navigate to 06-usecases/02_device.py and review the code.  
@@ -119,8 +113,6 @@ Requirements:
 
 !!! Warning
     Wait until you see the message “WebSocket Opened.” appear in the console.
-
-    ![warning-icon](assets/docx-image-060.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 1. Send any message to your bot to get the following card:  
      

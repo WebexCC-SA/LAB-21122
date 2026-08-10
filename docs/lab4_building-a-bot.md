@@ -32,8 +32,6 @@ First you need to create your bot:
 !!! Warning
     Copy your **Bot access token** in your .env file as **BOT_TOKEN**.
 
-    ![docx-image-020](assets/docx-image-020.png){ width="150" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
-
 ## Step 3.2: Send a message to yourself
 
 In this step, you will send your first 1:1 message using the bot you just created. There are two options to achieve this:
@@ -46,8 +44,6 @@ In this step, you will send your first 1:1 message using the bot you just create
 
     !!! Warning
         **all_people** will not work if you are using a bot token as it requires admin privileges.
-
-        ![docx-image-021](./assets/docx-image-021.png){ width="150" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 3. Make sure that in your terminal you are in the right folder:
    * cd 03-bots
@@ -95,8 +91,6 @@ In this step, you will explore how to create and send an Adaptive Card.
     !!! Warning
         When you copy the code from the Card Payload Editor, make sure to change **true** to **True** so it works correctly in Python.
 
-        ![docx-image-026](./assets/docx-image-026.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
-
 4. Now, run your code with the following command:
    * python 04_adaptivecard.py
 
@@ -116,8 +110,6 @@ In this step and the following ones, you will work with the webex_bot library to
 
 !!! Warning
     Wait until you see the message “WebSocket Opened.” appear in the console.
-
-    ![docx-image-028](./assets/docx-image-028.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 1. Send any message to your bot, and it will respond with the following card using the default function:  
      
@@ -167,8 +159,6 @@ You can also access the information previously displayed in the console from the
 !!! Warning
     Wait until you see the message “WebSocket Opened.” appear in the console.
 
-    ![docx-image-036](./assets/docx-image-036.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
-
 3. Send any message to your bot and you will get the following card with your new function **Send Hello!**:
      
    ![docx-image-037](assets/docx-image-037.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
@@ -200,8 +190,6 @@ In this final step, you will send an Adaptive Card with multiple fields and use 
 
 !!! Warning
     Wait until you see the message “WebSocket Opened.” appear in the console.
-
-    ![docx-image-041](./assets/docx-image-041.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 3. Text **message** to your bot to invoke your function directly:
      
