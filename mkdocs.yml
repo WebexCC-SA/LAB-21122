@@ -90,8 +90,13 @@ nav:
   - Lab:
       - Overview: overview.md
       - Lab 1 - Getting Started: lab1_getting_started.md
+      - Lab 2 - Making Your First API Requests: lab2_making-your-first-api-requests.md
+      - Lab 3 - Creating an Integration: lab3_creating-an-integration.md
+      - Lab 4 - Building a Bot: lab4_building-a-bot.md
+      - Lab 5 - Deploying a Meeting Scheduler Service App: lab5_deploying-a-meeting-scheduler-service-app.md
+      - Lab 6 - Use Cases: lab6_use-cases.md
+      - Lab 7 - Troubleshooting: lab7_troubleshooting.md
       - Conclusion: conclusion.md
-  - Topologies: topologies.md
   - How to use this guide:
       - Setting up and using the tool:
         - Initial Setup: howToUse/initialSetup.md

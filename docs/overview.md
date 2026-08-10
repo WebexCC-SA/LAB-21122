@@ -1,21 +1,10 @@
-# Overview
+# About this lab
 
-## Learning Objectives
+This hands-on lab aims to show participants the possibilities of Webex APIs and how they can be used for automation. We'll focus on real use cases to showcase how these APIs can be integrated into organizations.
 
-This lab will give you an introduction to ...
+This session will enable you to:
 
-## Disclaimer
-
-Although the lab design and configuration examples could be used as a reference, for design related questions please contact your representative at Cisco, or a Cisco partner.
-
-## Lab Access
-
-From your workstation open an RDP (Remote Desktop) session to the following host named "wkst1":
-
-- IP: 1.2.3.4
-- Username: corp\demouser
-- Password: C1sco12345
-
-## Getting Started
-
-This lab leverages Cisco dCloud ...
+* Understand the key concepts and capabilities of Webex APIs.
+* Integrate Webex APIs with bots and service apps to enable user communication and interaction.
+* Explore practical examples of how Webex APIs can be applied.
+* Discover how Webex APIs can be used for troubleshooting.
