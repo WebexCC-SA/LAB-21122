@@ -1,5 +1,7 @@
 # 4 – Deploying a Meeting Scheduler Service App
 
+Lab code repository: [https://github.com/diegomjimenez/WebexOne2026_Developer](https://github.com/diegomjimenez/WebexOne2026_Developer){:target="_blank"}
+
 Upon completion of this section, you will be able to:
 
 1. Create a **Service App** in Webex.
@@ -62,33 +64,66 @@ After the admin authorizes your Service App registration, you can retrieve the a
 
 ## Step 4.4: Configure the Sample Service App
 
-Now that the access and refresh tokens are ready, we can insert them into the sample Python app and configure the meeting using a code editor.
+Now that the access and refresh tokens are ready, add them to the sample Python app.
 
-1. Open the .env file in Visual Studio Code:  
-   1. Go to **line 7** of the code and replace the text with the **clientID** value from your notepad.  
-      * CLIENTID= "EXAMPLEC3ad18d5cb9bd01571e9b038438819c2b1"
-   2. On **line 8**, replace the text with the **secretID** value from your notepad.  
-      * SECRETID= "EXAMPLEC3ad18d5cb9bdu05e9b0f130h88192b1"
-   3. On **line 9**, replace the text with the **access_token** value from your notepad.  
-      * WEBEX_ACCESS_TOKEN= 'EXAMPLEQ2Y0_P03_0e01-g3-b55n-y06at4'
-   4. On **line 10**, replace the text with the **refresh_token** value from your notepad.  
-      * REFRESH_TOKEN= 'EXAMPLE1hMt2_PA1_0e01-a56a-b0Gj204'
-2. Open the 04-serviceapps/01_serviceapp.py file in Visual Studio Code:  
-   1. Scroll to **line 69**, after 'title': replace the text and give your meeting a unique name.  
-      * 'title': 'Automatic Meeting Example',
-   2. **Save** the 01_serviceapp.py file.
+1. Open `.env` in Visual Studio Code and add your Service App values:
 
-## Step 4.5: Run the Sample Service App.
+    ```env
+    CLIENTID=your_client_id
+    SECRETID=your_client_secret
+    WEBEX_ACCESS_TOKEN=your_access_token
+    REFRESH_TOKEN=your_refresh_token
+    HOST_EMAIL=meeting_host@example.com
+    ```
 
-With all the Service App components added to Python code, the sample app is now ready to be initialized.
+2. Open `04-serviceapps/01_serviceapp.py` and review the token refresh helper:
 
-1. Go back to the command line window in the 04-serviceapps directory.
-2. Launch the 01_serviceapp.py file from that location with this command:  
-   * python3 01_serviceapp.py
-3. A success will return a statusCode 200 along with the the newly created meeting details in JSON format.  
-   * *statusCode: 200  
-       
-     {'id': '7f36776aa9034d6091ef00dcee83ced2', 'meetingNumber': '26607444195', 'title': 'Important Customer Meeting', 'password'… … }*
+    ```python
+    def get_tokens_refresh() -> tuple[str, str]:
+        url = "https://webexapis.com/v1/access_token"
+        payload = (
+            f"grant_type=refresh_token&client_id={CLIENT_ID}&client_secret={SECRET_ID}"
+            f"&refresh_token={REFRESH_TOKEN}"
+        )
+        response = requests.post(url=url, data=payload, headers=headers, timeout=30)
+        return results["access_token"], results["refresh_token"]
+    ```
+
+3. Review the meeting creation call and update the meeting title if needed:
+
+    ```python
+    body = {
+        "title": "Automatic Meeting Example",
+        "start": start,
+        "end": end,
+        "hostEmail": HOST_EMAIL,
+    }
+
+    response = requests.post(
+        "https://webexapis.com/v1/meetings",
+        headers=headers,
+        data=json.dumps(body),
+        timeout=30,
+    )
+    ```
+
+4. Save the file.
+
+## Step 4.5: Run the Sample Service App
+
+1. Change to the service app folder:
+
+    ```bash
+    cd 04-serviceapps
+    ```
+
+2. Run the sample app:
+
+    ```bash
+    python 01_serviceapp.py
+    ```
+
+3. A successful run returns `Meeting created successfully` and the meeting details in JSON format.
 
 ## Step 4.6: Verify the Scheduled Meeting in Webex.
 
