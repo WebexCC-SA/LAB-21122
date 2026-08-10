@@ -1,7 +1,4 @@
-# Getting Started (Postman)
-
-!!! Note
-    This is the **legacy Postman version**. For the 2026 lab, use **[Getting Started](lab1_getting_started-bruno.md)** with Bruno instead.
+# Getting Started
 
 Welcome to the **Exploring the Webex Developer Ecosystem** lab! In this session, you will explore how Webex APIs, integrations, bots, service apps, agentic apps, and MCP servers can be used to automate workflows and build real-world solutions.
 
@@ -10,7 +7,7 @@ This section will guide you through setting up your environment and logging into
 Please use the specific lab credentials provided to you for all logins. To successfully complete this lab, you will be working with:
 
 - Webex Client
-- Postman
+- Bruno
 - Webex for Developers
 - Visual Studio Code
 
@@ -26,13 +23,23 @@ Your username will be formatted based on your Pod number:
 | --- | --- |
 | Pod X | podx@cb127.dc-02.com |
 
-## Postman Credentials
+## Bruno setup
 
-| Username | Email | Password |
-| --- | --- | --- |
-| PodX | podX@webexone26devs.wbx.ai | WebexOne2026! |
+Bruno is a local-first API client. For this lab, you will use the Webex collection included in the lab repository instead of a cloud workspace login.
 
-Once you have identified your credentials you can continue.
+1. **Open Bruno** on your lab workstation.
+2. **Open the lab collection folder** from the cloned repository:
+
+    - `bruno/Webex Messaging/`
+
+3. **Select the lab environment** provided with the collection, for example:
+
+    - `Webex Prod US1`
+
+!!! Note "Screenshot needed"
+    Add Bruno screenshot showing the **Webex Messaging** collection open in the left sidebar with the lab environment selected.
+
+4. Confirm that the collection includes folders such as **People**, **Rooms**, and **Messages**.
 
 ## Log into the Webex Client
 
@@ -50,14 +57,6 @@ We'll create a dedicated Webex space (known as a "room" in the API world) that y
 2. **Name Your Space:** Give your space a clear, unique name, such as **[Your Name/ID] - API Lab Space** (e.g., JaneDoe-API Lab Space).
 3. **Create Space:** Click "Create" or "Done" to finalize the space creation.
 4. **Confirm:** You should now see your newly created space in your Webex client's space list.
-
-## Log into Postman
-
-Postman will be our primary tool for making API requests and working with OAuth 2.0 integrations. You'll log into a Postman account that has access to the Webex Public Workspace.
-
-1. **Open Postman:** Launch the Postman Desktop App on your lab workstation.
-2. **Enter Lab Credentials:** When prompted, enter the **Postman email address and password** provided to you by the lab instructors.
-3. **Verify Login:** Once logged in, you should see your Postman workspace. If you see a prompt to join a team, follow the lab instructor's guidance.
 
 ## Log into Webex for Developers
 
@@ -97,15 +96,18 @@ Open Visual Studio Code from the desktop:
 
     - pip install -r requirements.txt
 
+8. Open the Bruno collection folder from the cloned repository in Bruno.
+
 ## Lab flow
 
 | Section | Focus |
 | --- | --- |
-| Lab 1 | Webex API concepts and your first API requests |
-| Lab 2 | Secure integrations with OAuth 2.0 |
-| Lab 3 | Interactive bots with Python and Adaptive Cards |
-| Lab 3 (WebSockets) | Same bot lab using native WebSocket event handling |
+| Lab 1 | Webex API concepts and your first API requests with Bruno |
+| Lab 2 | Secure integrations with OAuth 2.0 in Bruno |
+| Lab 3 (WebSockets) | Interactive bots with Python and Adaptive Cards |
+| Lab 3 (Old) | Same bot lab using the legacy `webex_bot` library |
 | Lab 4 | Service apps for administrative automation |
-| Lab 5 | Real-world use cases |
+| Lab 5 | Real-world use cases with WebSocket handlers |
+| Lab 5 (Old) | Same use cases using the legacy `webex_bot` library |
 | Lab 6 | Agentic Apps |
 | Lab 7 | Webex MCP Servers |

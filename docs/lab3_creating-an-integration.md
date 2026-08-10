@@ -1,4 +1,7 @@
-# 2 – Creating an Integration
+# 2 – Creating an Integration (Postman)
+
+!!! Note
+    This is the **legacy Postman version**. For the 2026 lab, use **[Lab 2 - Creating an Integration](lab3_creating-an-integration-bruno.md)** with Bruno instead.
 
 In Chapter 1, you used a temporary developer token for quick API tests. While convenient, this isn't how real-world applications securely access user data. This chapter introduces **Webex Integrations** and the **OAuth 2.0 Authorization Code Flow**, the standard for third-party applications to get secure, user-consented access to Webex APIs. You'll create your own integration, perform a manual OAuth flow, and then configure Postman to handle it seamlessly.
 

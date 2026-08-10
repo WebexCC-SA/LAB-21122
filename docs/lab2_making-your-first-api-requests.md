@@ -1,4 +1,7 @@
-# 1 – Making Your First API Requests
+# 1 – Making Your First API Requests (Postman)
+
+!!! Note
+    This is the **legacy Postman version**. For the 2026 lab, use **[Lab 1 - Making Your First API Requests](lab2_making-your-first-api-requests-bruno.md)** with Bruno instead.
 
 In this chapter, you'll dive into the exciting world of Webex APIs by making your very first requests. We'll explore different methods, starting with a quick test on the Webex Developer Portal, then moving to the powerful Postman environment, and finally, making a direct call using cURL.
 

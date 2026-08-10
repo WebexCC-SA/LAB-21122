@@ -1,4 +1,7 @@
-# 5 – Use Cases
+# 5 – Use Cases (webex_bot)
+
+!!! Note
+    This is the **legacy `webex_bot` version**. For the 2026 lab, use **[Lab 5 - Use Cases](lab6_use-cases-websockets.md)** with WebSocket handlers instead.
 
 In this section, you will put your Webex API knowledge into practice by building real-world solutions. You will explore how bots and integrations can streamline communication and automate device provisioning in an organization.
 
