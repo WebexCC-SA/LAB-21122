@@ -89,8 +89,8 @@ nav:
   - Lab:
       - Welcome: welcome.md
       - Overview: overview.md
-      - Getting Started: lab1_getting_started-bruno.md
-      - Getting Started (Old): lab1_getting_started.md
+      #- Getting Started: lab1_getting_started-bruno.md
+      - Getting Started: lab1_getting_started.md
       #- Lab 1 - Making Your First API Requests: lab2_making-your-first-api-requests-bruno.md
       - Lab 1 - Making Your First API Requests: lab2_making-your-first-api-requests.md
       #- Lab 2 - Creating an Integration: lab3_creating-an-integration-bruno.md
