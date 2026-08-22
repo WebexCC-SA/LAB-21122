@@ -101,5 +101,5 @@ nav:
       - Lab 5 - Use Cases: lab6_use-cases-websockets.md
       #- Lab 5 - Use Cases (Old): lab6_use-cases.md
       - Lab 6 - Agentic Apps: lab7_agentic_apps.md
-      - Lab 7 - Webex MCP Servers: lab8_webex_mcp_servers.md
+      #- Lab 7 - Webex MCP Servers: lab8_webex_mcp_servers.md
       - Conclusion: conclusion.md
