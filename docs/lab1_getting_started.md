@@ -1,8 +1,5 @@
 # Getting Started (Postman)
 
-!!! Note
-    This is the **legacy Postman version**. For the 2026 lab, use **[Getting Started](lab1_getting_started-bruno.md)** with Bruno instead.
-
 Welcome to the **Exploring the Webex Developer Ecosystem** lab! In this session, you will explore how Webex APIs, integrations, bots, service apps, agentic apps, and MCP servers can be used to automate workflows and build real-world solutions.
 
 This section will guide you through setting up your environment and logging into the tools you will use throughout the lab.
