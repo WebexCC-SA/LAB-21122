@@ -1,4 +1,4 @@
-# Lab 7 - Webex MCP Servers
+# Lab 6 - Webex MCP Servers
 
 Lab code repository: [https://github.com/diegomjimenez/WebexOne2026_Developer](https://github.com/diegomjimenez/WebexOne2026_Developer){:target="_blank"}
 
