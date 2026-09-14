@@ -1,4 +1,4 @@
-# 1 – Making Your First API Requests (Postman)
+# 1 – Making Your First API Requests
 
 In this chapter, you'll dive into the exciting world of Webex APIs by making your very first requests. We'll explore different methods, starting with a quick test on the Webex Developer Portal, then moving to the powerful Postman environment, and finally, making a direct call using cURL.
 
@@ -9,7 +9,7 @@ Upon completion of this section, you will be able to:
 3. Execute Webex API calls with cURL from the command line
 
 Reference:  
-<https://www.postman.com/webexdev/webex-public-workspace-beta>
+<https://www.postman.com/webexdev/webex-public-workspace/overview>
 
 ## Step 1.1: Quick Test: Webex Developer Portal "Try It"
 
