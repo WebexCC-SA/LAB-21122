@@ -1,4 +1,4 @@
-# 3 – Building a Bot
+# Lab 3 – Building a Bot
 
 In this section, you will create a Webex bot and build it into an interactive assistant using Python. You will register the bot, send messages, create rooms, work with Adaptive Cards, and connect to Webex Mercury to receive and respond to events in real time.
 
