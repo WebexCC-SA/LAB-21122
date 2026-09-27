@@ -147,18 +147,13 @@ We'll now fork the "Webex Messaging" collection into your personal Postman space
         ![Postman](./assets/postman_40.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
     
 2. **Configure Collection Authentication and Variable:**
-    * In the **Webex Messaging** Collection window, click the **"Variables"** tab on the right side:
-    
-        ![Postman](./assets/postman_43.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
-        
-    * Select **Add** in **Globals** and add a new variable:
+    * In the **Webex Messaging** Collection window, click the **"Variables"** tab.
+    * Add a new variable:
 
-        ![Postman](./assets/postman_44.png){ width="250" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
-        
         * **VARIABLE:** `webex_token`
         * **VALUE:** Paste the **Bearer Token** you copied from the Webex Developer Portal in Step 1.1.2 here.
 
-        ![Postman](./assets/postman_42.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Postman](./assets/postman_57.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
     * Now, back to the collection, click the **"Authorization"** tab, and select **"Bearer Token"**:
 
