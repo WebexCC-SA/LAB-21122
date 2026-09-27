@@ -15,10 +15,10 @@ Upon completion of this section, you will be able to:
 
 First you need to create your bot:
 
-1. In the [Webex for Developers](https://developer.webex.com/){:target="_blank"} portal, on the top right corner of the page, click your avatar and then select **[My Webex Apps]**(https://developer.webex.com/my-apps){:target="_blank"}.
+1. In the [Webex for Developers](https://developer.webex.com/){:target="_blank"} portal, on the top right corner of the page, click your avatar and then select **[My Webex Apps](https://developer.webex.com/my-apps)**{:target="_blank"}.
 2. Click **Create a New App**, and in that page, find the Bot card and click the **Create a Bot** button.
 
-    ![Bot](./assets/bot_31.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Bot](./assets/bot_31.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 3. Fill out the webform to register a new bot.
 
@@ -27,7 +27,7 @@ First you need to create your bot:
     3. **Icon:** Select any color icon
     4. **Description:** Bot for WebexOne
 
-    ![Bot](./assets/bot_32.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Bot](./assets/bot_32.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 !!! Warning
     Copy your **Bot access token** to your `.env` file as **BOT_TOKEN**.
@@ -118,7 +118,7 @@ In this step, you will send your first 1:1 message using the bot you just create
 
     ```terminal
     Name: Pod 0, Email: ['pod0@webexone-developer.wbx.ai']
-An error occurred while listing all people: [400] Bad Request - Email, displayName, role, or id list should be specified. [Tracking ID: ROUTERGW_40944853-1355-40da-8e76-7de0f601e18b]
+    An error occurred while listing all people: [400] Bad Request - Email, displayName, role, or id list should be specified. [Tracking ID: ROUTERGW_40944853-1355-40da-8e76-7de0f601e18b]
     ```
 
 6. Navigate to `03-bots/02_message.py` and review the code. You will use the function you created earlier to find yourself, so you can send a message to your own account.
@@ -354,7 +354,6 @@ In this step, you will explore how to create and send an Adaptive Card.
 
     ??? Tip "Adaptive Card Example"
         ```python
-        '''
         # Example Adaptive Card structure (commented out for reference).
         card_content_example = {
             "type": "AdaptiveCard",
@@ -389,7 +388,6 @@ In this step, you will explore how to create and send an Adaptive Card.
             "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
             "version": "1.3"
         }
-        '''
         ```
 
     ??? Tip "Full python code with example card"
@@ -468,7 +466,7 @@ In this step, you will explore how to create and send an Adaptive Card.
 
 5. If you have used the example card, you should receive the following:
 
-    ![Bot](./assets/bot_35.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Bot](./assets/bot_35.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
     
 ## Step 3.5: Bot with WebSockets
 
@@ -1024,7 +1022,7 @@ In Step 3.4, you sent an Adaptive Card, but nothing happened when someone used i
 
     The previous card will be deleted. You should then receive both your message and a formatted notification confirming that your message has been sent:
 
-    ![Bot](./assets/bot_38.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Bot](./assets/bot_38.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 5. Observe how the card submission is printed in the console:
 
@@ -1178,7 +1176,7 @@ Anyone in Webex can find your bot and send it a message, including users outside
 
 4. Send **message** to your bot. Your email belongs to the allowed domain, so the bot works exactly like in Step 3.7:
 
-    ![Bot](./assets/bot_40.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Bot](./assets/bot_40.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 5. Now test what a user from another organization would see. Stop the bot with **Ctrl+C**, change `DOMAIN` in your `.env` file to `example.com`, save the file, and run the bot again:
 
