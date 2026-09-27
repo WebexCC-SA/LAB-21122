@@ -15,7 +15,7 @@ Upon completion of this lab, you will be able to:
 First, you need to register your "application" (in this case, our Postman setup) with Webex. This process gives you a Client ID and Client Secret, which are essential for the OAuth flow.
 
 1. **Navigate to "My Apps" on the Developer Portal:**
-    * Open your browser and go to [My Apps](https://developer.webex.com/my-apps){:target="_blank"}.
+    * Open your browser and go to [My Webex Apps](https://developer.webex.com/my-apps){:target="_blank"}.
 
         ![Integration](./assets/developer_51.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
     
