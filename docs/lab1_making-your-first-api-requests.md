@@ -62,7 +62,7 @@ The Webex Developer Portal is an excellent resource for documentation and quick,
     
     **Carefully locate your personal lab space** (e.g., [Your Name/ID] - API Lab Space) and **copy its `id` value**:
     
-    ![Webex Developer](./assets/developer_36.png){ width="250" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Webex Developer](./assets/developer_36.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
     It should look like:
     
@@ -88,12 +88,12 @@ The Webex Developer Portal is an excellent resource for documentation and quick,
         
         ![Webex Developer](./assets/developer_39.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
-    * Click the "**Run**" button, you should see a `200 OK` response:
+    * Click the "**Run**" button. You should see a `200 OK` response:
 
         ![Webex Developer](./assets/developer_40.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
     
 8. **Verify Message in Webex Client:**
-    * Switch back to your Webex client. You should see the message you just sent appear in your personal lab space!:
+    * Switch back to your Webex client. You should see the message you just sent appear in your personal lab space:
 
         ![Webex Developer](./assets/developer_41.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
    
@@ -113,14 +113,14 @@ Now, let's explore the Webex Public Workspace in Postman, which provides a much 
             Make sure "Visibility" is set to "Public".
 
 2. **Observe the Workspace Structure:**
-    * You will see now  the **"Webex Public Workspace"** listed, you can click on **Open workspace overview**:
+    * You will now see the **"Webex Public Workspace"** listed, you can click on **Open workspace overview**:
 
-        ![Postman](./assets/postman_36.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Postman](./assets/postman_36.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         ![Postman](./assets/postman_37.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
     
     * Below it, notice the various **Collections** available (e.g., "Webex Messaging", "Webex Meetings", "Webex Calling", etc.). These collections organize different sets of Webex APIs.
 
-        ![Postman](./assets/postman_35.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Postman](./assets/postman_35.png){ width="300" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
     !!! Warning "Remember"
         A Postman Workspace can contain multiple Collections, Environments, and other elements.
@@ -133,7 +133,7 @@ We'll now fork the "Webex Messaging" collection into your personal Postman space
     * In the Webex Public Workspace, locate the **"Webex Messaging"** collection in the left sidebar.
     * Hover over the collection name and click the **"..." (ellipsis)** icon, then select **"Fork"**:
 
-        ![Postman](./assets/postman_38.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Postman](./assets/postman_38.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
     * In the dialog box, give the **Fork label** a name of **“Webex API Fork”**.
     * Choose your **personal workspace** (it should be selected by default if you're in your own workspace).
@@ -144,12 +144,12 @@ We'll now fork the "Webex Messaging" collection into your personal Postman space
     * Click **"Fork Collection"**
     * You should now see a copy of "Webex Messaging" in your personal workspace (usually listed under "Collections" in the left sidebar):
 
-        ![Postman](./assets/postman_40.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Postman](./assets/postman_40.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
     
 2. **Configure Collection Authentication and Variable:**
     * In the **Webex Messaging** Collection window, click the **"Variables"** tab on the right side:
     
-        ![Postman](./assets/postman_43.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Postman](./assets/postman_43.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
     * Select **Add** in **Globals** and add a new variable:
 
@@ -158,7 +158,7 @@ We'll now fork the "Webex Messaging" collection into your personal Postman space
         * **VARIABLE:** `webex_token`
         * **VALUE:** Paste the **Bearer Token** you copied from the Webex Developer Portal in Step 1.1.2 here.
 
-        ![Postman](./assets/postman_42.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Postman](./assets/postman_42.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
     * Now, back to the collection, click the **"Authorization"** tab, and select **"Bearer Token"**:
 
@@ -166,7 +166,7 @@ We'll now fork the "Webex Messaging" collection into your personal Postman space
         
     * In the **Token** field, enter `{{webex_token}}`:
 
-        ![Postman](./assets/postman_46.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Postman](./assets/postman_46.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
     !!! Note "Explanation"
         This sets up the collection to automatically use your `webex_token` variable for all requests within it!
@@ -199,7 +199,7 @@ We'll now fork the "Webex Messaging" collection into your personal Postman space
     * Replace `{{roomId}}` with the actual `id` of your lab space (e.g., `"roomId": "c2lkOi8v..."`).
     * Change the `text` field to something personal, like `"text": "Hello from Postman - this is much easier!"`.
     * Click the blue **"Send"** button.
-    * You should receive a `200 OK` response.:
+    * You should receive a `200 OK` response:
     
         ![Postman](./assets/postman_50.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
@@ -229,28 +229,29 @@ Finally, let's see how to make an API call directly from your command line using
         
     * Open the dropdown where you see "Postman CLI". From the dropdown menu, select **"cURL"**:
 
-        ![Postman](./assets/postman_53.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
-    
-    * **Copy the entire cURL command** that is displayed.
+        ![Postman](./assets/postman_55.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
-    !!! "Important"
-        The cURL command generated by Postman will  include your actual `access_token` value directly since it was set as the current value but if you use the Copy function, it won't be copied. Make sure you copy manually the command including the token.
+    !!! Warning "Important"
+        This command won't work in Windows Command Prompt; for that, you need to change:
+
+        - **Line continuation character**: ^
+        - **Quote Type**: double
+
+        ![Postman](./assets/postman_54.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+
+    !!! Warning "Copy the entire cURL command"
+        The cURL command generated by Postman will include your actual `access_token` value directly since it was set as the current value, but if you use the Copy function, it won't be copied. Make sure you manually copy the command including the token.
 
 2. **Open Your Terminal/Command Prompt:**
     * On your lab workstation, open a **Command Prompt/PowerShell** (Windows).
     
 3. **Execute the cURL Command:**
-    * Paste the copied cURL command into your terminal/command prompt.
-    * **Important:** The cURL command generated by Postman will likely include your actual `access_token` value directly since it was set as the current value. If it still shows a placeholder, manually replace it with your **Bearer Token** that you copied in Step 1.1.2.
-    * *Example:* 
-      ```bash
-      curl --location --request GET 'https://webexapis.com/v1/people/me' \
-      --header 'Authorization: Bearer YOUR_ACTUAL_BEARER_TOKEN'
-      ```
-    * Press **Enter** to execute the command.
+    * Paste the copied cURL command into your terminal/command prompt and press **Enter** to execute the command.
     
 4. **Observe the Output:**
-    * The JSON response containing your user details will be printed directly in your terminal.
+    * The JSON response containing your user details will be printed directly in your terminal:
+
+        ![Postman](./assets/postman_56.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ---
 
