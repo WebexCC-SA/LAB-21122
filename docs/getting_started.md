@@ -12,11 +12,10 @@ Scan the QR code to be added to the Webex space for Q&A and more.
 
 ## Tools used in this lab
 
-- **Webex Client** — 
-- **Control Hub** — organization admin portal
-- **Visual Studio Code** — edit code
-- **Webex for Developers** — create bots, Webex MCP tokens, service app, and review API documentation
-- **Postman** — call Webex REST APIs
+- **Webex Client** — Interact with your bot and verify API responses.
+- **Visual Studio Code** — Edit code.
+- **Webex for Developers** — Create bots, Webex MCP tokens, service apps, and review API documentation.
+- **Postman** — Call Webex REST APIs.
 
 ## Webex lab credentials
 
@@ -62,7 +61,7 @@ Postman will be our primary tool for making API requests and working with OAuth 
 
     | Username | Email | Password |
     | --- | --- | --- |
-    | PodX | podX@webexone-developer.wbx.ai | WebexOne2026! |
+    | PodX | `podX@webexone-developer.wbx.ai` | `WebexOne2026!` |
 
 3. **Verify Login:** Once logged in, you should see your Postman workspace. If you see a prompt to join a team, follow the lab instructor's guidance.
 
