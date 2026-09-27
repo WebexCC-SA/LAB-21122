@@ -1,4 +1,4 @@
-# 4 – Deploying a Meeting Scheduler Service App
+# Lab 4 – Deploying a Meeting Scheduler Service App
 
 Lab code repository: [https://github.com/diegomjimenez/WebexOne2026_Developer](https://github.com/diegomjimenez/WebexOne2026_Developer){:target="_blank"}
 
