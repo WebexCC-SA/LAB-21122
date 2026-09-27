@@ -31,9 +31,11 @@ These are your Webex credentials for this lab:
 
 To begin, you'll log into your dedicated Webex lab account. This will allow you to see the results of your API calls in real-time and interact with your Webex environment.
 
-1. **Open the Webex Client:** Launch the Webex Desktop App on your lab workstation, or navigate to [web.webex.com](https://web.webex.com){:target="_blank"} in your browser.
-2. **Enter Lab Credentials:** When prompted, enter the **Webex email address and password** provided to you by the lab instructors.
-3. **Verify Login:** Once logged in, you should see your Webex home screen. Take a moment to familiarize yourself with the interface.
+1. **Open the Webex Client:** Launch the Webex Desktop App on your lab workstation.
+2. **Enter Lab Credentials:** When prompted, enter the **Webex email address and password** provided to you.
+
+!!! Note
+    You can also log in at [Webex](https://web.webex.com/){:target="_blank"}
 
 ### Create Your Personal Webex Space
 
@@ -43,6 +45,13 @@ We'll create a dedicated Webex space (known as a "room" in the API world) that y
 2. **Name Your Space:** Give your space a clear, unique name, such as **[Your Name/ID] - API Lab Space** (e.g., JaneDoe-API Lab Space).
 3. **Create Space:** Click "Create" or "Done" to finalize the space creation.
 4. **Confirm:** You should now see your newly created space in your Webex client's space list.
+
+## Log into Webex for Developers
+
+Use the same lab credentials you just used for the Webex Client.
+
+1. Open [Webex for Developers](https://developer.webex.com/){:target="_blank"} in a browser.
+2. Sign in with the **Webex email address and password** provided to you.
 
 ## Log into Postman
 
@@ -57,53 +66,42 @@ Postman will be our primary tool for making API requests and working with OAuth 
 
 3. **Verify Login:** Once logged in, you should see your Postman workspace. If you see a prompt to join a team, follow the lab instructor's guidance.
 
-## Log into Webex for Developers
-
-Navigate to:<br />
-
-- [Webex for Developers](https://developer.webex.com/){:target="_blank"}
-
-Use the same Webex credentials provided for the lab. You will use the Developer Portal to create integrations, bots, and service apps in later sections.
-
 ## Visual Studio Code
 
-Visual Studio Code will be used for Python-based bot development, service app configuration, and the agentic app and MCP server exercises.
+Visual Studio Code will be used for Python-based bot development, service app configuration, and use cases exercises.
 
-Open Visual Studio Code from the desktop:
+1. Open Visual Studio Code from the desktop:
 
-![vsc_logo](./assets/docx-image-004.png){ width="150" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![vsc_logo](./assets/docx-image-004.png){ width="150" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+### Clone the lab repository
 
 1. Go to the **Source Control** tab and click **Clone Repository**:
 
     ![vsc_clone](./assets/docx-image-005.png){ width="500" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-2. Type the following:
+2. Enter the following URL:
 
-    - https://github.com/diegomjimenez/WebexOne2026.git
+    `https://github.com/diegomjimenez/WebexOne2026_Developer.git`
 
     ![vsc_repo](./assets/docx-image-006.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 3. Select a directory to save the project.
-4. Click on **Yes, I trust the authors** if a pop-up appears.
-5. From the top bar, click on **Terminal** > **New terminal**.
-6. Create a virtual environment:
+4. Click **Yes, I trust the authors** if a pop-up appears.
 
-    - python -m venv webexone2026
-    - .\webexone2026\Scripts\activate.ps1
+### Virtual Environment
 
-7. Install the requirements:
+1. Click **Terminal > New Terminal** from the top menu bar.
+2. Create a virtual environment and install dependencies:
 
-    - pip install -r requirements.txt
+    ```bash
+    python -m venv webexone
+    .\webexone\Scripts\Activate.ps1
+    pip install -r requirements.txt
+    ```
 
-## Lab flow
+3. Copy the environment template and fill in your values:
 
-| Section | Focus |
-| --- | --- |
-| Lab 1 | Webex API concepts and your first API requests |
-| Lab 2 | Secure integrations with OAuth 2.0 |
-| Lab 3 | Interactive bots with Python and Adaptive Cards |
-| Lab 3 (WebSockets) | Same bot lab using native WebSocket event handling |
-| Lab 4 | Service apps for administrative automation |
-| Lab 5 | Real-world use cases |
-| Lab 6 | Agentic Apps |
-| Lab 7 | Webex MCP Servers |
+    ```bash
+    cp .env.example .env
+    ```
