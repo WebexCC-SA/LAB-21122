@@ -1,35 +1,31 @@
-# Getting Started (Postman)
+# Getting Started
 
 Welcome to the **Exploring the Webex Developer Ecosystem** lab! In this session, you will explore how Webex APIs, integrations, bots, service apps, agentic apps, and MCP servers can be used to automate workflows and build real-world solutions.
 
 This section will guide you through setting up your environment and logging into the tools you will use throughout the lab.
 
-Please use the specific lab credentials provided to you for all logins. To successfully complete this lab, you will be working with:
+## Join the conversation!
 
-- Webex Client
-- Postman
-- Webex for Developers
-- Visual Studio Code
+Scan the QR code to be added to the Webex space for Q&A and more.
 
-## Webex Credentials
+![Webex](./assets/webex_space_2.png){ width="300" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-Password will be the same for all users:
+## Tools used in this lab
 
-- dCloud2856!
+- **Webex Client** — 
+- **Control Hub** — organization admin portal
+- **Visual Studio Code** — edit code
+- **Webex for Developers** — create bots, Webex MCP tokens, service app, and review API documentation
+- **Postman** — call Webex REST APIs
 
-Your username will be formatted based on your Pod number:
+## Webex lab credentials
 
-| User | Username |
+These are your Webex credentials for this lab:
+
+| Item | Value |
 | --- | --- |
-| Pod X | podx@cb127.dc-02.com |
-
-## Postman Credentials
-
-| Username | Email | Password |
-| --- | --- | --- |
-| PodX | podX@webexone26devs.wbx.ai | WebexOne2026! |
-
-Once you have identified your credentials you can continue.
+| Username | `podX@webexone-developer.wbx.ai` (replace X with your pod number) |
+| Password | `WebexOne2026!` |
 
 ## Log into the Webex Client
 
@@ -54,6 +50,11 @@ Postman will be our primary tool for making API requests and working with OAuth 
 
 1. **Open Postman:** Launch the Postman Desktop App on your lab workstation.
 2. **Enter Lab Credentials:** When prompted, enter the **Postman email address and password** provided to you by the lab instructors.
+
+    | Username | Email | Password |
+    | --- | --- | --- |
+    | PodX | podX@webexone-developer.wbx.ai | WebexOne2026! |
+
 3. **Verify Login:** Once logged in, you should see your Postman workspace. If you see a prompt to join a team, follow the lab instructor's guidance.
 
 ## Log into Webex for Developers
