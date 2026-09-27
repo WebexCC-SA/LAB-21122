@@ -32,7 +32,7 @@ First you need to create your bot:
 2. Up on the top right corner of the page, click your avatar and then select **My Webex Apps**.
 3. On the **Create a New App** page, find the Bot card and click the **Create a Bot** button.
 
-![docx-image-018](assets/docx-image-018.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+![docx-image-018](./assets/docx-image-018.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 4. Fill out the webform to register a new bot.
 
@@ -41,7 +41,7 @@ First you need to create your bot:
     3. **Icon:** Select any color icon
     4. **Description:** Bot for WebexOne
 
-![docx-image-019](assets/docx-image-019.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+![docx-image-019](./assets/docx-image-019.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 !!! Warning
     Copy your **Bot access token** in your `.env` file as **BOT_TOKEN**.
@@ -52,9 +52,9 @@ In this step, you will send your first 1:1 message using the bot you just create
 
 1. In VS Code navigate to your `.env` file, and make sure to fill and save the following variables:
 
-    - BOT_TOKEN
-    - EMAIL
-    - DOMAIN
+    - `BOT_TOKEN`
+    - `EMAIL`
+    - `DOMAIN`
 
 2. Navigate to `03-bots/01_people.py` and review the code. You will notice that there are two functions **find_people** and **all_people**.
 
@@ -63,24 +63,30 @@ In this step, you will send your first 1:1 message using the bot you just create
 
 3. Make sure that in your terminal you are in the right folder:
 
-    - cd 03-bots
+    ```bash
+    cd 03-bots
+    ```
 
 4. Run your code with the following command:
 
-    - python 01_people.py
+    ```bash
+    python 01_people.py
+    ```
 
 5. You should see the following in the console:
 
-    ![docx-image-022](assets/docx-image-022.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![docx-image-022](./assets/docx-image-022.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 6. Navigate to `03-bots/02_message.py` and review the code. You will use the function you created earlier to find yourself, so you can send a message to your own account.
 7. Run your code with the following command:
 
-    - python 02_message.py
+    ```bash
+    python 02_message.py
+    ```
 
 You should have received the following message:
 
-![docx-image-023](assets/docx-image-023.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+![docx-image-023](./assets/docx-image-023.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ## Step 3.3: Create a Room and add yourself
 
@@ -92,15 +98,17 @@ In this step, you will create a room with your bot and add your user to it.
 
 2. Run your code with the following command:
 
-    - python 03_rooms.py
+    ```bash
+    python 03_rooms.py
+    ```
 
 3. You will see all the steps printed in the console:
 
-    ![docx-image-024](assets/docx-image-024.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![docx-image-024](./assets/docx-image-024.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
     You should also see the newly created room appear in your Webex App:
 
-    ![docx-image-025](assets/docx-image-025.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![docx-image-025](./assets/docx-image-025.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ## Step 3.4: Adaptive card
 
@@ -121,11 +129,13 @@ In this step, you will explore how to create and send an Adaptive Card.
 
 4. Run your code with the following command:
 
-    - python 04_adaptivecard.py
+    ```bash
+    python 04_adaptivecard.py
+    ```
 
 If you have used the example card, you should receive the following:
 
-![docx-image-027](assets/docx-image-027.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+![docx-image-027](./assets/docx-image-027.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ## Step 3.5: Connect your bot
 
@@ -148,18 +158,20 @@ In this step, you will open a persistent connection to Webex Mercury and handle 
 
 2. Execute the code with the following command and let it run:
 
-    - python 05_websocket_bot.py
+    ```bash
+    python 05_websocket_bot.py
+    ```
 
 !!! Warning
     Wait until you see **WebSocket connected** appear in the console.
 
 3. Send any message to your bot, and it will respond using the handler defined in the script:
 
-    ![docx-image-029](assets/docx-image-029.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![docx-image-029](./assets/docx-image-029.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 4. Observe how the incoming events are printed in the console:
 
-    ![docx-image-030](assets/docx-image-030.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![docx-image-030](./assets/docx-image-030.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 5. Trigger a card action or follow the sample prompt and verify that the bot response is sent through the REST API.
 
@@ -180,22 +192,24 @@ In this step, you will replace the generic echo behavior with your own command h
 
 2. Execute the code with the following command and let it run:
 
-    - python 06_websocket_bot-2.py
+    ```bash
+    python 06_websocket_bot-2.py
+    ```
 
 !!! Warning
     Wait until you see **WebSocket connected** appear in the console.
 
 3. Send any message to your bot and you should receive a card with your custom function **Send Hello!**:
 
-    ![docx-image-037](assets/docx-image-037.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![docx-image-037](./assets/docx-image-037.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 4. Click **Send Hello!**. The card will be deleted, you will receive a confirmation message, and you should also see your **Hello!** message:
 
-    ![docx-image-038](assets/docx-image-038.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![docx-image-038](./assets/docx-image-038.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 5. To directly invoke this function, text your bot with the **message** keyword:
 
-    ![docx-image-039](assets/docx-image-039.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![docx-image-039](./assets/docx-image-039.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ## Step 3.7: Adaptive card processing
 
@@ -215,17 +229,19 @@ In this final step, you will handle Adaptive Card submissions through incoming e
 
 2. Execute the code with the following command and let it run:
 
-    - python 07_websocket_bot-3.py
+    ```bash
+    python 07_websocket_bot-3.py
+    ```
 
 !!! Warning
     Wait until you see **WebSocket connected** appear in the console.
 
 3. Text **message** to your bot to invoke your function directly:
 
-    ![docx-image-042](assets/docx-image-042.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![docx-image-042](./assets/docx-image-042.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 4. Enter a message and click **Submit**.
 
     The previous card will be deleted. You should then receive both your message and a formatted notification confirming that your message has been sent:
 
-    ![docx-image-043](assets/docx-image-043.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![docx-image-043](./assets/docx-image-043.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
