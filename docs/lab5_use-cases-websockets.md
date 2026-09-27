@@ -24,7 +24,7 @@ Requirements:
 4. **List a space:** show a dropdown with the spaces the user could list, and add the selected space to the directory.
 5. Only allow users to list spaces they are a member of, and only allow them to join spaces that are in the directory.
 
-    ![Space Directory Bot](./assets/usecase_01_space_bot.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Space Directory Bot](./assets/usecase_1.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ??? Tip "Solution"
 
