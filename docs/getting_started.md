@@ -77,7 +77,7 @@ Postman will be our primary tool for making API requests and working with OAuth 
 
     | Username | Email | Password |
     | --- | --- | --- |
-    | PodX | `podX@webexone-developer.wbx.ai` | `WebexOne2026!` |
+    | PodX-Developer | `podX@webexone-developer.wbx.ai` | `WebexOne2026!` |
 
 4. Once logged in, it will open the Postman application again, and you should see your Postman workspace.
 
