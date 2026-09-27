@@ -15,7 +15,7 @@ Upon completion of this section, you will be able to:
 
 First, you need to register a Service App in the Webex Developer portal.
 
-1. In the [Webex for Developers](https://developer.webex.com/){:target="_blank"} portal, on the top right corner of the page, click your avatar and then select **[My Webex Apps]**(https://developer.webex.com/my-apps){:target="_blank"}.
+1. In the [Webex for Developers](https://developer.webex.com/){:target="_blank"} portal, on the top right corner of the page, click your avatar and then select **[My Webex Apps](https://developer.webex.com/my-apps)**{:target="_blank"}.
 2. On the **Create a New App** page, find the Service App card and click the **Create a Service App** button.
 
     ![docx-image-044](./assets/docx-image-044.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
