@@ -31,7 +31,9 @@ These are your Webex credentials for this lab:
 To begin, you'll log into your dedicated Webex lab account. This will allow you to see the results of your API calls in real-time and interact with your Webex environment.
 
 1. **Open the Webex Client:** Launch the Webex Desktop App on your lab workstation:
+
     ![Webex](./assets/webex_app_logo.png){ width="150" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    
 2. **Enter Lab Credentials:** When prompted, enter the **Webex email address and password** provided to you.
 
 ### Create Your Personal Webex Space
@@ -39,12 +41,17 @@ To begin, you'll log into your dedicated Webex lab account. This will allow you 
 We'll create a dedicated Webex space (known as a "room" in the API world) that you can use for testing your API requests, bots, and integrations.
 
 1. **Start a New Space:** In the Webex client, click the **"+"** icon (or "Create a space" button) to start a new space:
-    ![Webex](./assets/webex_app_12.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+    ![Webex](./assets/webex_app_12.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    
 2. **Name Your Space:** Give your space a clear, unique name, such as `[Your Name/ID] - API Lab Space` (e.g., `Pod0 - API Lab Space`).
 3. **Create Space:** Click "Create" or "Done" to finalize the space creation.
-    ![Webex](./assets/webex_app_13.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+    ![Webex](./assets/webex_app_13.png){ width="500" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    
 4. **Confirm:** You should now see your newly created space in your Webex client's space list:
-    ![Webex](./assets/webex_app_14.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+    ![Webex](./assets/webex_app_14.png){ width="900" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 ## Log into Webex for Developers
 
@@ -72,19 +79,19 @@ Visual Studio Code will be used for Python-based bot development, service app co
 
 1. Open Visual Studio Code from the desktop:
 
-    ![vsc_logo](./assets/docx-image-004.png){ width="150" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![VS Code](./assets/docx-image-004.png){ width="150" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 ### Clone the lab repository
 
 1. Go to the **Source Control** tab and click **Clone Repository**:
 
-    ![vsc_clone](./assets/docx-image-005.png){ width="500" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![VS Code](./assets/docx-image-005.png){ width="500" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 2. Enter the following URL:
 
     `https://github.com/diegomjimenez/WebexOne2026_Developer.git`
 
-    ![vsc_repo](./assets/docx-image-006.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![VS Code](./assets/vscode_31.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 3. Select a directory to save the project.
 4. Click **Yes, I trust the authors** if a pop-up appears.
