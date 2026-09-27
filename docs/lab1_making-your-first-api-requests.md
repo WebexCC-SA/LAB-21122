@@ -15,48 +15,90 @@ You can find the Webex Public Workspace for Postman here:
 
 The Webex Developer Portal is an excellent resource for documentation and quick, one-off API tests. Let's get a temporary access token and make a simple call directly from the browser.
 
-1. Go to the **[Webex Developer Portal](https://developer.webex.com/)**.
+1. Go to the **[Webex Developer Portal](https://developer.webex.com/){:target="_blank"}**.
 
 2. **Get Your Temporary Access Token:**
     * On the developer portal homepage, locate the "**Profile**" section (usually at the top right).
     * Ensure you are logged in with your **lab credentials**. If not, click "Login" and use the provided Webex email and password.
     * Your temporary **Bearer Token** will be displayed. **Copy this token** to your clipboard. This token is valid for 12 hours.
 
-    ![docx-image-007](./assets/docx-image-007.png){ width="500" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Webex Developer](./assets/docx-image-007.png){ width="3500" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 3. **Navigate to the Webex Messaging documentation area:**
     * In the header of the portal, click on the “**Documentation**” drop down to expand the “Mega Nav” bar.
     * Under the “**SUITE**” section, select “**Webex Messaging**”.
 
-    ![docx-image-008](./assets/docx-image-008.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Webex Developer](./assets/docx-image-008.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 4. **Retrieve Your Own User Details (GET /people/me):**
     * In the sidebar navigation, under "**API Reference**", expand the “**All APIs**” section.
     * Then expand "**People**" from the left-hand menu.
-    * Scroll down to find the "**Get My Own Details**” GET endpoint and select it.
-    * On the right side of the page, in the "**Try It**" section, paste your copied **Bearer Token** into the "Authorization" field (if it's not already populated with the “**Use personal access token**” toggle).
+    * Scroll down to find the "**Get My Own Details**” GET endpoint and select it:
+    
+        ![Webex Developer](./assets/developer_31.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        
+    * On the right side of the page, in the "**Try It**" section, paste your copied **Bearer Token** into the "Authorization" field (if it's not already populated with the “**Use personal access token**” toggle):
+    
+        ![Webex Developer](./assets/developer_32.png){ width="500" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        
     * Click the "**Run**" button.
-    * You should see a `200 OK` status and a JSON response containing your Webex user details.
-    * Congratulations! You just made your first API request!
+    * You should see a `200 OK` status and a JSON response containing your Webex user details:
+    
+        ![Webex Developer](./assets/developer_33.png){ width="500" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+
+    Congratulations! You just made your first API request!
    
 5. **Find Your Lab Space ID (GET /rooms):**
     * In the left-hand menu, expand "**Rooms**".
-    * Scroll down to find the “**List Rooms**” GET endpoint and select it.
+    * Scroll down to find the “**List Rooms**” GET endpoint and select it:
+    
+        ![Webex Developer](./assets/developer_34.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        
     * Click the "**Run**" button.
-    * You'll get a `200 OK` response with a list of your Webex spaces. **Carefully locate your personal lab space** (e.g., [Your Name/ID] - API Lab Space) and **copy its `id` value**. You'll need this in the next step!
+    
+    You'll get a `200 OK` response with a list of your Webex spaces:
+    
+        ![Webex Developer](./assets/developer_35.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    
+    **Carefully locate your personal lab space** (e.g., [Your Name/ID] - API Lab Space) and **copy its `id` value**:
+    
+        ![Webex Developer](./assets/developer_36.png){ width="250" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+
+        It should look like:
+        
+        ```terminal
+        Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vMDcxZTQ1MDAtYmE2YS0xMWYxLTg1ODUtNjE2MGY3MDk1MzFj
+        ```
+        
+        You'll need this in the next step!
    
-6. **Send a Message to Your Lab Space (POST /v1/messages):**
+7. **Send a Message to Your Lab Space (POST /v1/messages):**
     * In the left-hand menu, select "**Messages**".
-    * Scroll down to find the “**Create a Message**” POST endpoint and select it.
-    * In the "Request Body" section, you'll see a JSON structure.
-    * Replace the placeholder for `roomId` with the `id` of your lab space that you just copied.
-    * Change the `text` field to a message like: `"text": "Hello from the Webex Developer Portal 'Try It' tool!"`
-    * Click the "**Run**" button.
-    * You should see a `200 OK` response.
+    * Scroll down to find the “**Create a Message**” POST endpoint and select it:
+
+        ![Webex Developer](./assets/developer_37.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        
+    * In the "Request Body" section, you'll see both a Form and a JSON structure:
+
+        ![Webex Developer](./assets/developer_38.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    
+    * Fill `roomId` with the `id` of your lab space that you just copied and put the `text` field to a message like: 
+    
+        - `Hello from the Webex Developer Portal 'Try It' tool!`
+        
+        ![Webex Developer](./assets/developer_39.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        
+    * Click the "**Run**" button, you should see a `200 OK` response:
+
+        ![Webex Developer](./assets/developer_40.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    
+8. **Verify Message in Webex Client:**
+    * Switch back to your Webex client. You should see the message you just sent appear in your personal lab space!:
+
+        ![Webex Developer](./assets/developer_41.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
    
-7. **Verify Message in Webex Client:**
-    * Switch back to your Webex client. You should see the message you just sent appear in your personal lab space!
-    * *Note:* While great for quick tests, this "Try It" feature doesn't save your token or allow for complex workflows, which is why we'll use Postman next!
+    !!! Note
+        While great for quick tests, this "Try It" feature doesn't save your token or allow for complex workflows, which is why we'll use Postman next!
 
 ## Step 1.2: Explore the Webex Public Workspace in Postman
 
