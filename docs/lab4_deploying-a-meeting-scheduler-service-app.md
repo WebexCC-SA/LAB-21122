@@ -18,7 +18,7 @@ First, you need to register a Service App in the Webex Developer portal.
 1. In the [Webex for Developers](https://developer.webex.com/){:target="_blank"} portal, on the top right corner of the page, click your avatar and then select **[My Webex Apps](https://developer.webex.com/my-apps)**{:target="_blank"}.
 2. On the **Create a New App** page, find the Service App card and click the **Create a Service App** button.
 
-    ![docx-image-044](./assets/docx-image-044.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![docx-image-044](./assets/docx-image-044.png){ width="600" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 3. Fill out the webform to register a new service app.
 
@@ -27,7 +27,7 @@ First, you need to register a Service App in the Webex Developer portal.
     3. **Description**: `Test app only`
     4. **Contact Email**: Use the email from the Webex login.
 
-    ![Service App](./assets/serviceapp_32.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Service App](./assets/serviceapp_32.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 4. **Select Scopes:** `meeting:admin_schedule_write`
 
@@ -53,7 +53,7 @@ After successfully registering the Service App, you are taken to a page that con
 
 2. Click the **Request admin authorization** button.
 
-    ![Service App](./assets/serviceapp_34.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Service App](./assets/serviceapp_34.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
     !!! Warning "Important"
         The lab instructor will demonstrate the actions taken by the Webex administrator to authorize a Service App in Control Hub.
@@ -69,11 +69,11 @@ After the admin authorizes your Service App registration, you can retrieve the a
 1. Refresh the page that displays the *Client ID* and *Client Secret*.
 2. In the **Org Authorizations** section, select the **Exploring the Webex Developer Ecosystem** org from the dropdown menu:
 
-    ![Service App](./assets/serviceapp_35.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Service App](./assets/serviceapp_35.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
     
 3. Paste the *Client Secret* value from your `.env` file (`SECRETID`) in the field below, then click the **Generate tokens** button:
 
-    ![Service App](./assets/serviceapp_36.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Service App](./assets/serviceapp_36.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 4. Open `.env` in Visual Studio Code, then copy and paste the **access_token** and **refresh_token** values:
 
