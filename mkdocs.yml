@@ -88,7 +88,7 @@ nav:
   - Home: index.md
   - Lab:
       - Overview: overview.md
-      - Getting Started: lab1_getting_started.md
+      - Getting Started: getting_started.md
       - Lab 1 - Making Your First API Requests: lab1_making-your-first-api-requests.md
       - Lab 2 - Creating an Integration: lab2_creating-an-integration.md
       - Lab 3 - Building a Bot: lab3_building-a-bot-websockets.md
