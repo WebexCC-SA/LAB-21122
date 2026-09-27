@@ -19,7 +19,7 @@ First you need to create your bot:
 
     ![Bot](./assets/bot_31.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
-4. Fill out the webform to register a new bot.
+3. Fill out the webform to register a new bot.
 
     1. **Bot Name:** WebexOne-*USERNAME*
     2. **Bot Username:** webexone-*USERNAME*
@@ -29,13 +29,13 @@ First you need to create your bot:
     ![Bot](./assets/bot_32.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 !!! Warning
-    Copy your **Bot access token** in your `.env` file as **BOT_TOKEN**.
+    Copy your **Bot access token** to your `.env` file as **BOT_TOKEN**.
 
 ## Step 3.2: Send a message to yourself
 
 In this step, you will send your first 1:1 message using the bot you just created.
 
-1. In VS Code navigate to your `.env` file, and make sure to fill and save the following variables:
+1. In VS Code, navigate to your `.env` file, and make sure to fill and save the following variables:
 
     - `BOT_TOKEN`
     - `EMAIL`
@@ -203,7 +203,7 @@ In this step, you will create a room with your bot and add your user to it.
 
 1. Navigate to `03-bots/03_rooms.py` and review the code.
 
-    There are two functions, one to create the room **create_webex_room** and another one to add a person to it **add_person_to_room**.
+    There are two functions: one to create the room (**create_webex_room**) and another to add a person to it (**add_person_to_room**).
 
     ??? Tip "Python Code"
         ```python
@@ -316,7 +316,7 @@ In this step, you will explore how to create and send an Adaptive Card.
 
 1. Navigate to `03-bots/04_adaptivecard.py` and review the code.
 
-    You will notice a card content example, but ideally you will create your own card.
+    You will notice a card content example, but ideally, you will create your own card.
 
     ??? Tip "Python Code"
         ```python 
@@ -469,7 +469,7 @@ In this step, you will explore how to create and send an Adaptive Card.
 
     ![Bot](./assets/bot_35.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
     
-## Step 3.5: Connect your bot
+## Step 3.5: Bot with Websocket
 
 ### Receiving events in real time
 
@@ -480,168 +480,329 @@ Webex bots can receive events in two main ways:
 
 In this lab, your bot connects to Webex Mercury. You will implement event handling, message parsing, and Adaptive Card actions directly in Python.
 
-1. Navigate to `03-bots/websocket_client.py` and review the code:
+In this step, you will open a persistent connection to Webex Mercury and handle incoming messages.
+
+For that, you will be using the following class.
+
+1. Navigate to `03-bots/websocket_client.py` and review the code.
 
     ??? Tip "Python Code"
         ```python
+        from __future__ import annotations
+        
         import asyncio
         import base64
         import json
         import logging
         import ssl
         import uuid
+        from typing import Callable, Optional
         
         import certifi
         import requests
         import websockets
+        from webexpythonsdk import WebexAPI
         
-        log = logging.getLogger(__name__)
+        logger = logging.getLogger(__name__)
         
-        API_URL = "https://webexapis.com/v1"
-        # Host map for the org: used to find the WDM URL that issues Webex WebSocket devices.
-        CATALOG_URL = "https://u2c.wbx2.com/u2c/api/v1/catalog?format=hostmap"
-        # Payload Webex expects when creating a desktop "device" that can open Mercury.
+        DEFAULT_U2C_URL = "https://u2c.wbx2.com/u2c/api/v1/catalog"
         DEVICE_DATA = {
-            "deviceName": "pywebsocket-client",
+            "deviceName": "webexone2026-bot",
             "deviceType": "DESKTOP",
             "localizedModel": "python",
             "model": "python",
-            "name": "python-spark-client",
-            "systemName": "python-spark-client",
-            "systemVersion": "0.1",
+            "name": "webexone2026-bot",
+            "systemName": "webexone2026-bot",
+            "systemVersion": "1.0",
         }
         
+        ssl_context = ssl.create_default_context()
+        ssl_context.load_verify_locations(certifi.where())
+        
+        MessageHandler = Callable[..., None]
+        CardActionHandler = Callable[..., None]
+        
+        
         class WebSocketClient:
-            """Opens a Webex Mercury WebSocket and calls on_message(message) for each new post."""
-        
-            def __init__(self, access_token, on_message):
+            def __init__(
+                self,
+                access_token: str,
+                bot_name: str = "WebexOne2026",
+                on_message: Optional[MessageHandler] = None,
+                on_card_action: Optional[CardActionHandler] = None,
+            ) -> None:
                 self.access_token = access_token
-                self.on_message = on_message  # callback(message) for each incoming post
+                self.bot_name = bot_name
+                self.api = WebexAPI(access_token=access_token)
                 self.session = requests.Session()
-                self.session.headers.update({"Authorization": f"Bearer {access_token}"})
-                self.me = self.session.get(f"{API_URL}/people/me").json()
-                self.cluster, _, self.person_uuid = base64.b64decode(self.me["id"] + "==").decode().split("/")[2:]
-                self.clusters = None
+                self.tracking_id = f"webexone2026_{uuid.uuid4()}"
+                self.session.headers.update(self._headers())
+                self.api._session.update_headers(self._headers())
+                self.on_message = on_message
+                self.on_card_action = on_card_action
+                # Activities carry the actor's UUID, so decode it from the bot's base64 person ID.
+                self.me = self.api.people.me()
+                self.person_uuid = base64.b64decode(self.me.id + "==").decode().split("/")[-1]
+                self.device_info = None
+                self.device_url = self._get_device_url()
+                self.websocket = None
+                self.share_id = None
         
-            def _cluster_of(self, hydra_id):
-                return base64.b64decode(hydra_id + "==").decode().split("/")[2]
+            def _headers(self) -> dict:
+                sdk_ua = self.api._session.headers["User-Agent"]
+                return {
+                    "Authorization": f"Bearer {self.access_token}",
+                    "Content-Type": "application/json;charset=utf-8",
+                    "User-Agent": f"WebexOne2026-Bot '{self.bot_name}' ({sdk_ua})",
+                    "trackingid": self.tracking_id,
+                }
         
-            def _room_clusters(self):
-                clusters, url, params = [], f"{API_URL}/rooms", {"max": 100}
-                for _ in range(5):
-                    response = self.session.get(url, params=params)
-                    if not response.ok:
-                        break
-                    for room in response.json().get("items", []):
-                        cluster = self._cluster_of(room["id"])
-                        if cluster not in clusters:
-                            clusters.append(cluster)
-                    url = response.links.get("next", {}).get("url")
-                    if not url:
-                        break
-                    params = None
-                return clusters
+            def _get_device_url(self) -> str:
+                response = self.session.get(DEFAULT_U2C_URL, params={"format": "hostmap"})
+                response.raise_for_status()
+                return response.json()["serviceLinks"]["wdm"]
         
-            def _candidate_clusters(self, activity):
-                # The event's own cluster first, then the bot's, then the clusters its spaces live in.
-                candidates = []
-                for node in (activity, activity.get("target"), activity.get("object")):
-                    global_id = node.get("globalId") if isinstance(node, dict) else None
-                    if isinstance(global_id, str) and "/" in global_id:
-                        candidates.append(global_id.split("/")[0])
-                candidates.append(self.cluster)
-                if self.clusters is None:
-                    self.clusters = self._room_clusters()
-                candidates.extend(self.clusters)
-                return list(dict.fromkeys(candidates))
+            def _get_device_info(self, check_existing: bool = True) -> dict:
+                if check_existing:
+                    response = self.session.get(f"{self.device_url}/devices")
+                    if response.status_code != 404:
+                        response.raise_for_status()
+                        for device in response.json().get("devices", []):
+                            if device["name"] == DEVICE_DATA["name"]:
+                                self.device_info = device
+                                return device
         
-            def get_message(self, activity):
-                # A space shared with another org keeps that org's cluster, not the bot's.
-                for _ in range(2):
-                    for cluster in self._candidate_clusters(activity):
-                        hydra_id = base64.b64encode(f"ciscospark://{cluster}/MESSAGE/{activity['id']}".encode()).decode()
-                        response = self.session.get(f"{API_URL}/messages/{hydra_id}")
-                        if response.ok:
-                            return response.json()
-                    self.clusters = None
-                log.warning(f"Could not read message {activity['id']} in any known cluster")
-                return None
+                response = self.session.post(f"{self.device_url}/devices", json=DEVICE_DATA)
+                response.raise_for_status()
+                self.device_info = response.json()
+                return self.device_info
         
-            def send_message(self, room_id, text):
-                # POST a text message back into the same space.
-                self.session.post(f"{API_URL}/messages", json={"roomId": room_id, "text": text})
+            def _get_base64_message_id(self, activity: dict) -> str:
+                activity_id = activity["id"]
+                conversation_url = activity["target"]["url"]
+                conv_target_id = activity["target"]["id"]
+                verb = "messages" if activity["verb"] in ["post", "update"] else "attachment/actions"
+                if activity["verb"] == "update" and self.share_id is not None:
+                    activity_id = self.share_id
+                    self.share_id = None
         
-            async def listen(self):
-                # 1) Ask the catalog where device registration lives for this org.
-                wdm_url = self.session.get(CATALOG_URL).json()["serviceLinks"]["wdm"]
-                # 2) Register a device; the response includes the Mercury WebSocket URL.
-                device = self.session.post(f"{wdm_url}/devices", json=DEVICE_DATA).json()
-                # 3) Verify TLS with certifi (Python's default store often misses these CAs).
-                ssl_context = ssl.create_default_context(cafile=certifi.where())
+                conversation_message_url = conversation_url.replace(
+                    f"conversations/{conv_target_id}", f"{verb}/{activity_id}"
+                )
+                conversation_message = self.session.get(conversation_message_url).json()
+                return conversation_message["id"]
         
-                async with websockets.connect(device["webSocketUrl"], ssl=ssl_context) as ws:
-                    # 4) Authorize the socket with the bot token before events start flowing.
-                    await ws.send(json.dumps({
+            def _ack_message(self, message_id: str) -> None:
+                ack_message = {"type": "ack", "messageId": message_id}
+                asyncio.run(self.websocket.send(json.dumps(ack_message)))
+        
+            def _process_incoming_websocket_message(self, msg: dict) -> None:
+                data = msg.get("data", {})
+                if data.get("eventType") != "conversation.activity":
+                    return
+        
+                activity = data["activity"]
+                verb = activity.get("verb")
+        
+                # Never react to the bot's own activity (avoids an echo loop).
+                if activity.get("actor", {}).get("id") == self.person_uuid:
+                    return
+        
+                if verb == "share":
+                    self.share_id = activity["id"]
+                    return
+        
+                if verb == "post":
+                    message_id = self._get_base64_message_id(activity)
+                    webex_message = self.api.messages.get(message_id)
+                    self._ack_message(message_id)
+                    print(f"Message received from {webex_message.personEmail}: {webex_message.text}")
+                    if self.on_message:
+                        self.on_message(webex_message, activity)
+                    return
+        
+                if verb == "update":
+                    obj = activity.get("object", {})
+                    if obj.get("objectType") != "content" or obj.get("contentCategory") != "documents":
+                        return
+                    message_id = self._get_base64_message_id(activity)
+                    webex_message = self.api.messages.get(message_id)
+                    self._ack_message(message_id)
+                    print(f"File message received from {webex_message.personEmail}: {webex_message.text}")
+                    if self.on_message:
+                        self.on_message(webex_message, activity)
+                    return
+        
+                if verb == "cardAction":
+                    message_id = self._get_base64_message_id(activity)
+                    attachment_action = self.api.attachment_actions.get(message_id)
+                    self._ack_message(message_id)
+                    print(f"Card action received: {attachment_action.inputs}")
+                    if self.on_card_action:
+                        self.on_card_action(attachment_action, activity)
+        
+            async def _connect_and_listen(self) -> None:
+                ws_url = self.device_info["webSocketUrl"]
+                async with websockets.connect(ws_url, ssl=ssl_context, additional_headers=self._headers()) as websocket:
+                    self.websocket = websocket
+                    print(f"WebSocket connected as {self.me.displayName}, waiting for messages...")
+                    auth = {
                         "id": str(uuid.uuid4()),
                         "type": "authorization",
                         "data": {"token": f"Bearer {self.access_token}"},
-                    }))
-                    # 5) Fetch each new post in plaintext and hand it to the bot.
-                    async for raw in ws:
-                        data = json.loads(raw).get("data", {})
-                        if data.get("eventType") != "conversation.activity":
-                            continue
-                        activity = data["activity"]
-                        # Only new posts, and never the bot's own replies (avoids an echo loop).
-                        if activity["verb"] != "post" or activity["actor"]["id"] == self.person_uuid:
-                            continue
-                        message = self.get_message(activity)
-                        if message:
-                            self.on_message(message)
+                    }
+                    await websocket.send(json.dumps(auth))
         
-            def run(self):
-                asyncio.run(self.listen())
+                    while True:
+                        raw = await websocket.recv()
+                        msg = json.loads(raw)
+                        loop = asyncio.get_event_loop()
+                        loop.run_in_executor(None, self._safe_process, msg)
+        
+            def _safe_process(self, msg: dict) -> None:
+                # Errors raised in executor threads are otherwise discarded silently.
+                try:
+                    self._process_incoming_websocket_message(msg)
+                except Exception:
+                    logger.exception("Failed to process incoming WebSocket message")
+        
+            def run(self) -> None:
+                if self.device_info is None and self._get_device_info() is None:
+                    raise RuntimeError("Unable to register bot device for WebSocket connection")
+        
+                while True:
+                    try:
+                        asyncio.get_event_loop().run_until_complete(self._connect_and_listen())
+                    except Exception as exc:
+                        logger.warning("WebSocket connection error: %s", exc)
+                        self._get_device_info(check_existing=False)
+                        asyncio.get_event_loop().run_until_complete(asyncio.sleep(5))
         ```
 
-###
+2. Add explanation about that class
 
-In this step, you will open a persistent connection to Webex Mercury and handle incoming messages.
+### Bot Helpers
+
+During the following exercises you will be using the same functions many times. They are part of the bot helpers.
+
+1. Navigate to `03-bots/bot_helpers.py` and review the code.
+
+    ??? Tip "Python Code"
+        ```python
+        from __future__ import annotations
+        
+        from typing import Any
+        
+        from webexpythonsdk import WebexAPI
+        
+        
+        def get_api(token: str) -> WebexAPI:
+            return WebexAPI(access_token=token)
+        
+        
+        def send_message(api: WebexAPI, room_id: str, text: str) -> None:
+            api.messages.create(roomId=room_id, markdown=text)
+        
+        
+        def send_card(api: WebexAPI, room_id: str, card: dict[str, Any], fallback_text: str = "Card") -> None:
+            api.messages.create(
+                roomId=room_id,
+                text=fallback_text,
+                attachments=[
+                    {
+                        "contentType": "application/vnd.microsoft.card.adaptive",
+                        "content": card,
+                    }
+                ],
+            )
+        
+        
+        def delete_message(api: WebexAPI, message_id: str) -> None:
+            api.messages.delete(message_id)
+        
+        
+        def extract_input_values(attachment_action) -> dict[str, Any]:
+            return dict(getattr(attachment_action, "inputs", {}) or {})
+        
+        
+        def is_allowed_domain(email: str, allowed_domains: list[str]) -> bool:
+            if not email or "@" not in email:
+                return False
+            domain = email.split("@", 1)[1].lower()
+            return domain in {item.lower() for item in allowed_domains}
+        ```
+
+### Creating the bot
 
 1. Navigate to `03-bots/05_websocket_bot.py` and review the code.
 
     The script follows this flow:
 
-    - Register the bot device with Webex
-    - Open a Mercury connection
-    - Listen for `message` events
-    - Reply to the user through the REST API
+    - Authenticate the bot with the provided token.
+    - Connect to Webex Mercury over WebSockets.
+    - Listen for `message` events and pass them to `handle_message`.
 
     Key functions to review:
 
     - **`handle_message()`** — processes incoming message events
-    - **`connect_mercury()`** — registers the device and opens the connection
     - **`send_message()`** — sends a reply through the Webex REST API
+
+    ??? Tip "Python Code"
+        ```python
+        import os
+        from dotenv import load_dotenv
+        # Import the shared WebSocketClient class
+        from websocket_client import WebSocketClient
+        # Import the Webex API SDK for direct API calls
+        from bot_helpers import get_api, send_message
+        
+        # Load environment variables from the .env file.
+        load_dotenv()
+        
+        # Webex Bot Token for authentication with the Webex API.
+        bot_token = os.getenv("BOT_TOKEN")
+        api = get_api(bot_token)
+        
+        def handle_message(message, activity):
+            """
+            Executes when a message is received by the bot.
+            """
+            room_id = message.roomId
+            text = (getattr(message, "text", "") or "").strip()
+            # Formatted messages keep their markdown in a separate field; plain ones only have text.
+            content = getattr(message, "markdown", None) or text
+        
+            if content:
+                # Echo back what they said
+                send_message(api, room_id, f"Echo: {content}")
+        
+        # Create a WebSocket Client object.
+        bot = WebSocketClient(access_token=bot_token,         # Authenticate the bot with the provided token.
+                              on_message=handle_message)      # Map the incoming messages to the echo handler.
+        
+        # Start the bot and make it listen for incoming messages.
+        bot.run()
+        ```
 
 2. Execute the code with the following command and let it run:
 
-    ```bash
-    python 05_websocket_bot.py
-    ```
+    - python 05_websocket_bot.py
 
 !!! Warning
-    Wait until you see **WebSocket connected** appear in the console.
+    Wait until you see **WebSocket connected as WebexOne-Pod0, waiting for messages...** appear in the console.
 
-3. Send any message to your bot, and it will respond using the handler defined in the script:
+3. Send any message to your bot and it will echoed it to you:
 
-    ![docx-image-029](./assets/docx-image-029.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Bot](./assets/bot_36.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 4. Observe how the incoming events are printed in the console:
 
-    ![docx-image-030](./assets/docx-image-030.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ```terminal
+    WebSocket connected as WebexOne-Pod0, waiting for messages...
+    Message received from pod0@webexone-developer.wbx.ai: Hello
+    ```
 
-5. Trigger a card action or follow the sample prompt and verify that the bot response is sent through the REST API.
-
-## Step 3.6: Create your own handler
+## Step 3.6: Command bot
 
 In this step, you will replace the generic echo behavior with your own command handler.
 
@@ -649,65 +810,190 @@ In this step, you will replace the generic echo behavior with your own command h
 
     Key concepts in this script:
 
-    - **`allowed_domains`** validates the sender's email domain before executing commands
-    - **`command_keyword`** maps user text such as `message` to a specific handler
-    - **`send_message()`** sends responses through the Webex REST API
-    - **`delete_message()`** optionally removes the previous card before sending a new one
+    - Maps a specific user text command (`message`) to a specific behavior.
+    - Demonstrates sending multiple replies back through the Webex REST API.
 
-    ![docx-image-035](./assets/docx-image-035.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ??? Tip "Python Code"
+        ```python
+        import os
+        from dotenv import load_dotenv
+        from websocket_client import WebSocketClient
+        from bot_helpers import get_api, send_message
+        
+        # Load environment variables from the .env file.
+        load_dotenv()
+        
+        # Webex Bot Token for authentication.
+        bot_token = os.getenv("BOT_TOKEN")
+        api = get_api(bot_token)
+        
+        HELP_TEXT = (
+            "Here is what I can do:\n"
+            "- hello: I greet you back.\n"
+            "- whoami: I look you up in Webex and tell you who you are.\n"
+            "- help: I show this list."
+        )
+        
+        
+        def handle_message(message, activity):
+            """
+            Reads the command the user typed and routes it to the right action.
+            """
+            room_id = message.roomId
+            text = (getattr(message, "text", "") or "").strip().lower()
+            # In group spaces the text starts with the bot mention, so only check the last word.
+            command = text.split()[-1] if text else ""
+        
+            if command == "hello":
+                # A simple reply that doesn't need any extra API call.
+                send_message(api, room_id, "Hello! Type 'help' to see what I can do.")
+        
+            elif command == "whoami":
+                # Use the Webex API from inside the bot to look up the sender.
+                person = api.people.get(message.personId)
+                send_message(api, room_id, f"You are {person.displayName} ({person.emails[0]}).")
+        
+            elif command == "help":
+                send_message(api, room_id, HELP_TEXT)
+        
+            else:
+                # Any other text falls back to a hint instead of staying silent.
+                send_message(api, room_id, f"Sorry, I don't know '{command}'. Type 'help' to see what I can do.")
+        
+        
+        # Create a WebSocket Client object.
+        bot = WebSocketClient(access_token=bot_token,         # Authenticate the bot with the provided token.
+                              on_message=handle_message)      # Map the incoming messages to the command router.
+        
+        # Start the bot and make it listen for incoming messages.
+        bot.run()
+        ```
 
 2. Execute the code with the following command and let it run:
 
-    ```bash
-    python 06_websocket_bot-2.py
-    ```
+    - python 06_command_bot.py
 
 !!! Warning
-    Wait until you see **WebSocket connected** appear in the console.
+    Wait until you see **WebSocket connected as WebexOne-Pod0, waiting for messages....** appear in the console.
 
-3. Send any message to your bot and you should receive a card with your custom function **Send Hello!**:
+3. Send any message to your bot and you should receive a standard message. Check the `help` command and ask who you are:
 
-    ![docx-image-037](./assets/docx-image-037.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Bot](./assets/bot_37.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
-4. Click **Send Hello!**. The card will be deleted, you will receive a confirmation message, and you should also see your **Hello!** message:
-
-    ![docx-image-038](./assets/docx-image-038.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
-
-5. To directly invoke this function, text your bot with the **message** keyword:
-
-    ![docx-image-039](./assets/docx-image-039.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
-
-## Step 3.7: Adaptive card processing
+## Step 3.7: Adaptive card
 
 In this final step, you will handle Adaptive Card submissions through incoming events.
 
 1. Navigate to `03-bots/07_websocket_bot-3.py` and review the code.
 
-    Key concepts in this script:
-
-    - **`on_attachment_action()`** receives card submission data
-    - **`extract_input_values()`** reads the fields submitted by the user
-    - **`send_card_response()`** sends the confirmation or next step
-
     The bot listens for **`attachmentActions`** events and routes them to the appropriate handler.
 
-    ![docx-image-040](./assets/docx-image-040.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ??? Tip "Python Code"
+        ```python
+        import os
+        from dotenv import load_dotenv
+        from websocket_client import WebSocketClient
+        from bot_helpers import get_api, send_message, send_card, delete_message
+        
+        # Load environment variables from the .env file.
+        load_dotenv()
+        
+        # Webex Bot Token for authentication with the Webex API.
+        bot_token = os.getenv("BOT_TOKEN")
+        api = get_api(bot_token)
+        
+        
+        def handle_card_action(attachment_action, activity):
+            """
+            Executes when an Adaptive Card with 'callback_keyword': 'message_callback' is submitted.
+            It extracts the message input from the card and sends it back to the user.
+            """
+            room_id = attachment_action.roomId
+            inputs = getattr(attachment_action, "inputs", {}) or {}
+            
+            # Extract the 'message' input from the submitted Adaptive Card's inputs.
+            message_content = inputs.get("message")
+            
+            # Deletes the Adaptive Card message after submission.
+            if getattr(attachment_action, "messageId", None):
+                delete_message(api, attachment_action.messageId)
+                
+            # Create a direct message to the room with the extracted message content.
+            if message_content:
+                send_message(api, room_id, message_content)
+                # Return a confirmation message, formatted as an info quote.
+                send_message(api, room_id, "> **Info**\n> Message sent")
+        
+        
+        def handle_message(message, activity):
+            """
+            Executes the 'message' command. Constructs and sends an Adaptive Card
+            to the user for input.
+            """
+            room_id = message.roomId
+            text = (getattr(message, "text", "") or "").strip().lower()
+            # In group spaces the text starts with the bot mention, so only check the last word.
+            command = text.split()[-1] if text else ""
+        
+            # The keyword users type to activate this command.
+            if command == "message":
+                # Define the Adaptive Card structure for user input.
+                card = {
+                    "type": "AdaptiveCard",
+                    "body": [
+                        {
+                            "type": "Input.Text",
+                            "placeholder": "Message",
+                            "id": "message",
+                            "isRequired": True,
+                            "errorMessage": "Message is required",
+                            "label": "Message:"
+                        }
+                    ],
+                    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                    "version": "1.3",
+                    "actions": [
+                        {
+                            "type": "Action.Submit",
+                            "title": "Submit",
+                            "data": {
+                                "callback_keyword": "message_callback" # This links to the card action handler.
+                            }
+                        }
+                    ]
+                }
+        
+                # Attach the Adaptive Card to the response.
+                send_card(api, room_id, card, fallback_text="Please enter your message:")
+            else:
+                # Let the user know which keyword the bot understands.
+                send_message(api, room_id, "Type 'message' to get the card.")
+        
+        
+        # Create a WebSocket Client object.
+        bot = WebSocketClient(access_token=bot_token,         # Authenticate the bot using its token.
+                              on_message=handle_message,      # Registers the message handler.
+                              on_card_action=handle_card_action) # Registers the callback command for card submissions.
+        
+        # Start the bot and make it listen for incoming messages.
+        # This call is typically blocking and keeps the bot running, waiting for commands or card submissions.
+        bot.run()
+        ```
 
 2. Execute the code with the following command and let it run:
 
-    ```bash
-    python 07_websocket_bot-3.py
-    ```
+    - python 07_card_bot.py
 
 !!! Warning
-    Wait until you see **WebSocket connected** appear in the console.
+    Wait until you see **WebSocket connected as WebexOne-Pod0, waiting for messages...** appear in the console.
 
 3. Text **message** to your bot to invoke your function directly:
 
-    ![docx-image-042](./assets/docx-image-042.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Bot](./assets/bot_39.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 4. Enter a message and click **Submit**.
 
     The previous card will be deleted. You should then receive both your message and a formatted notification confirming that your message has been sent:
 
-    ![docx-image-043](./assets/docx-image-043.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Bot](./assets/bot_38.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+
