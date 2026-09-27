@@ -28,18 +28,18 @@ The Webex Developer Portal is an excellent resource for documentation and quick,
     * In the header of the portal, click on the “**Documentation**” drop down to expand the “Mega Nav” bar.
     * Under the “**SUITE**” section, select “**Webex Messaging**”.
 
-        ![Webex Developer](./assets/docx-image-008.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Webex Developer](./assets/docx-image-008.png){ style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 4. **Retrieve Your Own User Details (GET /people/me):**
     * In the sidebar navigation, under "**API Reference**", expand the “**All APIs**” section.
     * Then expand "**People**" from the left-hand menu.
     * Scroll down to find the "**Get My Own Details**” GET endpoint and select it:
     
-        ![Webex Developer](./assets/developer_31.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Webex Developer](./assets/developer_31.png){ width="300" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
     * On the right side of the page, in the "**Try It**" section, paste your copied **Bearer Token** into the "Authorization" field (if it's not already populated with the “**Use personal access token**” toggle):
     
-        ![Webex Developer](./assets/developer_32.png){ width="500" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Webex Developer](./assets/developer_32.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
     * Click the "**Run**" button.
     * You should see a `200 OK` status and a JSON response containing your Webex user details:
@@ -52,35 +52,35 @@ The Webex Developer Portal is an excellent resource for documentation and quick,
     * In the left-hand menu, expand "**Rooms**".
     * Scroll down to find the “**List Rooms**” GET endpoint and select it:
     
-        ![Webex Developer](./assets/developer_34.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Webex Developer](./assets/developer_34.png){ width="300" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
     * Click the "**Run**" button.
     
     You'll get a `200 OK` response with a list of your Webex spaces:
     
-        ![Webex Developer](./assets/developer_35.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Webex Developer](./assets/developer_35.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
     
     **Carefully locate your personal lab space** (e.g., [Your Name/ID] - API Lab Space) and **copy its `id` value**:
     
-        ![Webex Developer](./assets/developer_36.png){ width="250" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Webex Developer](./assets/developer_36.png){ width="250" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
-        It should look like:
-        
-        ```terminal
-        Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vMDcxZTQ1MDAtYmE2YS0xMWYxLTg1ODUtNjE2MGY3MDk1MzFj
-        ```
-        
-        You'll need this in the next step!
+    It should look like:
+    
+    ```terminal
+    Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vMDcxZTQ1MDAtYmE2YS0xMWYxLTg1ODUtNjE2MGY3MDk1MzFj
+    ```
+    
+    You'll need this in the next step!
    
 7. **Send a Message to Your Lab Space (POST /v1/messages):**
     * In the left-hand menu, select "**Messages**".
     * Scroll down to find the “**Create a Message**” POST endpoint and select it:
 
-        ![Webex Developer](./assets/developer_37.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Webex Developer](./assets/developer_37.png){ width="300" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
     * In the "Request Body" section, you'll see both a Form and a JSON structure:
 
-        ![Webex Developer](./assets/developer_38.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Webex Developer](./assets/developer_38.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
     
     * Fill `roomId` with the `id` of your lab space that you just copied and put the `text` field to a message like: 
     
@@ -90,7 +90,7 @@ The Webex Developer Portal is an excellent resource for documentation and quick,
         
     * Click the "**Run**" button, you should see a `200 OK` response:
 
-        ![Webex Developer](./assets/developer_40.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Webex Developer](./assets/developer_40.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
     
 8. **Verify Message in Webex Client:**
     * Switch back to your Webex client. You should see the message you just sent appear in your personal lab space!:
@@ -105,16 +105,25 @@ The Webex Developer Portal is an excellent resource for documentation and quick,
 Now, let's explore the Webex Public Workspace in Postman, which provides a much richer environment for API development.
 
 1. **Open the Webex Public Workspace:**
-    * In your Postman application (where you logged in with lab credentials), navigate to the Webex Public Workspace by searching for **“Webex Public Workspace”**.
+    * In your Postman application, navigate to the Webex Public Workspace by searching for **“Webex Public Workspace”**.
     
-    ![docx-image-009](./assets/docx-image-009.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Postman](./assets/postman_34.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+
+        !!! Warning
+            Make sure "Visibility" is set to "Public".
 
 2. **Observe the Workspace Structure:**
-    * On the left sidebar, you'll see the **"Webex Public Workspace"** listed.
-    * Below it, notice the various **Collections** available (e.g., "Webex Messaging", "Webex Meetings", "Webex Calling", etc.). These collections organize different sets of Webex APIs.
-    * *Remember:* A Postman Workspace can contain multiple Collections, Environments, and other elements.
+    * You will see now  the **"Webex Public Workspace"** listed, you can click on **Open workspace overview**:
 
-    ![docx-image-010](./assets/docx-image-010.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Postman](./assets/postman_36.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Postman](./assets/postman_37.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    
+    * Below it, notice the various **Collections** available (e.g., "Webex Messaging", "Webex Meetings", "Webex Calling", etc.). These collections organize different sets of Webex APIs.
+
+        ![Postman](./assets/postman_35.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        
+    !!! Warning "Remember"
+        A Postman Workspace can contain multiple Collections, Environments, and other elements.
 
 ## Step 1.3: Use the "Webex Messaging" Collection in Postman
 
@@ -122,37 +131,65 @@ We'll now fork the "Webex Messaging" collection into your personal Postman space
 
 1. **Fork the "Webex Messaging" Collection:**
     * In the Webex Public Workspace, locate the **"Webex Messaging"** collection in the left sidebar.
-    * Hover over the collection name and click the **"..." (ellipsis)** icon, then select **"Fork"**.
+    * Hover over the collection name and click the **"..." (ellipsis)** icon, then select **"Fork"**:
+
+        ![Postman](./assets/postman_38.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        
     * In the dialog box, give the **Fork label** a name of **“Webex API Fork”**.
     * Choose your **personal workspace** (it should be selected by default if you're in your own workspace).
-    * Also include the **“Webex Prod US1”** environment in the fork (we will use this environment later).
-    * Click **"Fork Collection"**.
-    * You should now see a copy of "Webex Messaging" in your personal workspace (usually listed under "Collections" in the left sidebar).
+    * Also include the **“Webex Prod US1”** environment in the fork (we will use this environment later):
+
+        ![Postman](./assets/postman_39.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        
+    * Click **"Fork Collection"**
+    * You should now see a copy of "Webex Messaging" in your personal workspace (usually listed under "Collections" in the left sidebar):
+
+        ![Postman](./assets/postman_40.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
     
 2. **Configure Collection Authentication and Variable:**
-    * Click on your forked **"Webex Messaging"** collection in the left sidebar.
-    * In the main Postman window, click the **"Variables"** tab.
-    * Add a new variable:
+    * In the **Webex Messaging** Collection window, click the **"Variables"** tab on the right side:
+    
+        ![Postman](./assets/postman_43.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        
+    * Select **Add** in **Globals** and add a new variable:
+
+        ![Postman](./assets/postman_44.png){ width="250" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        
         * **VARIABLE:** `webex_token`
         * **VALUE:** Paste the **Bearer Token** you copied from the Webex Developer Portal in Step 1.1.2 here.
-    * Now, click the **"Authorization"** tab for the collection.
-    * For the **TYPE**, select **"Bearer Token"**.
-    * In the **Token** field, enter `{{webex_token}}`.
-    * *Explanation:* This sets up the collection to automatically use your `webex_token` variable for all requests within it!
+
+        ![Postman](./assets/postman_42.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        
+    * Now, back to the collection, click the **"Authorization"** tab, and select **"Bearer Token"**:
+
+        ![Postman](./assets/postman_45.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        
+    * In the **Token** field, enter `{{webex_token}}`:
+
+        ![Postman](./assets/postman_46.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        
+    !!! Note "Explanation"
+        This sets up the collection to automatically use your `webex_token` variable for all requests within it!
     
 3. **Make Your First API Call with Postman (Get My Own Details):**
     * In your forked "Webex Messaging" collection, expand the **"People"** folder.
     * Click on the **GET Get My Own Details** request (which corresponds to `GET /v1/people/me`).
-    * In the main request window, ensure the "Authorization" tab shows "Inherit auth from parent" or "Bearer Token" and that `{{webex_token}}` is in the Token field (if not inheriting).
+    * In the main request window, ensure the "Authorization" tab shows "Inherit auth from parent" or "Bearer Token" and that `{{webex_token}}` is in the Token field (if not inheriting).        
     * Click the blue **"Send"** button.
-    * You should receive a `200 OK` response with your user details, just like in the Developer Portal.
+    * You should receive a `200 OK` response with your user details, just like in the Developer Portal:
+
+        ![Postman](./assets/postman_48.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
     
 4. **List Your Webex Spaces (Rooms):**
     * In your forked "Webex Messaging" collection, expand the **"Rooms"** folder.
     * Click on the **GET List Rooms** request (which corresponds to `GET /v1/rooms`).
     * Uncheck all the **Query Params** in the **Params** tab.
     * Click the blue **"Send"** button.
-    * You should receive a `200 OK` response. In the JSON body, you'll see a list of your Webex spaces. **Carefully locate your personal lab space** (e.g., [Your Name/ID] - API Lab Space) and **copy its `id` value**. You'll need this in the next steps!
+    * You should receive a `200 OK` response. In the JSON body, you'll see a list of your Webex spaces:
+
+        ![Postman](./assets/postman_49.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    
+    **Carefully locate your personal lab space** (e.g., [Your Name/ID] - API Lab Space) and **copy its `id` value**. You'll need this in the next steps!
     
 5. **Send a Message to Your Lab Space (POST Create a Message):**
     * In your forked "Webex Messaging" collection, expand the **"Messages"** folder.
@@ -161,11 +198,14 @@ We'll now fork the "Webex Messaging" collection into your personal Postman space
     * You'll see a JSON body. Remove all fields except for **“roomId”** and **“text”**.
     * Replace `{{roomId}}` with the actual `id` of your lab space (e.g., `"roomId": "c2lkOi8v..."`).
     * Change the `text` field to something personal, like `"text": "Hello from Postman - this is much easier!"`.
-
-    ![docx-image-011](./assets/docx-image-011.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
-
     * Click the blue **"Send"** button.
-    * You should receive a `200 OK` response. Now, check your Webex Client – you should see the message appear in your lab space!
+    * You should receive a `200 OK` response.:
+    
+        ![Postman](./assets/postman_50.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        
+    Now, check your Webex Client – you should see the message appear in your lab space!
+
+    ![Postman](./assets/postman_51.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 6. **Read Messages in Your Lab Space (GET List Messages):**
     * Click on the **GET List Messages** request (which corresponds to `GET /v1/messages`).
@@ -175,20 +215,29 @@ We'll now fork the "Webex Messaging" collection into your personal Postman space
     * Click the blue **"Send"** button.
     * You should receive a `200 OK` response with a list of messages in that space. You should see the message you just sent via Postman, and potentially the one you sent via the Developer Portal "Try It" tool!
 
+        ![Postman](./assets/postman_52.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+
 ## Step 1.4: Make an API Request with cURL
 
 Finally, let's see how to make an API call directly from your command line using cURL. Postman can even generate the cURL command for you!
 
 1. **Generate cURL from Postman:**
     * Go back to the **GET Get My Own Details** request you successfully ran in Postman (under "People API").
-    * On the right side of the request window, to the right of the "Send" button, click the **"Code"** link.
-    * A "Generate Code Snippets" window will appear. From the dropdown menu, select **"cURL"**.
+    * On the right side of the request window, to the right of the "Send" button, click the **"Code"** link:
+
+        ![Postman](./assets/postman_53.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        
+    * Open the dropdown where you see "Postman CLI". From the dropdown menu, select **"cURL"**:
+
+        ![Postman](./assets/postman_53.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    
     * **Copy the entire cURL command** that is displayed.
 
-    ![docx-image-012](./assets/docx-image-012.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    !!! "Important"
+        The cURL command generated by Postman will  include your actual `access_token` value directly since it was set as the current value but if you use the Copy function, it won't be copied. Make sure you copy manually the command including the token.
 
 2. **Open Your Terminal/Command Prompt:**
-    * On your lab workstation, open a **Terminal** (macOS/Linux) or **Command Prompt/PowerShell** (Windows).
+    * On your lab workstation, open a **Command Prompt/PowerShell** (Windows).
     
 3. **Execute the cURL Command:**
     * Paste the copied cURL command into your terminal/command prompt.
