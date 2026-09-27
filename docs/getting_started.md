@@ -64,7 +64,10 @@ Use the same lab credentials you just used for the Webex Client.
 
 Postman will be our primary tool for making API requests and working with OAuth 2.0 integrations. You'll log into a Postman account that has access to the Webex Public Workspace.
 
-1. **Open Postman:** Launch the Postman Desktop App on your lab workstation.
+1. **Open Postman:** Launch the Postman Desktop App on your lab workstation:
+
+    ![Postman](./assets/postman_logo.png){ width="150" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
 2. **Enter Lab Credentials:** When prompted, enter the **Postman email address and password** provided to you by the lab instructors.
 
     | Username | Email | Password |
