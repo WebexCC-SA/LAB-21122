@@ -1,4 +1,4 @@
-# 5 – Use Cases
+# Lab 5 – Use Cases
 
 In this section, you will put your Webex API knowledge into practice by building real-world solutions. You will explore how bots and integrations can streamline communication and automate device provisioning in an organization.
 
