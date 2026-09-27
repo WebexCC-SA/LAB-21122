@@ -22,7 +22,7 @@ The Webex Developer Portal is an excellent resource for documentation and quick,
     * Ensure you are logged in with your **lab credentials**. If not, click "Login" and use the provided Webex email and password.
     * Your temporary **Bearer Token** will be displayed. **Copy this token** to your clipboard. This token is valid for 12 hours.
 
-        ![Webex Developer](./assets/docx-image-007.png){ width="3500" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Webex Developer](./assets/docx-image-007.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 3. **Navigate to the Webex Messaging documentation area:**
     * In the header of the portal, click on the “**Documentation**” drop down to expand the “Mega Nav” bar.
