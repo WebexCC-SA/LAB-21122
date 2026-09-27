@@ -68,13 +68,20 @@ Postman will be our primary tool for making API requests and working with OAuth 
 
     ![Postman](./assets/postman_logo.png){ width="150" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-2. **Enter Lab Credentials:** When prompted, enter the **Postman email address and password** provided to you by the lab instructors.
+2. Close the first window if it appears, and then click on **Sign in**:
+
+    ![Postman](./assets/postman_31.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Postman](./assets/postman_32.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+3. You will get re-directed to a website, enter the **Postman email address and password**. Your account will be linked to your Pod number:
 
     | Username | Email | Password |
     | --- | --- | --- |
     | PodX | `podX@webexone-developer.wbx.ai` | `WebexOne2026!` |
 
-3. **Verify Login:** Once logged in, you should see your Postman workspace. If you see a prompt to join a team, follow the lab instructor's guidance.
+4. Once logged in, it will open the Postman application again, and you should see your Postman workspace.
+
+    ![Postman](./assets/postman_33.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 ## Visual Studio Code
 
