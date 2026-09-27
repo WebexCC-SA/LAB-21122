@@ -87,7 +87,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Lab:
-      - Welcome: welcome.md
+      #- Welcome: welcome.md
       - Overview: overview.md
       #- Getting Started: lab1_getting_started-bruno.md
       - Getting Started: lab1_getting_started.md
