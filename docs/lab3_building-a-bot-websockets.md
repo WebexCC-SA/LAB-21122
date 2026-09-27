@@ -5,10 +5,11 @@ In this section, you will create a Webex bot and build it into an interactive as
 Upon completion of this section, you will be able to:
 
 1. Create a **Bot** in Webex.
-2. Send a message and find people using the Bot using Python.
-3. Create a room and add a person using the Bot using Python.
+2. Find people and send messages with the bot using Python.
+3. Create a room and add a person to it with the bot using Python.
 4. Create and send an Adaptive Card.
 5. Build an interactive bot that receives and responds to events in real time.
+6. Restrict your bot so it only answers users from your organization.
 
 ## Step 3.1: Create a Bot
 
@@ -351,7 +352,7 @@ In this step, you will explore how to create and send an Adaptive Card.
         webex.messages.create(toPersonEmail=email, text="Your client does not support Adaptive Cards. Please update your client.", attachments=[card])
         ```
 
-   ??? Tip "Adaptive Card Example"
+    ??? Tip "Adaptive Card Example"
         ```python
         '''
         # Example Adaptive Card structure (commented out for reference).
@@ -469,7 +470,7 @@ In this step, you will explore how to create and send an Adaptive Card.
 
     ![Bot](./assets/bot_35.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
     
-## Step 3.5: Bot with Websocket
+## Step 3.5: Bot with WebSockets
 
 ### Receiving events in real time
 
@@ -480,9 +481,9 @@ Webex bots can receive events in two main ways:
 
 In this lab, your bot connects to Webex Mercury. You will implement event handling, message parsing, and Adaptive Card actions directly in Python.
 
-In this step, you will open a persistent connection to Webex Mercury and handle incoming messages.
+In this step, you will open a persistent connection to Webex Mercury and handle incoming messages. All the connection logic lives in a shared class, so every bot in the following steps only needs to define what to do with each event.
 
-For that, you will be using the following class.
+### WebSocket client
 
 1. Navigate to `03-bots/websocket_client.py` and review the code.
 
@@ -679,13 +680,28 @@ For that, you will be using the following class.
                         asyncio.get_event_loop().run_until_complete(asyncio.sleep(5))
         ```
 
-2. Add explanation about that class
+2. The **WebSocketClient** class takes care of the whole connection lifecycle, so you do not need to modify it:
+
+    - **Find the device service:** `_get_device_url()` asks the Webex service catalog (U2C) where device registration (WDM) lives for your organization.
+    - **Register a device:** `_get_device_info()` reuses the bot's existing device or registers a new one. The response includes the `webSocketUrl` the bot connects to.
+    - **Connect and authorize:** `_connect_and_listen()` opens the WebSocket, verifies TLS with the `certifi` certificate bundle, and sends an authorization message with the bot token.
+    - **Filter events:** Webex sends many event types. The client only processes `conversation.activity` events and ignores the bot's own activity, so the bot never replies to itself in an endless loop.
+    - **Fetch the content:** events only contain IDs, not the message itself. The client builds the message ID, fetches the full message through the REST API, and acknowledges the event.
+    - **Deliver the event:** new messages (`post`) and shared files (`update`) are passed to your **on_message** handler, and Adaptive Card submissions (`cardAction`) to your **on_card_action** handler.
+    - **Stay connected:** if the connection drops, the client registers again and reconnects after 5 seconds. Errors inside your handlers are printed in the console instead of being silently discarded.
 
 ### Bot Helpers
 
-During the following exercises you will be using the same functions many times. They are part of the bot helpers.
+During the following exercises, you will use the same functions many times, so they are grouped in a helper file.
 
 1. Navigate to `03-bots/bot_helpers.py` and review the code.
+
+    - **get_api()** creates the Webex API client used to call the REST API.
+    - **send_message()** sends a message to a room. The text is sent as markdown, so formatting such as **bold** or quotes is rendered in Webex.
+    - **send_card()** sends an Adaptive Card to a room, together with a fallback text for clients that cannot display cards.
+    - **delete_message()** deletes a message, for example a card that has already been submitted.
+    - **extract_input_values()** returns the values a user entered in a submitted card.
+    - **is_allowed_domain()** checks whether an email address belongs to one of the allowed domains. You will use it in Step 3.8.
 
     ??? Tip "Python Code"
         ```python
@@ -740,12 +756,12 @@ During the following exercises you will be using the same functions many times. 
 
     - Authenticate the bot with the provided token.
     - Connect to Webex Mercury over WebSockets.
-    - Listen for `message` events and pass them to `handle_message`.
+    - Listen for new messages and pass each one to `handle_message`.
 
     Key functions to review:
 
-    - **`handle_message()`** — processes incoming message events
-    - **`send_message()`** — sends a reply through the Webex REST API
+    - **`handle_message()`** processes each incoming message and echoes its content back. If the message has formatting, the bot uses the markdown version so the echo keeps it.
+    - **`send_message()`** sends the reply through the Webex REST API.
 
     ??? Tip "Python Code"
         ```python
@@ -788,10 +804,10 @@ During the following exercises you will be using the same functions many times. 
 
     - python 05_websocket_bot.py
 
-!!! Warning
-    Wait until you see **WebSocket connected as WebexOne-Pod0, waiting for messages...** appear in the console.
+    !!! Warning
+        Wait until you see **WebSocket connected as WebexOne-*USERNAME*, waiting for messages...** in the console.
 
-3. Send any message to your bot and it will echoed it to you:
+3. Send any message to your bot, and it will echo it back to you:
 
     ![Bot](./assets/bot_36.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
@@ -802,16 +818,22 @@ During the following exercises you will be using the same functions many times. 
     Message received from pod0@webexone-developer.wbx.ai: Hello
     ```
 
+5. Stop the bot with **Ctrl+C** before moving to the next step.
+
+!!! Warning
+    Only run one bot at a time. All the exercises use the same bot token, so if two scripts run at once, you may get duplicate or missing replies.
+
 ## Step 3.6: Command bot
 
-In this step, you will replace the generic echo behavior with your own command handler.
+In this step, you will replace the generic echo behavior with commands. Instead of repeating everything, the bot reads what the user typed and decides which action to run.
 
-1. Navigate to `03-bots/06_websocket_bot-2.py` and review the code.
+1. Navigate to `03-bots/06_command_bot.py` and review the code.
 
     Key concepts in this script:
 
-    - Maps a specific user text command (`message`) to a specific behavior.
-    - Demonstrates sending multiple replies back through the Webex REST API.
+    - **Command routing:** `handle_message()` takes the last word of the message and compares it with the known commands. Only the last word is checked because in group spaces the text starts with the bot mention (for example, `WebexOne-Pod0 help`).
+    - **Calling the API from a bot:** the `whoami` command uses `api.people.get()` with the sender's ID, the same People API you used in Step 3.2.
+    - **Fallback reply:** any unknown text gets a hint instead of silence, so users always know the bot is listening.
 
     ??? Tip "Python Code"
         ```python
@@ -873,20 +895,27 @@ In this step, you will replace the generic echo behavior with your own command h
 
     - python 06_command_bot.py
 
-!!! Warning
-    Wait until you see **WebSocket connected as WebexOne-Pod0, waiting for messages....** appear in the console.
+    !!! Warning
+        Wait until you see **WebSocket connected as WebexOne-*USERNAME*, waiting for messages...** in the console.
 
-3. Send any message to your bot and you should receive a standard message. Check the `help` command and ask who you are:
+3. Try the commands: send **help** to see the list, **whoami** to find out who you are, **hello**, and any other text to see the fallback reply:
 
     ![Bot](./assets/bot_37.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
-## Step 3.7: Adaptive card
+4. Stop the bot with **Ctrl+C** before moving to the next step.
 
-In this final step, you will handle Adaptive Card submissions through incoming events.
+## Step 3.7: Adaptive card bot
 
-1. Navigate to `03-bots/07_websocket_bot-3.py` and review the code.
+In Step 3.4, you sent an Adaptive Card, but nothing happened when someone used it. In this step, the bot sends a card with a text box and handles the submission through incoming events.
 
-    The bot listens for **`attachmentActions`** events and routes them to the appropriate handler.
+1. Navigate to `03-bots/07_card_bot.py` and review the code.
+
+    The bot now handles two types of events:
+
+    - **Messages:** `handle_message()` sends the card when the user types **message**. The card is built the same way as in Step 3.4, and its **Submit** button carries `callback_keyword` data so the bot knows which card was submitted.
+    - **Card submissions:** when the user clicks **Submit**, Webex sends a `cardAction` event instead of a message. The client passes it to `handle_card_action()`, which reads the values the user typed from `inputs`, deletes the card so it cannot be submitted twice, and replies with the message and a formatted confirmation.
+
+    Both handlers are registered when the bot is created: `on_message` for messages and `on_card_action` for card submissions.
 
     ??? Tip "Python Code"
         ```python
@@ -984,10 +1013,10 @@ In this final step, you will handle Adaptive Card submissions through incoming e
 
     - python 07_card_bot.py
 
-!!! Warning
-    Wait until you see **WebSocket connected as WebexOne-Pod0, waiting for messages...** appear in the console.
+    !!! Warning
+        Wait until you see **WebSocket connected as WebexOne-*USERNAME*, waiting for messages...** in the console.
 
-3. Text **message** to your bot to invoke your function directly:
+3. Send **message** to your bot to receive the card:
 
     ![Bot](./assets/bot_39.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
@@ -997,3 +1026,174 @@ In this final step, you will handle Adaptive Card submissions through incoming e
 
     ![Bot](./assets/bot_38.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
+5. Observe how the card submission is printed in the console:
+
+    ```terminal
+    WebSocket connected as WebexOne-Pod0, waiting for messages...
+    Message received from pod0@webexone-developer.wbx.ai: message
+    Card action received: {'message': 'Hello from the card!'}
+    ```
+
+6. Stop the bot with **Ctrl+C** before moving to the next step.
+
+## Step 3.8: Secure bot
+
+Anyone in Webex can find your bot and send it a message, including users outside your organization. In this step, you will restrict the bot so it only answers users whose email belongs to the domain configured in your `.env` file.
+
+1. In VS Code, navigate to your `.env` file and make sure that `DOMAIN` contains your organization's domain, without the `@` (for example, `webexone-developer.wbx.ai`).
+
+2. Navigate to `03-bots/08_secure_bot.py` and review the code.
+
+    This bot does the same as the card bot from Step 3.7, with a security check added in front of both handlers:
+
+    - **Configuration:** the allowed domain is read from `DOMAIN` in the `.env` file, never written in the code. If it is missing, the bot refuses to start instead of answering everyone.
+    - **`is_authorized()`:** uses **is_allowed_domain()** from the bot helpers to compare the domain of the sender's email with the allowed one. Blocked users receive a short explanation, and the attempt is printed in the console.
+    - **Messages:** each message already includes the sender's email (`personEmail`), so `handle_message()` checks it before doing anything else.
+    - **Card submissions:** a card submission only includes the sender's ID, so `handle_card_action()` looks up their email with `api.people.get()` first. This check is important too, because in a group space anyone can click **Submit** on a card the bot has sent.
+
+    ??? Tip "Python Code"
+        ```python
+        import os
+        from dotenv import load_dotenv
+        from websocket_client import WebSocketClient
+        from bot_helpers import get_api, send_message, send_card, delete_message, is_allowed_domain
+        
+        # Load environment variables from the .env file.
+        load_dotenv()
+        
+        # Webex Bot Token for authentication with the Webex API.
+        bot_token = os.getenv("BOT_TOKEN")
+        api = get_api(bot_token)
+        
+        # Only users whose email belongs to this domain can use the bot.
+        allowed_domain = os.getenv("DOMAIN")
+        if not allowed_domain:
+            raise SystemExit("Set DOMAIN in the .env file before starting the bot.")
+        
+        
+        def is_authorized(room_id, email):
+            """
+            Checks the sender's email domain and tells blocked users why they got no answer.
+            """
+            if is_allowed_domain(email, [allowed_domain]):
+                return True
+        
+            print(f"Blocked request from {email}")
+            send_message(api, room_id, f"Sorry, this bot is only available to users in {allowed_domain}.")
+            return False
+        
+        
+        def handle_card_action(attachment_action, activity):
+            """
+            Executes when the Adaptive Card is submitted, but only for users in the allowed domain.
+            """
+            room_id = attachment_action.roomId
+        
+            # Card submissions only include the person ID, so look up their email first.
+            # In group spaces anyone can press Submit, so this check matters here too.
+            person = api.people.get(attachment_action.personId)
+            if not is_authorized(room_id, person.emails[0]):
+                return
+        
+            inputs = getattr(attachment_action, "inputs", {}) or {}
+        
+            # Extract the 'message' input from the submitted Adaptive Card's inputs.
+            message_content = inputs.get("message")
+        
+            # Deletes the Adaptive Card message after submission.
+            if getattr(attachment_action, "messageId", None):
+                delete_message(api, attachment_action.messageId)
+        
+            # Create a direct message to the room with the extracted message content.
+            if message_content:
+                send_message(api, room_id, message_content)
+                # Return a confirmation message, formatted as an info quote.
+                send_message(api, room_id, "> **Info**\n> Message sent")
+        
+        
+        def handle_message(message, activity):
+            """
+            Executes the 'message' command, but only for users in the allowed domain.
+            """
+            room_id = message.roomId
+        
+            # Messages already include the sender's email, so check it before doing anything else.
+            if not is_authorized(room_id, message.personEmail):
+                return
+        
+            text = (getattr(message, "text", "") or "").strip().lower()
+            # In group spaces the text starts with the bot mention, so only check the last word.
+            command = text.split()[-1] if text else ""
+        
+            # The keyword users type to activate this command.
+            if command == "message":
+                # Define the Adaptive Card structure for user input.
+                card = {
+                    "type": "AdaptiveCard",
+                    "body": [
+                        {
+                            "type": "Input.Text",
+                            "placeholder": "Message",
+                            "id": "message",
+                            "isRequired": True,
+                            "errorMessage": "Message is required",
+                            "label": "Message:"
+                        }
+                    ],
+                    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                    "version": "1.3",
+                    "actions": [
+                        {
+                            "type": "Action.Submit",
+                            "title": "Submit",
+                            "data": {
+                                "callback_keyword": "message_callback" # This links to the card action handler.
+                            }
+                        }
+                    ]
+                }
+        
+                # Attach the Adaptive Card to the response.
+                send_card(api, room_id, card, fallback_text="Please enter your message:")
+            else:
+                # Let the user know which keyword the bot understands.
+                send_message(api, room_id, "Type 'message' to get the card.")
+        
+        
+        # Create a WebSocket Client object.
+        bot = WebSocketClient(access_token=bot_token,         # Authenticate the bot using its token.
+                              on_message=handle_message,      # Registers the message handler.
+                              on_card_action=handle_card_action) # Registers the callback command for card submissions.
+        
+        # Start the bot and make it listen for incoming messages.
+        bot.run()
+        ```
+
+3. Execute the code with the following command and let it run:
+
+    - python 08_secure_bot.py
+
+    !!! Warning
+        Wait until you see **WebSocket connected as WebexOne-*USERNAME*, waiting for messages...** in the console.
+
+4. Send **message** to your bot. Your email belongs to the allowed domain, so the bot works exactly like in Step 3.7:
+
+    ![Bot](./assets/bot_40.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+
+5. Now test what a user from another organization would see. Stop the bot with **Ctrl+C**, change `DOMAIN` in your `.env` file to `example.com`, save the file, and run the bot again:
+
+    - python 08_secure_bot.py
+
+6. Send **message** to your bot again. This time, the bot does not send the card and replies with:
+
+    ![Bot](./assets/bot_41.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+
+    The blocked attempt is also printed in the console:
+
+    ```terminal
+    WebSocket connected as WebexOne-Pod0, waiting for messages...
+    Message received from pod0@webexone-developer.wbx.ai: message
+    Blocked request from pod0@webexone-developer.wbx.ai
+    ```
+
+7. Stop the bot with **Ctrl+C** and change `DOMAIN` in your `.env` file back to your organization's domain.
