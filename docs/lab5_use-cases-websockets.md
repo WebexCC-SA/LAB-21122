@@ -363,7 +363,7 @@ Requirements:
 
 !!! Warning
     In this exercise, you will need to add the **spark-admin:devices_write** scope to your Service App.
-    In the next exercises, you will also need to add **spark-admin:people_read** scope. Do it now for simplicity.
+    The next exercise also needs the **spark-admin:people_read** scope, so add both now and you will only need one approval.
 
     Please notify us to have your Service App rights approved.
 
@@ -600,21 +600,21 @@ Requirements:
 
         ![Use Case](./assets/usecase_9.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
-    5. If you submit a MAC address in the wrong format, you will receive a notification about the error:
+    5. If you submit a MAC address in the wrong format, such as "54G3152300C8", you will receive a notification about the error:
 
         ![Use Case](./assets/usecase_10.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
     6. If you submit a duplicate MAC address, such as "54A3152300C8", you will receive a notification about the duplication:
 
-        ![docx-image-064](./assets/docx-image-064.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
-
+        ![Use Case](./assets/usecase_11.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        
     7. If you submit a valid MAC address, you will receive a message like the following:
 
-        ![docx-image-065](./assets/docx-image-065.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Use Case](./assets/usecase_12.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
-    8. You can verify the device registration in Control Hub:
+    8. The device will be visible in Control Hub:
 
-        ![docx-image-066](./assets/docx-image-066.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Use Case](./assets/usecase_13.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
     9. Stop the bot with **Ctrl+C** before moving to the next exercise.
 
@@ -632,8 +632,8 @@ Requirements:
     ![docx-image-049](./assets/docx-image-049.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 !!! Warning
-    In this exercise, you will need to add the **spark-admin:people_read** scope to your Service App if you didn't add it before.
-    
+    In this exercise, you will need the **spark-admin:people_read** scope. If you did not add it in Exercise 2, add it to your Service App now.
+
     Please notify us to have your Service App rights approved. Once approved, generate new tokens as in Step 4.3 and update `WEBEX_ACCESS_TOKEN` in your `.env` file.
 
 ### Pagination
@@ -683,7 +683,21 @@ When retrieving a large amount of information, you need to handle pagination. Wi
 
 3. You will now see all the users listed in the console, displayed in pages of size 2:
 
-    ![docx-image-051](./assets/docx-image-051.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ```terminal
+    Name: admin@webexone-developer.wbx.ai | Email: admin@webexone-developer.wbx.ai
+    Name: Pod 0 | Email: pod0@webexone-developer.wbx.ai
+    
+    --- Next page ---
+    
+    Name: Pod 10 | Email: pod10@webexone-developer.wbx.ai
+    Name: Pod 11 | Email: pod11@webexone-developer.wbx.ai
+    
+    --- Next page ---
+    
+    Name: Pod 12 | Email: pod12@webexone-developer.wbx.ai
+    Name: Pod 13 | Email: pod13@webexone-developer.wbx.ai
+    ...
+    ```
 
 ??? Tip "Solution"
 
@@ -920,22 +934,22 @@ When retrieving a large amount of information, you need to handle pagination. Wi
 
     3. Send any message to your bot to get the following card:
 
-        ![docx-image-053](./assets/docx-image-053.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Use Case](./assets/usecase_14.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
     4. Once you click **Send feedback card to all users in the organization**, the cards will begin sending. You will receive the following notification message once the process is completed:
 
-        ![docx-image-054](./assets/docx-image-054.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Use Case](./assets/usecase_15.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
     5. At this point, all users will receive the following feedback card:
 
-        ![docx-image-055](./assets/docx-image-055.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Use Case](./assets/usecase_16.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
     6. Once users submit their feedback, they will receive the following notification message:
 
-        ![docx-image-056](./assets/docx-image-056.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Use Case](./assets/usecase_17.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
     7. At the same time, you, as an admin, will be notified with the user's feedback:
 
-        ![docx-image-057](./assets/docx-image-057.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Use Case](./assets/usecase_18.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
     8. Stop the bot with **Ctrl+C** when you are done.
