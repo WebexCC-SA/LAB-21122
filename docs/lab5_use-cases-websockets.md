@@ -332,11 +332,11 @@ Requirements:
 
     8. Send another message to your bot, click **Join a space**, select **WebexOne Room**, and click **Join**. You will be added back to the space:
 
-        ![Use Case](./assets/usecase_6.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Use Case](./assets/usecase_6.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
     9. Repeat the previous step. This time, the bot lets you know that you are already a member of the space:
 
-        ![Use Case](./assets/usecase_7.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Use Case](./assets/usecase_7.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
         !!! Tip
             To list any other space, first add your bot to it with its email address, then click **List a space** again. You can also ask someone next to you to send a message to your bot and join your space from the directory.
@@ -606,7 +606,7 @@ Requirements:
 
     6. If you submit a duplicate MAC address, such as "54A3152300C8", you will receive a notification about the duplication:
 
-        ![Use Case](./assets/usecase_11.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Use Case](./assets/usecase_11.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
     7. If you submit a valid MAC address, you will receive a message like the following:
 
@@ -942,7 +942,7 @@ When retrieving a large amount of information, you need to handle pagination. Wi
 
     5. At this point, all users will receive the following feedback card:
 
-        ![Use Case](./assets/usecase_16.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Use Case](./assets/usecase_16.png){ width="500" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
     6. Once users submit their feedback, they will receive the following notification message:
 
@@ -950,6 +950,6 @@ When retrieving a large amount of information, you need to handle pagination. Wi
 
     7. At the same time, you, as an admin, will be notified with the user's feedback:
 
-        ![Use Case](./assets/usecase_18.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Use Case](./assets/usecase_18.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
     8. Stop the bot with **Ctrl+C** when you are done.
