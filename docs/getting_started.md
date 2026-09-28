@@ -66,11 +66,12 @@ Postman will be our primary tool for making API requests and working with OAuth 
 
 1. **Open Postman:** Launch the Postman Desktop App on your lab workstation:
 
-    ![Postman](./assets/postman_logo.png){ width="150" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Postman](./assets/postman_logo.png){ width="100" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 2. Close the first window if it appears, and then click on **Sign in**:
 
     ![Postman](./assets/postman_31.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    
     ![Postman](./assets/postman_32.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 3. You will get re-directed to a website, enter the **Postman email address and password**. Your account will be linked to your Pod number:
