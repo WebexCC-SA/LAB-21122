@@ -17,7 +17,7 @@ First, you need to register your "application" (in this case, our Postman setup)
 1. **Navigate to "My Apps" on the Developer Portal:**
     * Open your browser and go to [My Webex Apps](https://developer.webex.com/my-apps){:target="_blank"}.
 
-        ![Integration](./assets/developer_51.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+        ![Integration](./assets/developer_51.png){ width="250" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
     
 2. **Create a New Integration:**
     * Click the **"Create an Integration"** button.
@@ -58,7 +58,7 @@ Now, let's manually walk through the steps a user and an application would take 
 1. **Use the Authorization URL:**
     * Copy the **“OAuth Authorization URL”** from the Integration Details page:
    
-        ![Integration](./assets/docx-image-013.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Integration](./assets/docx-image-013.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
    
     !!! Tip "Query Params Explanation"
         These are the parameters in the URL:
@@ -76,7 +76,7 @@ Now, let's manually walk through the steps a user and an application would take 
         
     * You'll be prompted to log in to Webex (if not already) and then asked to grant permission to your `[Your Name/ID] - Lab Integration` for the requested scopes:
    
-        ![Integration](./assets/integration_10.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Integration](./assets/integration_10.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
    
     * Uncheck the **“Only ask when requesting new permissions”** checkbox. This way, when we authorize again later, we will see the same dialog.
     * Click **"Accept"**.
@@ -85,7 +85,7 @@ Now, let's manually walk through the steps a user and an application would take 
     * Webex will redirect your browser to `https://oauth.pstmn.io/v1/callback?code=YOUR_AUTHORIZATION_CODE&state=set_by_app`.
     * **Copy the authorization code value** from the URL in your browser's address bar. This is your temporary authorization code:
 
-        ![Integration](./assets/integration_2.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+        ![Integration](./assets/integration_2.png){ width="900" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
     
 4. **Exchange the Code for an Access Token (Postman API Call):**
     * Open Postman.
@@ -134,7 +134,7 @@ Now, let's manually walk through the steps a user and an application would take 
     * Find the `webex_token` variable you created in Lab 1.
     * Paste the `access_token` you just copied from step 5 into the **"Current Value"** column for `webex_token`:
 
-        ![Integration](./assets/postman_57.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+        ![Integration](./assets/postman_57.png){ width="900" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
     
 7. **Make an API Call with the Integration Token (List Rooms):**
     * In your forked "Webex Messaging" collection, expand the **"Rooms"** folder.
@@ -181,7 +181,7 @@ Manually performing the OAuth flow is cumbersome. Postman has built-in support t
 4. **Authorize in Browser:**
     * Postman will open a browser window. You'll be prompted to log in to Webex (if necessary) and grant permission to your `[Your Name/ID] - Lab Integration`:
 
-        ![Integration](./assets/integration_7.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+        ![Integration](./assets/integration_7.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
     
     * Log in, and click **"Accept"** or **"Authorize"** if prompted.
     
@@ -189,7 +189,7 @@ Manually performing the OAuth flow is cumbersome. Postman has built-in support t
     * The browser will redirect, and Postman will automatically capture the authorization code and exchange it for an access token.
     * In the "MANAGE ACCESS TOKENS" window, you should see your `Webex Lab Integration Token` listed:
 
-        ![Integration](./assets/integration_8.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+        ![Integration](./assets/integration_8.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
     
     * Click **"Use Token"**.
 6. **Verify Collection Authorization:**
@@ -207,7 +207,7 @@ Now that your Postman collection is configured to use the OAuth 2.0 flow, all re
     * Click on the **GET Get My Own Details** request.
     * In the main request window, ensure the “Authorization” tab shows “Inherit auth from parent” or “Bearer Token” with the `Webex Lab Integration Token` selected:
     
-        ![Integration](./assets/integration_11.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+        ![Integration](./assets/integration_11.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
         
     * Click the blue **“Send”** button.
     * You should receive a `200 OK` response with your user details. This time, the token came from your integration!
@@ -234,7 +234,7 @@ The app runs on your laptop as a tiny Python web server. The server exchanges th
     * Go back to your integration on the [Webex Developer Portal](https://developer.webex.com/my-apps){:target="_blank"}.
     * Under **Redirect URI(s)**, add a new URI for the local web app: `http://localhost:3000`:
 
-        ![Integration](./assets/integration_14.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+        ![Integration](./assets/integration_14.png){ width="700" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
         
     * Click **Save** at the bottom of the page.
 
@@ -250,7 +250,7 @@ The app runs on your laptop as a tiny Python web server. The server exchanges th
     * Save the file.
 
 3. **Run the Web App:**
-   * In the VS Code terminal, make sure you are in the right folder:
+    * In the VS Code terminal, make sure you are in the right folder:
    
         - cd 02-integration
         
@@ -260,7 +260,7 @@ The app runs on your laptop as a tiny Python web server. The server exchanges th
         
     * Open your web browser and go to `http://localhost:3000`:
     
-        ![Integration](./assets/integration_16.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+        ![Integration](./assets/integration_16.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 4. **Test the Integration:**
     * Click **"Login with Webex"**.
@@ -272,7 +272,7 @@ The app runs on your laptop as a tiny Python web server. The server exchanges th
         
     * Check your Webex client: the message was sent on your behalf by your own web application:
 
-        ![Integration](./assets/integration_18.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+        ![Integration](./assets/integration_18.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
     !!! Note
         When you are done, stop the app with `Ctrl+C` in the terminal.
