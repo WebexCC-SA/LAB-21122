@@ -466,7 +466,7 @@ In this step, you will explore how to create and send an Adaptive Card.
 
 5. If you have used the example card, you should receive the following:
 
-    ![Bot](./assets/bot_35.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Bot](./assets/bot_35.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
     
 ## Step 3.5: Bot with WebSockets
 
@@ -1022,7 +1022,7 @@ In Step 3.4, you sent an Adaptive Card, but nothing happened when someone used i
 
     The previous card will be deleted. You should then receive both your message and a formatted notification confirming that your message has been sent:
 
-    ![Bot](./assets/bot_38.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Bot](./assets/bot_38.png){ width="500" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 5. Observe how the card submission is printed in the console:
 
@@ -1176,7 +1176,7 @@ Anyone in Webex can find your bot and send it a message, including users outside
 
 4. Send **message** to your bot. Your email belongs to the allowed domain, so the bot works exactly like in Step 3.7:
 
-    ![Bot](./assets/bot_40.png){ width="550" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Bot](./assets/bot_40.png){ width="500" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 5. Now test what a user from another organization would see. Stop the bot with **Ctrl+C**, change `DOMAIN` in your `.env` file to `example.com`, save the file, and run the bot again:
 
