@@ -65,7 +65,7 @@ Now that MCP is enabled in the organization, you need a token for each MCP serve
 
 1. In the [Webex for Developers](https://developer.webex.com/){:target="_blank"} portal, on the top right corner of the page, click your avatar and then select **[Webex Agentic MCP App token](https://developer.webex.com/agentic-token){:target="_blank"}**:
 
-    ![Generate token](./assets/token_0.png){ style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Generate token](./assets/token_0.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 2. Under **Generate token**, click **Generate now**:
 
@@ -105,7 +105,7 @@ The Webex MCP Lab website is an AI assistant that works as your MCP client, so y
 
 4. The lab suggests a preconfigured Webex Contact Center server. You will not use it in this lab, so click **Use another MCP server**:
 
-    ![Use another MCP server](./assets/mcp_4.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Use another MCP server](./assets/mcp_4.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 5. Fill in the details for the **Webex Messaging** server and click **Discover tools**:
 
@@ -124,11 +124,11 @@ The Webex MCP Lab website is an AI assistant that works as your MCP client, so y
 
 7. Click **Connect MCP** at the bottom of the page:
 
-    ![Connect MCP](./assets/mcp_8.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Connect MCP](./assets/mcp_8.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 8. After you click **Return to AI Agent**, you should be back at the chat interface and the MCP should be listed:
 
-    ![Webex Messaging connected](./assets/mcp_9.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Webex Messaging connected](./assets/mcp_9.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 9. Repeat steps 3 to 8 for the **Webex Meetings** server:
 
@@ -138,7 +138,7 @@ The Webex MCP Lab website is an AI assistant that works as your MCP client, so y
 
 10. Check that both servers now appear in the **Connected MCPs** panel:
 
-    ![Both MCP servers connected](./assets/mcp_10.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Both MCP servers connected](./assets/mcp_10.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
     !!! Info
         Your tokens are only kept in your lab session. If you click **Reset session**, you will need to add the servers again.
@@ -152,13 +152,13 @@ In this step, you will repeat some of the actions from the previous labs, this t
 
 1. Make sure that you select **Webex Messaging**:
 
-    ![Select Webex Messaging](./assets/mcp_11.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Select Webex Messaging](./assets/mcp_11.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 2. Ask the agent to list your spaces:
 
     - List my most recently active Webex space and its title.
 
-    ![Most recent space](./assets/mcp_14.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Most recent space](./assets/mcp_14.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
     !!! Tip
         Keep an eye on the **Tool activity** panel on the right during the next steps. It shows every tool the assistant calls and the parameters it sends, which is the same work you did in code in the previous labs.
@@ -171,7 +171,7 @@ In this step, you will repeat some of the actions from the previous labs, this t
 
     You should see yourself and your bot:
 
-    ![Space members](./assets/mcp_15.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Space members](./assets/mcp_15.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 4. Read a conversation. Ask about your 1:1 space with your bot:
 
@@ -179,7 +179,7 @@ In this step, you will repeat some of the actions from the previous labs, this t
 
     The assistant reads the messages as you, so it can see the echo, commands, and cards you tested before:
 
-    ![Conversation summary](./assets/mcp_16.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Conversation summary](./assets/mcp_16.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 5. Send a message as yourself:
 
@@ -188,15 +188,15 @@ In this step, you will repeat some of the actions from the previous labs, this t
     !!! Note
         This action will require tool approval:
 
-        ![Tool approval](./assets/mcp_17.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+        ![Tool approval](./assets/mcp_17.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
     After you approve it, the assistant confirms the message was sent:
 
-    ![Message sent](./assets/mcp_19.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Message sent](./assets/mcp_19.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
     Open Webex and check the space. Notice that the message was sent by **you**, not by your bot:
 
-    ![Message in Webex](./assets/mcp_18.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Message in Webex](./assets/mcp_18.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 6. Do some more testing yourself now.
 
@@ -211,7 +211,7 @@ In Lab 4, your Service App scheduled a meeting on your behalf. Now you will find
 
 1. Make sure you change the active MCP server to Meetings:
 
-    ![Select Webex Meetings](./assets/mcp_21.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Select Webex Meetings](./assets/mcp_21.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 2. Find the meeting your Service App created:
 
@@ -219,13 +219,13 @@ In Lab 4, your Service App scheduled a meeting on your behalf. Now you will find
 
     You should see the meetings created in the previous exercises.
 
-    ![Upcoming meetings](./assets/mcp_22.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Upcoming meetings](./assets/mcp_22.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 3. Get the details of those meetings:
 
     - Show me the meeting number and host of the meetings I scheduled.
 
-    ![Meeting details](./assets/mcp_23.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Meeting details](./assets/mcp_23.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 4. Schedule a new meeting:
 
@@ -234,11 +234,11 @@ In Lab 4, your Service App scheduled a meeting on your behalf. Now you will find
     !!! Note
         Again, as it is a create action, it will require tool approval.
 
-    ![Meeting scheduled](./assets/mcp_24.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Meeting scheduled](./assets/mcp_24.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
     !!! Tip
         Always mention the time zone. Without it, the meeting may be scheduled in UTC, just like the Service App script in Lab 4.
 
 5. Open Webex and check that the meeting appears in your calendar:
 
-    ![Meeting in Webex calendar](./assets/mcp_25.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Meeting in Webex calendar](./assets/mcp_25.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
