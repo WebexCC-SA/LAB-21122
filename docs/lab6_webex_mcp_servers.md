@@ -7,8 +7,6 @@ Upon completion of this section, you will be able to:
 1. Explain what MCP is and how the Webex MCP Servers expose Webex to AI assistants.
 2. Use the Webex Messaging MCP Server to work with spaces and messages.
 3. Use the Webex Meetings MCP Server to find and schedule meetings.
-4. Combine both servers in a single request.
-5. Compare MCP with the bots and Service Apps you built in the previous labs.
 
 ### Prerequisites
 
@@ -63,26 +61,28 @@ Webex MCP Servers act **on behalf of the signed-in user**. This is the main diff
 
 ## Step 6.2: Generate your MCP tokens
 
-Now that your users are allowed to use MCP, every user can generate a token for each server. As a user, the first thing you need is a token to access the MCP servers.
+Now that MCP is enabled in the organization, you need a token for each MCP server you want to use.
 
-1. Log into [developer.webex.com](https://developer.webex.com/){:target="_blank"} with the credentials that were provided.
-2. In the top right corner of the page, click your avatar and then select [Manage Webex Agentic MCP App token](https://developer.webex.com/agentic-token){:target="_blank"}.
-3. Under **Generate token**, click **Generate now**:
+1. In the [Webex for Developers](https://developer.webex.com/){:target="_blank"} portal, on the top right corner of the page, click your avatar and then select **[Webex Agentic MCP App token](https://developer.webex.com/agentic-token){:target="_blank"}**:
+
+    ![Generate token](./assets/token_0.png){ style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+2. Under **Generate token**, click **Generate now**:
 
     ![Generate token](./assets/token_1.png){ style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-4. You need a separate token per MCP server. Start with **Webex Messaging**:
+3. You need a separate token per MCP server. Start with **Webex Messaging**:
 
     ![Select MCP server](./assets/token_2.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-5. You will now see the token:
+4. You will now see the token:
 
     ![MCP token](./assets/token_3.png){ width="600" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
     !!! Warning
         Copy the token now, as you won't be able to see it again later. You will paste it in the Webex MCP Lab in the next step.
 
-6. Repeat steps 3 to 5, this time selecting **Webex Meetings**, and copy that token too.
+5. Repeat steps 2 to 4, this time selecting **Webex Meetings**, and copy that token too.
 
 !!! Warning
     These tokens act as you. Do not share them or paste them anywhere other than the lab website.
@@ -113,120 +113,132 @@ The Webex MCP Lab website is an AI assistant that works as your MCP client, so y
     - **Connection name:** `Webex Messaging`
     - **Authentication:** **Bearer token**, and paste your Webex Messaging token
 
-    ![Add another MCP](./assets/mcp_5.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Webex Messaging server details](./assets/mcp_6.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-6. Repeat steps 3 to 5 for the **Webex Meetings** server:
+6. You will see the list of tools available:
+
+    ![Discovered tools](./assets/mcp_7.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+    !!! Note
+        Destructive MCP tools are disabled for this lab.
+
+7. Click **Connect MCP** at the bottom of the page:
+
+    ![Connect MCP](./assets/mcp_8.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+8. After you click **Return to AI Agent**, you should be back at the chat interface and the MCP should be listed:
+
+    ![Webex Messaging connected](./assets/mcp_9.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+9. Repeat steps 3 to 8 for the **Webex Meetings** server:
 
     - **MCP server address:** `https://mcp.webexapis.com/mcp/webex-meeting`
     - **Connection name:** `Webex Meetings`
     - **Authentication:** **Bearer token**, and paste your Webex Meetings token
 
-7. Check that both servers now appear in the **Connected MCPs** panel.
+10. Check that both servers now appear in the **Connected MCPs** panel:
+
+    ![Both MCP servers connected](./assets/mcp_10.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
     !!! Info
         Your tokens are only kept in your lab session. If you click **Reset session**, you will need to add the servers again.
-
-8. Ask the assistant what it can do:
-
-    - Which Webex tools can you use? Group them by server and describe each one in one sentence.
-
-    You will see the tools available in each server. Take a moment to notice how many of them map to the APIs you have already used: rooms, messages, memberships, and meetings.
-
-!!! Tip
-    Keep an eye on the **Tool activity** panel on the right during the next steps. It shows every tool the assistant calls and the parameters it sends, which is the same work you did in code in the previous labs.
 
 ## Step 6.4: Webex Messaging
 
 In this step, you will repeat some of the actions from the previous labs, this time without code.
 
-1. List your spaces, just like you did with the Rooms API in Lab 3:
+!!! Warning
+    This lab uses one MCP server at a time, so select the server you need before each request.
 
-    - List my 5 most recently active Webex spaces with their titles.
+1. Make sure that you select **Webex Messaging**:
 
-2. Look at the space your bot created in Step 3.3:
+    ![Select Webex Messaging](./assets/mcp_11.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-    - Who are the members of the space "WebexOne Room"?
+2. Ask the agent to list your spaces:
 
-    You should see yourself and your bot. If you joined the space again in Lab 5, Exercise 1, this is the same membership the bot created for you.
+    - List my most recently active Webex space and its title.
 
-3. Read a conversation. Ask about your 1:1 space with your bot:
+    ![Most recent space](./assets/mcp_14.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+    !!! Tip
+        Keep an eye on the **Tool activity** panel on the right during the next steps. It shows every tool the assistant calls and the parameters it sends, which is the same work you did in code in the previous labs.
+
+        ![Tool activity panel](./assets/mcp_13.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+3. Ask now for the members of that space:
+
+    - Who are the members of the space "WebexOne-Pod0"?
+
+    You should see yourself and your bot:
+
+    ![Space members](./assets/mcp_15.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+4. Read a conversation. Ask about your 1:1 space with your bot:
 
     - Summarize the last 10 messages in my 1:1 space with my bot WebexOne-USERNAME.
 
-    The assistant reads the messages as you, so it can see the echo, commands, and cards you tested in Lab 3.
+    The assistant reads the messages as you, so it can see the echo, commands, and cards you tested before:
 
-4. Send a message as yourself:
+    ![Conversation summary](./assets/mcp_16.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+5. Send a message as yourself:
 
     - Send a message to the space "WebexOne Room" saying "Hello from the Webex MCP Lab!" in bold.
 
-    Open Webex and check the space. Notice that the message was sent by **you**, not by your bot.
+    !!! Note
+        This action will require tool approval:
 
-5. Create a space and invite your bot:
+        ![Tool approval](./assets/mcp_17.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-    - Create a space called "WebexOne MCP Space", add my bot WebexOne-USERNAME to it, and post a welcome message explaining that this space was created with MCP.
+    After you approve it, the assistant confirms the message was sent:
 
-    This single request needs several tools: create the space, add the member, and send the message. Check which tools the assistant used and in what order.
+    ![Message sent](./assets/mcp_19.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+    Open Webex and check the space. Notice that the message was sent by **you**, not by your bot:
+
+    ![Message in Webex](./assets/mcp_18.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+6. Do some more testing yourself now.
+
+    !!! Warning
+        The assistant can only call one tool per request in this lab, so ask for one action at a time:
+
+        ![One tool per request](./assets/mcp_20.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 ## Step 6.5: Webex Meetings
 
 In Lab 4, your Service App scheduled a meeting on your behalf. Now you will find and schedule meetings as yourself.
 
-1. Find the meeting your Service App created:
+1. Make sure you change the active MCP server to Meetings:
+
+    ![Select Webex Meetings](./assets/mcp_21.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+2. Find the meeting your Service App created:
 
     - List my upcoming Webex meetings for the next 7 days, with title, start time, and join link.
 
-    You should see the meeting scheduled in Lab 4, with the title you chose in Step 4.4.
+    You should see the meetings created in the previous exercises.
 
-2. Get the details of that meeting:
+    ![Upcoming meetings](./assets/mcp_22.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-    - Show me the meeting number and host of the meeting I scheduled with my Service App.
+3. Get the details of those meetings:
 
-3. Schedule a new meeting:
+    - Show me the meeting number and host of the meetings I scheduled.
+
+    ![Meeting details](./assets/mcp_23.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+
+4. Schedule a new meeting:
 
     - Schedule a 30-minute Webex meeting tomorrow at 10:00 in my time zone, called "WebexOne MCP Meeting".
+
+    !!! Note
+        Again, as it is a create action, it will require tool approval.
+
+    ![Meeting scheduled](./assets/mcp_24.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
     !!! Tip
         Always mention the time zone. Without it, the meeting may be scheduled in UTC, just like the Service App script in Lab 4.
 
-4. Open Webex and check that the meeting appears in your calendar.
+5. Open Webex and check that the meeting appears in your calendar:
 
-## Step 6.6: Combine Messaging and Meetings
-
-The real power of MCP is combining tools from different servers in a single request, something that would need several API calls and some code to glue them together.
-
-1. Share your meeting with a space:
-
-    - Post the join link of "WebexOne MCP Meeting" in the space "WebexOne MCP Space", with a short message inviting everyone to join.
-
-2. Create a meeting from a conversation:
-
-    - Read the last messages in "WebexOne MCP Space", schedule a 15-minute follow-up meeting for tomorrow at 11:00 in my time zone, and post the join link in the same space.
-
-3. Clean up what you created in this lab:
-
-    - Delete the meetings "WebexOne MCP Meeting" and the follow-up meeting you just created.
-
-    The assistant should ask you to confirm before deleting. Check that it lists exactly the meetings you expect.
-
-## Step 6.7: Explore the limits
-
-MCP tools can only do what the signed-in user can do. Try these requests and compare the results with what you built in the previous labs:
-
-1. Ask for something that required a Service App in Lab 5:
-
-    - List all the users in my organization.
-
-    Your lab user is not an administrator, so the assistant cannot list everyone like the feedback bot did with the `spark-admin:people_read` scope.
-
-2. Ask for something that required a bot:
-
-    - Reply automatically "Echo:" to every message I receive from now on.
-
-    MCP tools run only when you ask the assistant. To react to events in real time, you still need a bot listening over WebSockets, like the one you built in Step 3.5.
-
-!!! Info
-    **When to use each approach**
-
-    - **Bot:** always-on assistants that react to messages and cards, for any user.
-    - **Service App:** organization-wide automation with admin permissions and no user signed in.
-    - **Webex MCP Server:** on-demand tasks for a single user, described in plain language.
+    ![Meeting in Webex calendar](./assets/mcp_25.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
