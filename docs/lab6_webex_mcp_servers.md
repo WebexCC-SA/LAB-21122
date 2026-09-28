@@ -22,7 +22,7 @@ MCP servers are **NOT** enabled by default in your organization. An administrato
 
     1. If you try to access MCP for the first time, you will see the message **No allowed MCP servers found**.
 
-        ![No allowed MCP servers found](./assets/token_4.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+        ![No allowed MCP servers found](./assets/token_4.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
     2. To enable them, go to **Collaboration Control Hub** -> **Apps** -> **Agentic Apps** and select the **Webex** tab:
 
@@ -65,7 +65,7 @@ Now that MCP is enabled in the organization, you need a token for each MCP serve
 
 1. In the [Webex for Developers](https://developer.webex.com/){:target="_blank"} portal, on the top right corner of the page, click your avatar and then select **[Webex Agentic MCP App token](https://developer.webex.com/agentic-token){:target="_blank"}**:
 
-    ![Generate token](./assets/token_0.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Generate token](./assets/token_0.png){ width="300" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 2. Under **Generate token**, click **Generate now**:
 
@@ -77,7 +77,7 @@ Now that MCP is enabled in the organization, you need a token for each MCP serve
 
 4. You will now see the token:
 
-    ![MCP token](./assets/token_3.png){ width="600" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![MCP token](./assets/token_3.png){ width="500" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
     !!! Warning
         Copy the token now, as you won't be able to see it again later. You will paste it in the Webex MCP Lab in the next step.
@@ -124,7 +124,7 @@ The Webex MCP Lab website is an AI assistant that works as your MCP client, so y
 
 7. Click **Connect MCP** at the bottom of the page:
 
-    ![Connect MCP](./assets/mcp_8.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Connect MCP](./assets/mcp_8.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 8. After you click **Return to AI Agent**, you should be back at the chat interface and the MCP should be listed:
 
@@ -152,7 +152,7 @@ In this step, you will repeat some of the actions from the previous labs, this t
 
 1. Make sure that you select **Webex Messaging**:
 
-    ![Select Webex Messaging](./assets/mcp_11.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Select Webex Messaging](./assets/mcp_11.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 2. Ask the agent to list your spaces:
 
@@ -192,11 +192,11 @@ In this step, you will repeat some of the actions from the previous labs, this t
 
     After you approve it, the assistant confirms the message was sent:
 
-    ![Message sent](./assets/mcp_19.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Message sent](./assets/mcp_19.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
     Open Webex and check the space. Notice that the message was sent by **you**, not by your bot:
 
-    ![Message in Webex](./assets/mcp_18.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Message in Webex](./assets/mcp_18.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 6. Do some more testing yourself now.
 
@@ -241,4 +241,4 @@ In Lab 4, your Service App scheduled a meeting on your behalf. Now you will find
 
 5. Open Webex and check that the meeting appears in your calendar:
 
-    ![Meeting in Webex calendar](./assets/mcp_25.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Meeting in Webex calendar](./assets/mcp_25.png){ width="900" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
