@@ -13,7 +13,7 @@ Scan the QR code to be added to the Webex space for Q&A and more.
 ## Tools used in this lab
 
 - **Webex Client** — Interact with your bot and verify API responses.
-- **Visual Studio Code** — Edit code.
+- **Visual Studio Code** — Review, edit and run code.
 - **Webex for Developers** — Create bots, Webex MCP tokens, service apps, and review API documentation.
 - **Postman** — Call Webex REST APIs.
 
