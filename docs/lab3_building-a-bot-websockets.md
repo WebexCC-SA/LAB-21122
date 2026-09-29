@@ -1,6 +1,6 @@
 # Lab 3 – Building a Bot
 
-In this section, you will create a Webex bot and build it into an interactive assistant using Python. You will register the bot, send messages, create rooms, work with Adaptive Cards, and connect to Webex to receive and respond to events in real time.
+In this section, you will create a Webex bot and build it into an interactive assistant using Python. You will register the bot, send messages, create rooms, work with Adaptive Cards, and connect to Webex Websockets to receive and respond to events in real time.
 
 Upon completion of this section, you will be able to:
 
@@ -475,11 +475,11 @@ In this step, you will explore how to create and send an Adaptive Card.
 Webex bots can receive events in two main ways:
 
 - **Webhooks:** Webex sends HTTP callbacks to a public URL. This works well in production, but usually requires a public endpoint or a tunnel such as ngrok during development.
-- **WebSockets:** Your bot opens a persistent connection to Webex and receives events in real time. This works well in lab environments and corporate networks because no public URL is required.
+- **WebSockets:** Your bot opens a persistent connection to Webex Websockets and receives events in real time. This works well in lab environments and corporate networks because no public URL is required.
 
-In this lab, your bot connects to Webex. You will implement event handling, message parsing, and Adaptive Card actions directly in Python.
+In this lab, your bot connects to Webex Websockets. You will implement event handling, message parsing, and Adaptive Card actions directly in Python.
 
-In this step, you will open a persistent connection to Webex and handle incoming messages. All the connection logic lives in a shared class, so every bot in the following steps only needs to define what to do with each event.
+In this step, you will open a persistent connection to Webex Websockets and handle incoming messages. All the connection logic lives in a shared class, so every bot in the following steps only needs to define what to do with each event.
 
 ### WebSocket client
 
