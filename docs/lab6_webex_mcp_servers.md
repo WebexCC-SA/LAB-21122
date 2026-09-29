@@ -103,17 +103,13 @@ The Webex MCP Lab website is an AI assistant that works as your MCP client, so y
 
     ![Add MCP](./assets/mcp_3.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-4. The lab suggests a preconfigured Webex Contact Center server. You will not use it in this lab, so click **Use another MCP server**:
+4. From the list of available MCPs, choose **Webex Messaging**:
 
-    ![Use another MCP server](./assets/mcp_4.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Use another MCP server](./assets/mcp_26.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-5. Fill in the details for the **Webex Messaging** server and click **Discover tools**:
+5. Introduce your **WCIT Token** and click **Discover tools**:
 
-    - **MCP server address:** `https://mcp.webexapis.com/mcp/webex-messaging`
-    - **Connection name:** `Webex Messaging`
-    - **Authentication:** **Bearer token**, and paste your Webex Messaging token
-
-    ![Webex Messaging server details](./assets/mcp_6.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+    ![Webex Messaging server details](./assets/mcp_27.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
 6. You will see the list of tools available:
 
@@ -130,11 +126,7 @@ The Webex MCP Lab website is an AI assistant that works as your MCP client, so y
 
     ![Webex Messaging connected](./assets/mcp_9.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-9. Repeat steps 3 to 8 for the **Webex Meetings** server:
-
-    - **MCP server address:** `https://mcp.webexapis.com/mcp/webex-meeting`
-    - **Connection name:** `Webex Meetings`
-    - **Authentication:** **Bearer token**, and paste your Webex Meetings token
+9. Repeat steps 3 to 8 for the **Webex Meetings** server.
 
 10. Check that both servers now appear in the **Connected MCPs** panel:
 
