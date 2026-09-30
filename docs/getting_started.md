@@ -21,7 +21,7 @@ Scan the QR code to be added to the Webex space for Q&A and more.
 
 These are your Webex credentials for this lab:
 
-| Item | Value |
+|  |  |
 | --- | --- |
 | Username | `podX@webexone-developer.wbx.ai` (replace X with your pod number) |
 | Password | `WebexOne2026!` |
