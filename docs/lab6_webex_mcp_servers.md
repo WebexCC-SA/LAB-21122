@@ -95,7 +95,7 @@ The Webex MCP Lab website is an AI assistant that works as your MCP client, so y
 
     ![MCP](./assets/mcp_1.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-2. Sign in using the key that was provided to you:
+2. Sign in using your key. Your key will be **LAB-21122-*XXXX***, where XXXX represents the characters assigned to your Pod card:
 
     ![MCP](./assets/mcp_2.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
