@@ -1,4 +1,4 @@
-# Lab 5 – Use Cases
+# Lab 6 – Use Cases
 
 In this section, you will put your Webex API knowledge into practice by building real-world solutions. You will explore how bots and Service Apps can help users find the right spaces, automate device provisioning, and collect feedback across an organization.
 
@@ -305,7 +305,7 @@ Requirements:
 
     2. Change your directory in the terminal:
 
-        - cd ../05-usecases
+        - cd ../06-usecases
 
     3. Execute the code with the following command and let it run:
 
@@ -371,7 +371,7 @@ Requirements:
 
 ??? Tip "Solution"
 
-    1. Navigate to `05-usecases/02_device_bot.py` and review the code.
+    1. Navigate to `06-usecases/02_device_bot.py` and review the code.
 
         These are the key points to understand how each requirement has been met:
 
@@ -640,7 +640,7 @@ Requirements:
 
 When retrieving a large amount of information, you need to handle pagination. With pagination, the API returns a limited set of results per request. If more data is available, the response includes a `Link` header with `rel="next"`, which provides the URL to fetch the next page of results. This process continues until all results have been retrieved.
 
-1. Navigate to `05-usecases/03_pagination.py` and review the code.
+1. Navigate to `06-usecases/03_pagination.py` and review the code.
 
     In this example, a pagination limit of 2 users is used.
 
@@ -701,7 +701,7 @@ When retrieving a large amount of information, you need to handle pagination. Wi
 
 ??? Tip "Solution"
 
-    1. Navigate to `05-usecases/03_feedback_bot.py` and review the code.
+    1. Navigate to `06-usecases/03_feedback_bot.py` and review the code.
 
         These are the key points to understand how each requirement has been met:
 
