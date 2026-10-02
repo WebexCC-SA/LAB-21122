@@ -92,8 +92,7 @@ nav:
       - Lab 1 - Making Your First API Requests: lab1_making-your-first-api-requests.md
       - Lab 2 - Creating an Integration: lab2_creating-an-integration.md
       - Lab 3 - Building a Bot: lab3_building-a-bot-websockets.md
-      #- Lab 3 - Building a Bot (Old): lab4_building-a-bot.md
       - Lab 4 - Deploying a Meeting Scheduler Service App: lab4_deploying-a-meeting-scheduler-service-app.md
-      - Lab 5 - Use Cases: lab5_use-cases-websockets.md
-      - Lab 6 - Webex MCP Servers: lab6_webex_mcp_servers.md
+      - Lab 5 - Webex MCP Servers: lab5_webex_mcp_servers.md
+      - Lab 6 - Use Cases: lab6_use-cases.md
       - Conclusion: conclusion.md
