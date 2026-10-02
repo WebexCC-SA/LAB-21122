@@ -12,7 +12,7 @@ Upon completion of this lab, you will be able to:
 - Create secure Webex Integrations with OAuth 2.0.
 - Build interactive Webex Bots using Python and Adaptive Cards.
 - Deploy Webex Service Apps for administrative automation.
-- Explore Agentic Apps and Webex MCP Servers.
+- Explore Webex MCP Servers.
 
 ## Disclaimer
 
