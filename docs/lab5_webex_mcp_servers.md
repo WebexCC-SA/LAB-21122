@@ -1,4 +1,4 @@
-# Lab 6 – Webex MCP Servers
+# Lab 5 – Webex MCP Servers
 
 In this section, you will use **Webex MCP Servers** to work with Webex through an AI assistant. Instead of writing code, you will describe what you want in plain language, and the assistant will call the Webex APIs for you.
 
@@ -38,7 +38,7 @@ MCP servers are **NOT** enabled by default in your organization. An administrato
 
         After this change, users will be able to use the server.
 
-## Step 6.1: Understand MCP and Webex MCP Servers
+## Step 5.1: Understand MCP and Webex MCP Servers
 
 The **Model Context Protocol (MCP)** is an open standard that lets AI assistants use external tools. It has three parts:
 
@@ -54,12 +54,12 @@ Webex MCP Servers act **on behalf of the signed-in user**. This is the main diff
 |---|---|---|
 | **Bot** (Lab 3) | The bot itself | Only the spaces the bot is in |
 | **Service App** (Lab 4) | The organization | Admin scopes approved in Control Hub |
-| **Webex MCP Server** (Lab 6) | You | What you can do in Webex, limited to the tools your admin allowed in Control Hub |
+| **Webex MCP Server** (Lab 5) | You | What you can do in Webex, limited to the tools your admin allowed in Control Hub |
 
 !!! Warning
     The assistant can send messages and schedule meetings as you. Read what it plans to do before you confirm any action that creates, changes, or deletes something.
 
-## Step 6.2: Generate your MCP tokens
+## Step 5.2: Generate your MCP tokens
 
 Now that MCP is enabled in the organization, you need a token for each MCP server you want to use.
 
@@ -87,7 +87,7 @@ Now that MCP is enabled in the organization, you need a token for each MCP serve
 !!! Warning
     These tokens act as you. Do not share them or paste them anywhere other than the lab website.
 
-## Step 6.3: Connect the MCP servers
+## Step 5.3: Connect the MCP servers
 
 The Webex MCP Lab website is an AI assistant that works as your MCP client, so you do not need VS Code or any configuration file for this section.
 
@@ -135,7 +135,7 @@ The Webex MCP Lab website is an AI assistant that works as your MCP client, so y
     !!! Info
         Your tokens are only kept in your lab session. If you click **Reset session**, you will need to add the servers again.
 
-## Step 6.4: Webex Messaging
+## Step 5.4: Webex Messaging
 
 In this step, you will repeat some of the actions from the previous labs, this time without code.
 
@@ -197,7 +197,7 @@ In this step, you will repeat some of the actions from the previous labs, this t
 
         ![One tool per request](./assets/mcp_20.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-## Step 6.5: Webex Meetings
+## Step 5.5: Webex Meetings
 
 In Lab 4, your Service App scheduled a meeting on your behalf. Now you will find and schedule meetings as yourself.
 
