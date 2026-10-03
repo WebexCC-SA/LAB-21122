@@ -1,0 +1,2198 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="LAB-21122: Exploring the Webex Developer Ecosystem">
+      
+      
+        <meta name="author" content="Diego Manuel Jimenez Moreno">
+      
+      
+      
+        <link rel="prev" href="../lab2_creating-an-integration/">
+      
+      
+        <link rel="next" href="../lab4_deploying-a-meeting-scheduler-service-app/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../template_assets/webex75.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Lab 3 - Building a Bot - LAB-21122: Exploring the Webex Developer Ecosystem</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-3-building-a-bot" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LAB-21122: Exploring the Webex Developer Ecosystem" class="md-header__button md-logo" aria-label="LAB-21122: Exploring the Webex Developer Ecosystem" data-md-component="logo">
+      
+  <img src="../template_assets/webexLogo91.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LAB-21122: Exploring the Webex Developer Ecosystem
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 3 - Building a Bot
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LAB-21122: Exploring the Webex Developer Ecosystem" class="md-nav__button md-logo" aria-label="LAB-21122: Exploring the Webex Developer Ecosystem" data-md-component="logo">
+      
+  <img src="../template_assets/webexLogo91.png" alt="logo">
+
+    </a>
+    LAB-21122: Exploring the Webex Developer Ecosystem
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1_making-your-first-api-requests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 1 - Making Your First API Requests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2_creating-an-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2 - Creating an Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3 - Building a Bot
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3 - Building a Bot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#step-31-create-a-bot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3.1: Create a Bot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-32-send-a-message-to-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3.2: Send a message to yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-33-create-a-room-and-add-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3.3: Create a Room and add yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-34-adaptive-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3.4: Adaptive card
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-35-bot-with-websockets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3.5: Bot with WebSockets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3.5: Bot with WebSockets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receiving-events-in-real-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Receiving events in real time
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WebSocket client
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bot-helpers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bot Helpers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-bot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating the bot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-36-command-bot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3.6: Command bot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-37-adaptive-card-bot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3.7: Adaptive card bot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-38-secure-bot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3.8: Secure bot
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4_deploying-a-meeting-scheduler-service-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 4 - Deploying a Meeting Scheduler Service App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab5_webex_mcp_servers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 5 - Webex MCP Servers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab6_use-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 6 - Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conclusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conclusion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lab-3-building-a-bot">Lab 3 – Building a Bot</h1>
+<p>In this section, you will create a Webex bot and build it into an interactive assistant using Python. You will register the bot, send messages, create rooms, work with Adaptive Cards, and connect to Webex Websockets to receive and respond to events in real time.</p>
+<p>Upon completion of this section, you will be able to:</p>
+<ol>
+<li>Create a <strong>Bot</strong> in Webex.</li>
+<li>Find people and send messages with the bot using Python.</li>
+<li>Create a room and add a person to it with the bot using Python.</li>
+<li>Create and send an Adaptive Card.</li>
+<li>Build an interactive bot that receives and responds to events in real time.</li>
+<li>Restrict your bot so it only answers users from your organization.</li>
+</ol>
+<h2 id="step-31-create-a-bot">Step 3.1: Create a Bot</h2>
+<p>First you need to create your bot:</p>
+<ol>
+<li>In the <a href="https://developer.webex.com/" target="_blank">Webex for Developers</a> portal, on the top right corner of the page, click your avatar and then select <strong target="_blank"><a href="https://developer.webex.com/my-apps">My Webex Apps</a></strong>.</li>
+<li>
+<p>Click <strong>Create a New App</strong>, and in that page, find the Bot card and click the <strong>Create a Bot</strong> button.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/bot_31.png" data-title="Bot" data-desc-position="top"><img alt="Bot" src="../assets/bot_31.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="950"></a></p>
+</li>
+<li>
+<p>Fill out the webform to register a new bot.</p>
+<ol>
+<li><strong>Bot Name:</strong> WebexOne-<em>USERNAME</em></li>
+<li><strong>Bot Username:</strong> webexone-<em>USERNAME</em></li>
+<li><strong>Icon:</strong> Select any color icon</li>
+<li><strong>Description:</strong> Bot for WebexOne</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/bot_32.png" data-title="Bot" data-desc-position="top"><img alt="Bot" src="../assets/bot_32.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="950"></a></p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Copy your <strong>Bot access token</strong> to your <code>.env</code> file as <strong>BOT_TOKEN</strong>.</p>
+</div>
+<h2 id="step-32-send-a-message-to-yourself">Step 3.2: Send a message to yourself</h2>
+<p>In this step, you will send your first 1:1 message using the bot you just created.</p>
+<ol>
+<li>
+<p>In VS Code, navigate to your <code>.env</code> file, and make sure to fill and save the following variables:</p>
+<ul>
+<li><code>BOT_TOKEN</code></li>
+<li><code>EMAIL</code></li>
+<li><code>DOMAIN</code></li>
+</ul>
+</li>
+<li>
+<p>Navigate to <code>03-bots/01_people.py</code> and review the code. You will notice that there are two functions <strong>find_people</strong> and <strong>all_people</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>all_people</strong> will not work if you are using a bot token as it requires admin privileges.</p>
+</div>
+<details class="tip">
+<summary>Python Code</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">webexpythonsdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebexAPI</span> <span class="c1"># Import the WebexAPI class from the Webex Python SDK</span>
+
+<span class="c1"># Load environment variables from the .env file.</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Webex Bot Token for API authentication.</span>
+<span class="n">bot_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"BOT_TOKEN"</span><span class="p">)</span>
+<span class="c1"># Email address for user lookup.</span>
+<span class="n">email</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"EMAIL"</span><span class="p">)</span>
+
+<span class="c1"># Initialize the WebexAPI client with the bot token.</span>
+<span class="n">webex</span> <span class="o">=</span> <span class="n">WebexAPI</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">all_people</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Retrieves and prints the display name and email(s) for all people</span>
+<span class="sd">    accessible by the authenticated Webex bot/user.</span>
+<span class="sd">    """</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># List all people in the organization.</span>
+        <span class="c1"># webex.people.list() returns a GeneratorContainer, which is iterable.</span>
+        <span class="n">all_people_iterator</span> <span class="o">=</span> <span class="n">webex</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+        <span class="c1"># Iterate through the people and print their details.</span>
+        <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">all_people_iterator</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Name: </span><span class="si">{</span><span class="n">person</span><span class="o">.</span><span class="n">displayName</span><span class="si">}</span><span class="s2">, Email: </span><span class="si">{</span><span class="n">person</span><span class="o">.</span><span class="n">emails</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="c1"># Catch and print any exceptions that occur during the API call.</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"An error occurred while listing all people: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_people</span><span class="p">(</span><span class="n">email_address</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Finds and prints the display name and email(s) for a specific person</span>
+<span class="sd">    based on their email address.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        email_address (str): The email address of the person to find.</span>
+<span class="sd">    """</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># List people, filtering by the provided email address.</span>
+        <span class="c1"># webex.people.list() returns a GeneratorContainer, which is iterable.</span>
+        <span class="n">found_people_iterator</span> <span class="o">=</span> <span class="n">webex</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email_address</span><span class="p">)</span>
+        <span class="c1"># Iterate through the (potentially single) person found and print their details.</span>
+        <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">found_people_iterator</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Name: </span><span class="si">{</span><span class="n">person</span><span class="o">.</span><span class="n">displayName</span><span class="si">}</span><span class="s2">, Email: </span><span class="si">{</span><span class="n">person</span><span class="o">.</span><span class="n">emails</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="c1"># Catch and print any exceptions that occur during the API call.</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"An error occurred while finding people by email: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># Call the find_people function using the email loaded from environment variables.</span>
+<span class="n">find_people</span><span class="p">(</span><span class="n">email_address</span><span class="o">=</span><span class="n">email</span><span class="p">)</span>
+
+<span class="c1"># Call the all_people function to list all accessible users.</span>
+<span class="n">all_people</span><span class="p">()</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Make sure that in your terminal you are in the right folder:</p>
+<ul>
+<li>cd ../03-bots</li>
+</ul>
+</li>
+<li>
+<p>Run your code with the following command:</p>
+<ul>
+<li>python 01_people.py</li>
+</ul>
+</li>
+<li>
+<p>You should see something like the following in the console:</p>
+<div class="highlight"><pre><span></span><code>Name: Pod 0, Email: ['pod0@webexone-developer.wbx.ai']
+An error occurred while listing all people: [400] Bad Request - Email, displayName, role, or id list should be specified. [Tracking ID: ROUTERGW_40944853-1355-40da-8e76-7de0f601e18b]
+</code></pre></div>
+</li>
+<li>
+<p>Navigate to <code>03-bots/02_message.py</code> and review the code. You will use the function you created earlier to find yourself, so you can send a message to your own account.</p>
+<details class="tip">
+<summary>Python Code</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">webexpythonsdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebexAPI</span> <span class="c1"># Import the WebexAPI class from the Webex Python SDK</span>
+
+<span class="c1"># Load environment variables from the .env file.</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Webex Bot Token for API authentication.</span>
+<span class="n">bot_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"BOT_TOKEN"</span><span class="p">)</span>
+<span class="c1"># Email address for user lookup and message recipient.</span>
+<span class="n">email</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"EMAIL"</span><span class="p">)</span>
+
+<span class="c1"># Initialize the main WebexAPI client with the bot token.</span>
+<span class="n">webex</span> <span class="o">=</span> <span class="n">WebexAPI</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">send_teams_message</span><span class="p">(</span><span class="n">bot_token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">person_email</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Sends a direct message to a specified person via Webex Teams.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        bot_token (str): The authentication token for the Webex bot.</span>
+<span class="sd">        message (str): The content of the message to send (supports Markdown).</span>
+<span class="sd">        person_email (str): The email address of the recipient.</span>
+<span class="sd">    """</span>
+    <span class="c1"># Initialize a new WebexAPI client for sending messages.</span>
+    <span class="n">webexbot</span> <span class="o">=</span> <span class="n">WebexAPI</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
+    <span class="c1"># Create a direct message to the specified person's email with the given markdown content.</span>
+    <span class="n">webexbot</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">toPersonEmail</span><span class="o">=</span><span class="n">person_email</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="n">message</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_people</span><span class="p">(</span><span class="n">email_address</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Finds a person by their email address using the Webex API.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        email_address (str): The email address of the person to find.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        webexpythonsdk.models.Person: The first person object found, or None if an error occurs or no person is found.</span>
+<span class="sd">    """</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># List people, filtering by the provided email address.</span>
+        <span class="c1"># webex.people.list() returns a GeneratorContainer, so convert it to a list for indexing.</span>
+        <span class="n">found_people</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">webex</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email_address</span><span class="p">))</span>
+
+        <span class="c1"># Return the first person object found.</span>
+        <span class="k">if</span> <span class="n">found_people</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">found_people</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"No person found with email: </span><span class="si">{</span><span class="n">email_address</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="c1"># Catch and print any exceptions that occur during the API call.</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"An error occurred while finding people by email: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="c1"># Find the person associated with the email loaded from environment variables.</span>
+<span class="n">person</span> <span class="o">=</span> <span class="n">find_people</span><span class="p">(</span><span class="n">email_address</span><span class="o">=</span><span class="n">email</span><span class="p">)</span>
+
+<span class="c1"># If a person was found, send them a personalized message.</span>
+<span class="k">if</span> <span class="n">person</span><span class="p">:</span>
+    <span class="n">send_teams_message</span><span class="p">(</span><span class="n">bot_token</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"Hello </span><span class="si">{</span><span class="n">person</span><span class="o">.</span><span class="n">displayName</span><span class="si">}</span><span class="s2">!"</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">emails</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Could not find a person with email: </span><span class="si">{</span><span class="n">email</span><span class="si">}</span><span class="s2">. Message not sent."</span><span class="p">)</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Run your code with the following command:</p>
+<ul>
+<li>python 02_message.py</li>
+</ul>
+<p>You should have received the following message:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/bot_33.png" data-title="Bot" data-desc-position="top"><img alt="Bot" src="../assets/bot_33.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="750"></a></p>
+</li>
+</ol>
+<h2 id="step-33-create-a-room-and-add-yourself">Step 3.3: Create a Room and add yourself</h2>
+<p>In this step, you will create a room with your bot and add your user to it.</p>
+<ol>
+<li>
+<p>Navigate to <code>03-bots/03_rooms.py</code> and review the code.</p>
+<p>There are two functions: one to create the room (<strong>create_webex_room</strong>) and another to add a person to it (<strong>add_person_to_room</strong>).</p>
+<details class="tip">
+<summary>Python Code</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">webexpythonsdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebexAPI</span> <span class="c1"># Import the WebexAPI class from the Webex Python SDK</span>
+
+<span class="c1"># Load environment variables from the .env file.</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Webex Bot Token for API authentication.</span>
+<span class="n">bot_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"BOT_TOKEN"</span><span class="p">)</span>
+<span class="c1"># Your email address, used to find your user ID.</span>
+<span class="n">email</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"EMAIL"</span><span class="p">)</span>
+
+<span class="c1"># Initialize the WebexAPI client with the bot token.</span>
+<span class="n">webex</span> <span class="o">=</span> <span class="n">WebexAPI</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_webex_room</span><span class="p">(</span><span class="n">room_title</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Creates a new Webex room with the given title.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        room_title (str): The title for the new Webex room.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        webexpythonsdk.models.Room: The created room object if successful, None otherwise.</span>
+<span class="sd">    """</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Attempting to create room with title: '</span><span class="si">{</span><span class="n">room_title</span><span class="si">}</span><span class="s2">'..."</span><span class="p">)</span>
+        <span class="n">new_room</span> <span class="o">=</span> <span class="n">webex</span><span class="o">.</span><span class="n">rooms</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">room_title</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Room created successfully! Room ID: </span><span class="si">{</span><span class="n">new_room</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">, Title: </span><span class="si">{</span><span class="n">new_room</span><span class="o">.</span><span class="n">title</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">new_room</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"An error occurred while creating the room: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">add_person_to_room</span><span class="p">(</span><span class="n">room_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">person_email</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Finds a person by their email and adds them to a specified Webex room.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        room_id (str): The ID of the room to add the person to.</span>
+<span class="sd">        person_email (str): The email address of the person to add.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        webexpythonsdk.models.Membership: The membership object if successful, None otherwise.</span>
+<span class="sd">    """</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># 1. Find the user by email to get their person ID</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Attempting to find user with email: '</span><span class="si">{</span><span class="n">person_email</span><span class="si">}</span><span class="s2">'..."</span><span class="p">)</span>
+        <span class="c1"># webex.people.list() returns a GeneratorContainer, which is iterable.</span>
+        <span class="n">found_people</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">webex</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">person_email</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">found_people</span><span class="p">:</span>
+            <span class="c1"># Assuming the first result is the correct person</span>
+            <span class="n">person_to_add</span> <span class="o">=</span> <span class="n">found_people</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Found user: </span><span class="si">{</span><span class="n">person_to_add</span><span class="o">.</span><span class="n">displayName</span><span class="si">}</span><span class="s2">, Person ID: </span><span class="si">{</span><span class="n">person_to_add</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+            <span class="c1"># 2. Add the user to the specified room</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Attempting to add </span><span class="si">{</span><span class="n">person_to_add</span><span class="o">.</span><span class="n">displayName</span><span class="si">}</span><span class="s2"> to room ID: '</span><span class="si">{</span><span class="n">room_id</span><span class="si">}</span><span class="s2">'..."</span><span class="p">)</span>
+            <span class="n">membership</span> <span class="o">=</span> <span class="n">webex</span><span class="o">.</span><span class="n">memberships</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">roomId</span><span class="o">=</span><span class="n">room_id</span><span class="p">,</span>
+                <span class="n">personId</span><span class="o">=</span><span class="n">person_to_add</span><span class="o">.</span><span class="n">id</span>
+            <span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"User '</span><span class="si">{</span><span class="n">person_to_add</span><span class="o">.</span><span class="n">displayName</span><span class="si">}</span><span class="s2">' added to room successfully! Membership ID: </span><span class="si">{</span><span class="n">membership</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">membership</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error: Could not find any user with email '</span><span class="si">{</span><span class="n">person_email</span><span class="si">}</span><span class="s2">'. Cannot add to room."</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"An error occurred while adding person to room: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="c1"># Define the title for your new room.</span>
+<span class="n">new_room_name</span> <span class="o">=</span> <span class="s2">"WebexOne Room"</span>
+
+<span class="c1"># Step 1: Create the room</span>
+<span class="n">created_room</span> <span class="o">=</span> <span class="n">create_webex_room</span><span class="p">(</span><span class="n">new_room_name</span><span class="p">)</span>
+
+<span class="c1"># Step 2: If the room was created successfully, add yourself to it.</span>
+<span class="k">if</span> <span class="n">created_room</span><span class="p">:</span>
+    <span class="n">add_person_to_room</span><span class="p">(</span><span class="n">created_room</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Room creation failed, cannot proceed to add members."</span><span class="p">)</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Run your code with the following command:</p>
+<ul>
+<li>python 03_rooms.py</li>
+</ul>
+</li>
+<li>
+<p>You will see all the steps printed in the console:</p>
+<div class="highlight"><pre><span></span><code>Attempting to create room with title: 'WebexOne Room'...
+Room created successfully! Room ID: Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vMzk1N2QzMzAtYmE5MC0xMWYxLTljMTYtMDNjZjE2NGFkMDkz, Title: WebexOne Room
+Attempting to find user with email: 'pod0@webexone-developer.wbx.ai'...
+Found user: Pod 0, Person ID: Y2lzY29zcGFyazovL3VzL1BFT1BMRS8xOTU2NmUyYS03YjFhLTQ3MzktODMzYy01OTdkNGI5MDM2NTU
+Attempting to add Pod 0 to room ID: 'Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vMzk1N2QzMzAtYmE5MC0xMWYxLTljMTYtMDNjZjE2NGFkMDkz'...
+User 'Pod 0' added to room successfully! Membership ID: Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL01FTUJFUlNISVAvMTk1NjZlMmEtN2IxYS00NzM5LTgzM2MtNTk3ZDRiOTAzNjU1OjM5NTdkMzMwLWJhOTAtMTFmMS05YzE2LTAzY2YxNjRhZDA5Mw
+</code></pre></div>
+<p>You should also see the newly created room appear in your Webex App:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/bot_34.png" data-title="Bot" data-desc-position="top"><img alt="Bot" src="../assets/bot_34.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="850"></a></p>
+</li>
+</ol>
+<h2 id="step-34-adaptive-card">Step 3.4: Adaptive card</h2>
+<p>In this step, you will explore how to create and send an Adaptive Card.</p>
+<ol>
+<li>
+<p>Navigate to <code>03-bots/04_adaptivecard.py</code> and review the code.</p>
+<p>You will notice a card content example, but ideally, you will create your own card.</p>
+<details class="tip">
+<summary>Python Code</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">webexpythonsdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebexAPI</span> <span class="c1"># Import the WebexAPI class from the Webex Python SDK</span>
+
+<span class="c1"># Load environment variables from the .env file.</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Webex Bot Token for API authentication.</span>
+<span class="n">bot_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"BOT_TOKEN"</span><span class="p">)</span>
+<span class="c1"># Email address of the recipient for the Adaptive Card.</span>
+<span class="n">email</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"EMAIL"</span><span class="p">)</span>
+
+<span class="c1"># Initialize the WebexAPI client with the bot token.</span>
+<span class="n">webex</span> <span class="o">=</span> <span class="n">WebexAPI</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
+
+<span class="c1"># Define the Adaptive Card structure.</span>
+<span class="c1"># The 'content' field should contain a valid JSON Adaptive Card payload.</span>
+<span class="n">card</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"contentType"</span><span class="p">:</span> <span class="s2">"application/vnd.microsoft.card.adaptive"</span><span class="p">,</span>
+    <span class="s2">"content"</span><span class="p">:</span>
+        <span class="c1"># PASTE YOUR ADAPTIVE CARD JSON HERE!</span>
+        <span class="c1"># This is a placeholder for the actual Adaptive Card JSON structure.</span>
+        <span class="c1"># Example structure is provided below in 'card_example'.</span>
+        <span class="p">{}</span> <span class="c1"># Placeholder for actual card content</span>
+<span class="p">}</span>
+
+<span class="c1"># Send a message with the Adaptive Card as an attachment to the specified person.</span>
+<span class="c1"># The 'text' parameter can be an optional fallback text if the card cannot be rendered.</span>
+<span class="n">webex</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">toPersonEmail</span><span class="o">=</span><span class="n">email</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Your client does not support Adaptive Cards. Please update your client."</span><span class="p">,</span> <span class="n">attachments</span><span class="o">=</span><span class="p">[</span><span class="n">card</span><span class="p">])</span>
+</code></pre></div>
+</details>
+<details class="tip">
+<summary>Adaptive Card Example</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># Example Adaptive Card structure (commented out for reference).</span>
+<span class="n">card_content_example</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"AdaptiveCard"</span><span class="p">,</span>
+    <span class="s2">"body"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"ColumnSet"</span><span class="p">,</span>
+            <span class="s2">"columns"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Column"</span><span class="p">,</span>
+                    <span class="s2">"items"</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TextBlock"</span><span class="p">,</span>
+                            <span class="s2">"weight"</span><span class="p">:</span> <span class="s2">"Bolder"</span><span class="p">,</span>
+                            <span class="s2">"text"</span><span class="p">:</span> <span class="s2">"WebexOne"</span><span class="p">,</span>
+                            <span class="s2">"horizontalAlignment"</span><span class="p">:</span> <span class="s2">"Left"</span><span class="p">,</span>
+                            <span class="s2">"wrap"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                            <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"Light"</span><span class="p">,</span>
+                            <span class="s2">"size"</span><span class="p">:</span> <span class="s2">"Large"</span><span class="p">,</span>
+                            <span class="s2">"spacing"</span><span class="p">:</span> <span class="s2">"Small"</span>
+                        <span class="p">}</span>
+                    <span class="p">],</span>
+                        <span class="s2">"width"</span><span class="p">:</span> <span class="s2">"stretch"</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TextBlock"</span><span class="p">,</span>
+            <span class="s2">"text"</span><span class="p">:</span> <span class="s2">"This is my first Adaptive Card!"</span><span class="p">,</span>
+            <span class="s2">"wrap"</span><span class="p">:</span> <span class="kc">True</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">"$schema"</span><span class="p">:</span> <span class="s2">"http://adaptivecards.io/schemas/adaptive-card.json"</span><span class="p">,</span>
+    <span class="s2">"version"</span><span class="p">:</span> <span class="s2">"1.3"</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<details class="tip">
+<summary>Full python code with example card</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">webexpythonsdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebexAPI</span> <span class="c1"># Import the WebexAPI class from the Webex Python SDK</span>
+
+<span class="c1"># Load environment variables from the .env file.</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Webex Bot Token for API authentication.</span>
+<span class="n">bot_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"BOT_TOKEN"</span><span class="p">)</span>
+<span class="c1"># Email address of the recipient for the Adaptive Card.</span>
+<span class="n">email</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"EMAIL"</span><span class="p">)</span>
+
+<span class="c1"># Initialize the WebexAPI client with the bot token.</span>
+<span class="n">webex</span> <span class="o">=</span> <span class="n">WebexAPI</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
+
+<span class="c1"># Define the Adaptive Card structure.</span>
+<span class="c1"># The 'content' field should contain a valid JSON Adaptive Card payload.</span>
+<span class="n">card</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"contentType"</span><span class="p">:</span> <span class="s2">"application/vnd.microsoft.card.adaptive"</span><span class="p">,</span>
+    <span class="s2">"content"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"AdaptiveCard"</span><span class="p">,</span>
+        <span class="s2">"body"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"ColumnSet"</span><span class="p">,</span>
+                <span class="s2">"columns"</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Column"</span><span class="p">,</span>
+                        <span class="s2">"items"</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="p">{</span>
+                                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TextBlock"</span><span class="p">,</span>
+                                <span class="s2">"weight"</span><span class="p">:</span> <span class="s2">"Bolder"</span><span class="p">,</span>
+                                <span class="s2">"text"</span><span class="p">:</span> <span class="s2">"WebexOne"</span><span class="p">,</span>
+                                <span class="s2">"horizontalAlignment"</span><span class="p">:</span> <span class="s2">"Left"</span><span class="p">,</span>
+                                <span class="s2">"wrap"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                                <span class="s2">"color"</span><span class="p">:</span> <span class="s2">"Light"</span><span class="p">,</span>
+                                <span class="s2">"size"</span><span class="p">:</span> <span class="s2">"Large"</span><span class="p">,</span>
+                                <span class="s2">"spacing"</span><span class="p">:</span> <span class="s2">"Small"</span>
+                            <span class="p">}</span>
+                        <span class="p">],</span>
+                            <span class="s2">"width"</span><span class="p">:</span> <span class="s2">"stretch"</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TextBlock"</span><span class="p">,</span>
+                <span class="s2">"text"</span><span class="p">:</span> <span class="s2">"This is my first Adaptive Card!"</span><span class="p">,</span>
+                <span class="s2">"wrap"</span><span class="p">:</span> <span class="kc">True</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">"$schema"</span><span class="p">:</span> <span class="s2">"http://adaptivecards.io/schemas/adaptive-card.json"</span><span class="p">,</span>
+        <span class="s2">"version"</span><span class="p">:</span> <span class="s2">"1.3"</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Send a message with the Adaptive Card as an attachment to the specified person.</span>
+<span class="c1"># The 'text' parameter can be an optional fallback text if the card cannot be rendered.</span>
+<span class="n">webex</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">toPersonEmail</span><span class="o">=</span><span class="n">email</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Your client does not support Adaptive Cards. Please update your client."</span><span class="p">,</span> <span class="n">attachments</span><span class="o">=</span><span class="p">[</span><span class="n">card</span><span class="p">])</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Navigate to the Buttons and Cards Designer:</p>
+<ul>
+<li><a href="https://developer.webex.com/buttons-and-cards-designer" target="_blank">Buttons and Cards Designer</a></li>
+</ul>
+</li>
+<li>
+<p>Use the UI to create your own card. Experiment with the available options to understand how they work. Once you’re ready, your card’s JSON code will appear below in the Card Payload Editor.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When you copy the code from the Card Payload Editor, make sure to change <strong>true</strong> to <strong>True</strong> so it works correctly in Python.</p>
+</div>
+</li>
+<li>
+<p>Run your code with the following command:</p>
+<ul>
+<li>python 04_adaptivecard.py</li>
+</ul>
+</li>
+<li>
+<p>If you have used the example card, you should receive the following:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/bot_35.png" data-title="Bot" data-desc-position="top"><img alt="Bot" src="../assets/bot_35.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="550"></a></p>
+</li>
+</ol>
+<h2 id="step-35-bot-with-websockets">Step 3.5: Bot with WebSockets</h2>
+<h3 id="receiving-events-in-real-time">Receiving events in real time</h3>
+<p>Webex bots can receive events in two main ways:</p>
+<ul>
+<li><strong>Webhooks:</strong> Webex sends HTTP callbacks to a public URL. This works well in production, but usually requires a public endpoint or a tunnel such as ngrok during development.</li>
+<li><strong>WebSockets:</strong> Your bot opens a persistent connection to Webex Websockets and receives events in real time. This works well in lab environments and corporate networks because no public URL is required.</li>
+</ul>
+<p>In this lab, your bot connects to Webex Websockets. You will implement event handling, message parsing, and Adaptive Card actions directly in Python.</p>
+<p>In this step, you will open a persistent connection to Webex Websockets and handle incoming messages. All the connection logic lives in a shared class, so every bot in the following steps only needs to define what to do with each event.</p>
+<h3 id="websocket-client">WebSocket client</h3>
+<ol>
+<li>
+<p>Navigate to <code>03-bots/websocket_client.py</code> and review the code.</p>
+<details class="tip">
+<summary>Python Code</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">certifi</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">websockets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">webexpythonsdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebexAPI</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">DEFAULT_U2C_URL</span> <span class="o">=</span> <span class="s2">"https://u2c.wbx2.com/u2c/api/v1/catalog"</span>
+<span class="n">DEVICE_DATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"deviceName"</span><span class="p">:</span> <span class="s2">"webexone2026-bot"</span><span class="p">,</span>
+    <span class="s2">"deviceType"</span><span class="p">:</span> <span class="s2">"DESKTOP"</span><span class="p">,</span>
+    <span class="s2">"localizedModel"</span><span class="p">:</span> <span class="s2">"python"</span><span class="p">,</span>
+    <span class="s2">"model"</span><span class="p">:</span> <span class="s2">"python"</span><span class="p">,</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"webexone2026-bot"</span><span class="p">,</span>
+    <span class="s2">"systemName"</span><span class="p">:</span> <span class="s2">"webexone2026-bot"</span><span class="p">,</span>
+    <span class="s2">"systemVersion"</span><span class="p">:</span> <span class="s2">"1.0"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">ssl_context</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">create_default_context</span><span class="p">()</span>
+<span class="n">ssl_context</span><span class="o">.</span><span class="n">load_verify_locations</span><span class="p">(</span><span class="n">certifi</span><span class="o">.</span><span class="n">where</span><span class="p">())</span>
+
+<span class="n">MessageHandler</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+<span class="n">CardActionHandler</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">WebSocketClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">access_token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">bot_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"WebexOne2026"</span><span class="p">,</span>
+        <span class="n">on_message</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MessageHandler</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">on_card_action</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CardActionHandler</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">access_token</span> <span class="o">=</span> <span class="n">access_token</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bot_name</span> <span class="o">=</span> <span class="n">bot_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">api</span> <span class="o">=</span> <span class="n">WebexAPI</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="n">access_token</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tracking_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"webexone2026_</span><span class="si">{</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">update_headers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">on_message</span> <span class="o">=</span> <span class="n">on_message</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">on_card_action</span> <span class="o">=</span> <span class="n">on_card_action</span>
+        <span class="c1"># Activities carry the actor's UUID, so decode it from the bot's base64 person ID.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">me</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">me</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">person_uuid</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">me</span><span class="o">.</span><span class="n">id</span> <span class="o">+</span> <span class="s2">"=="</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_info</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_device_url</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">websocket</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">share_id</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_headers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="n">sdk_ua</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">"User-Agent"</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">access_token</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+            <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json;charset=utf-8"</span><span class="p">,</span>
+            <span class="s2">"User-Agent"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"WebexOne2026-Bot '</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">bot_name</span><span class="si">}</span><span class="s2">' (</span><span class="si">{</span><span class="n">sdk_ua</span><span class="si">}</span><span class="s2">)"</span><span class="p">,</span>
+            <span class="s2">"trackingid"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">tracking_id</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_device_url</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">DEFAULT_U2C_URL</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"format"</span><span class="p">:</span> <span class="s2">"hostmap"</span><span class="p">})</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"serviceLinks"</span><span class="p">][</span><span class="s2">"wdm"</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_device_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">check_existing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">check_existing</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">device_url</span><span class="si">}</span><span class="s2">/devices"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">404</span><span class="p">:</span>
+                <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"devices"</span><span class="p">,</span> <span class="p">[]):</span>
+                    <span class="k">if</span> <span class="n">device</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span> <span class="o">==</span> <span class="n">DEVICE_DATA</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">device_info</span> <span class="o">=</span> <span class="n">device</span>
+                        <span class="k">return</span> <span class="n">device</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">device_url</span><span class="si">}</span><span class="s2">/devices"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">DEVICE_DATA</span><span class="p">)</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_info</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_info</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_base64_message_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">activity</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">activity_id</span> <span class="o">=</span> <span class="n">activity</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span>
+        <span class="n">conversation_url</span> <span class="o">=</span> <span class="n">activity</span><span class="p">[</span><span class="s2">"target"</span><span class="p">][</span><span class="s2">"url"</span><span class="p">]</span>
+        <span class="n">conv_target_id</span> <span class="o">=</span> <span class="n">activity</span><span class="p">[</span><span class="s2">"target"</span><span class="p">][</span><span class="s2">"id"</span><span class="p">]</span>
+        <span class="n">verb</span> <span class="o">=</span> <span class="s2">"messages"</span> <span class="k">if</span> <span class="n">activity</span><span class="p">[</span><span class="s2">"verb"</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"post"</span><span class="p">,</span> <span class="s2">"update"</span><span class="p">]</span> <span class="k">else</span> <span class="s2">"attachment/actions"</span>
+        <span class="k">if</span> <span class="n">activity</span><span class="p">[</span><span class="s2">"verb"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"update"</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">share_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">activity_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">share_id</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">share_id</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">conversation_message_url</span> <span class="o">=</span> <span class="n">conversation_url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"conversations/</span><span class="si">{</span><span class="n">conv_target_id</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">verb</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">activity_id</span><span class="si">}</span><span class="s2">"</span>
+        <span class="p">)</span>
+        <span class="n">conversation_message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">conversation_message_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">conversation_message</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_ack_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ack_message</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"ack"</span><span class="p">,</span> <span class="s2">"messageId"</span><span class="p">:</span> <span class="n">message_id</span><span class="p">}</span>
+        <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">websocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">ack_message</span><span class="p">)))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_process_incoming_websocket_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"data"</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"eventType"</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">"conversation.activity"</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">activity</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"activity"</span><span class="p">]</span>
+        <span class="n">verb</span> <span class="o">=</span> <span class="n">activity</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"verb"</span><span class="p">)</span>
+
+        <span class="c1"># Never react to the bot's own activity (avoids an echo loop).</span>
+        <span class="k">if</span> <span class="n">activity</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"actor"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"id"</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">person_uuid</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="n">verb</span> <span class="o">==</span> <span class="s2">"share"</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">share_id</span> <span class="o">=</span> <span class="n">activity</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="n">verb</span> <span class="o">==</span> <span class="s2">"post"</span><span class="p">:</span>
+            <span class="n">message_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_base64_message_id</span><span class="p">(</span><span class="n">activity</span><span class="p">)</span>
+            <span class="n">webex_message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">message_id</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ack_message</span><span class="p">(</span><span class="n">message_id</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Message received from </span><span class="si">{</span><span class="n">webex_message</span><span class="o">.</span><span class="n">personEmail</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">webex_message</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_message</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">on_message</span><span class="p">(</span><span class="n">webex_message</span><span class="p">,</span> <span class="n">activity</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="n">verb</span> <span class="o">==</span> <span class="s2">"update"</span><span class="p">:</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="n">activity</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"object"</span><span class="p">,</span> <span class="p">{})</span>
+            <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"objectType"</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">"content"</span> <span class="ow">or</span> <span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"contentCategory"</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">"documents"</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="n">message_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_base64_message_id</span><span class="p">(</span><span class="n">activity</span><span class="p">)</span>
+            <span class="n">webex_message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">message_id</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ack_message</span><span class="p">(</span><span class="n">message_id</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"File message received from </span><span class="si">{</span><span class="n">webex_message</span><span class="o">.</span><span class="n">personEmail</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">webex_message</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_message</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">on_message</span><span class="p">(</span><span class="n">webex_message</span><span class="p">,</span> <span class="n">activity</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="n">verb</span> <span class="o">==</span> <span class="s2">"cardAction"</span><span class="p">:</span>
+            <span class="n">message_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_base64_message_id</span><span class="p">(</span><span class="n">activity</span><span class="p">)</span>
+            <span class="n">attachment_action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">attachment_actions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">message_id</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ack_message</span><span class="p">(</span><span class="n">message_id</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Card action received: </span><span class="si">{</span><span class="n">attachment_action</span><span class="o">.</span><span class="n">inputs</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_card_action</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">on_card_action</span><span class="p">(</span><span class="n">attachment_action</span><span class="p">,</span> <span class="n">activity</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_connect_and_listen</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ws_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_info</span><span class="p">[</span><span class="s2">"webSocketUrl"</span><span class="p">]</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">websockets</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ws_url</span><span class="p">,</span> <span class="n">ssl</span><span class="o">=</span><span class="n">ssl_context</span><span class="p">,</span> <span class="n">additional_headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="p">())</span> <span class="k">as</span> <span class="n">websocket</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">websocket</span> <span class="o">=</span> <span class="n">websocket</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"WebSocket connected as </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">me</span><span class="o">.</span><span class="n">displayName</span><span class="si">}</span><span class="s2">, waiting for messages..."</span><span class="p">)</span>
+            <span class="n">auth</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">"id"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()),</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"authorization"</span><span class="p">,</span>
+                <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"token"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">access_token</span><span class="si">}</span><span class="s2">"</span><span class="p">},</span>
+            <span class="p">}</span>
+            <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">auth</span><span class="p">))</span>
+
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">raw</span> <span class="o">=</span> <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+                <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+                <span class="n">loop</span><span class="o">.</span><span class="n">run_in_executor</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_process</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_safe_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Errors raised in executor threads are otherwise discarded silently.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_process_incoming_websocket_message</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">"Failed to process incoming WebSocket message"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_info</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_device_info</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"Unable to register bot device for WebSocket connection"</span><span class="p">)</span>
+
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_connect_and_listen</span><span class="p">())</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"WebSocket connection error: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">exc</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_get_device_info</span><span class="p">(</span><span class="n">check_existing</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>The <strong>WebSocketClient</strong> class takes care of the whole connection lifecycle, so you do not need to modify it:</p>
+<ul>
+<li><strong>Find the device service:</strong> <code>_get_device_url()</code> asks the Webex service catalog (U2C) where device registration (WDM) lives for your organization.</li>
+<li><strong>Register a device:</strong> <code>_get_device_info()</code> reuses the bot's existing device or registers a new one. The response includes the <code>webSocketUrl</code> the bot connects to.</li>
+<li><strong>Connect and authorize:</strong> <code>_connect_and_listen()</code> opens the WebSocket, verifies TLS with the <code>certifi</code> certificate bundle, and sends an authorization message with the bot token.</li>
+<li><strong>Filter events:</strong> Webex sends many event types. The client only processes <code>conversation.activity</code> events and ignores the bot's own activity, so the bot never replies to itself in an endless loop.</li>
+<li><strong>Fetch the content:</strong> events only contain IDs, not the message itself. The client builds the message ID, fetches the full message through the REST API, and acknowledges the event.</li>
+<li><strong>Deliver the event:</strong> new messages (<code>post</code>) and shared files (<code>update</code>) are passed to your <strong>on_message</strong> handler, and Adaptive Card submissions (<code>cardAction</code>) to your <strong>on_card_action</strong> handler.</li>
+<li><strong>Stay connected:</strong> if the connection drops, the client registers again and reconnects after 5 seconds. Errors inside your handlers are printed in the console instead of being silently discarded.</li>
+</ul>
+</li>
+</ol>
+<h3 id="bot-helpers">Bot Helpers</h3>
+<p>During the following exercises, you will use the same functions many times, so they are grouped in a helper file.</p>
+<ol>
+<li>
+<p>Navigate to <code>03-bots/bot_helpers.py</code> and review the code.</p>
+<ul>
+<li><strong>get_api()</strong> creates the Webex API client used to call the REST API.</li>
+<li><strong>send_message()</strong> sends a message to a room. The text is sent as markdown, so formatting such as <strong>bold</strong> or quotes is rendered in Webex.</li>
+<li><strong>send_card()</strong> sends an Adaptive Card to a room, together with a fallback text for clients that cannot display cards.</li>
+<li><strong>delete_message()</strong> deletes a message, for example a card that has already been submitted.</li>
+<li><strong>extract_input_values()</strong> returns the values a user entered in a submitted card.</li>
+<li><strong>is_allowed_domain()</strong> checks whether an email address belongs to one of the allowed domains. You will use it in Step 3.8.</li>
+</ul>
+<details class="tip">
+<summary>Python Code</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">webexpythonsdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebexAPI</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_api</span><span class="p">(</span><span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WebexAPI</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">WebexAPI</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="n">token</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">:</span> <span class="n">WebexAPI</span><span class="p">,</span> <span class="n">room_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">api</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">roomId</span><span class="o">=</span><span class="n">room_id</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">send_card</span><span class="p">(</span><span class="n">api</span><span class="p">:</span> <span class="n">WebexAPI</span><span class="p">,</span> <span class="n">room_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">card</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">fallback_text</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"Card"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">api</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+        <span class="n">roomId</span><span class="o">=</span><span class="n">room_id</span><span class="p">,</span>
+        <span class="n">text</span><span class="o">=</span><span class="n">fallback_text</span><span class="p">,</span>
+        <span class="n">attachments</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"contentType"</span><span class="p">:</span> <span class="s2">"application/vnd.microsoft.card.adaptive"</span><span class="p">,</span>
+                <span class="s2">"content"</span><span class="p">:</span> <span class="n">card</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_message</span><span class="p">(</span><span class="n">api</span><span class="p">:</span> <span class="n">WebexAPI</span><span class="p">,</span> <span class="n">message_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">api</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">message_id</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_input_values</span><span class="p">(</span><span class="n">attachment_action</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">attachment_action</span><span class="p">,</span> <span class="s2">"inputs"</span><span class="p">,</span> <span class="p">{})</span> <span class="ow">or</span> <span class="p">{})</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_allowed_domain</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">allowed_domains</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">email</span> <span class="ow">or</span> <span class="s2">"@"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">email</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">domain</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"@"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">domain</span> <span class="ow">in</span> <span class="p">{</span><span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">allowed_domains</span><span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+</ol>
+<h3 id="creating-the-bot">Creating the bot</h3>
+<ol>
+<li>
+<p>Navigate to <code>03-bots/05_websocket_bot.py</code> and review the code.</p>
+<p>The script follows this flow:</p>
+<ul>
+<li>Authenticate the bot with the provided token.</li>
+<li>Connect to Webex over WebSockets.</li>
+<li>Listen for new messages and pass each one to <code>handle_message</code>.</li>
+</ul>
+<p>Key functions to review:</p>
+<ul>
+<li><strong><code>handle_message()</code></strong> processes each incoming message and echoes its content back. If the message has formatting, the bot uses the markdown version so the echo keeps it.</li>
+<li><strong><code>send_message()</code></strong> sends the reply through the Webex REST API.</li>
+</ul>
+<details class="tip">
+<summary>Python Code</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="c1"># Import the shared WebSocketClient class</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">websocket_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSocketClient</span>
+<span class="c1"># Import the Webex API SDK for direct API calls</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bot_helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_api</span><span class="p">,</span> <span class="n">send_message</span>
+
+<span class="c1"># Load environment variables from the .env file.</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Webex Bot Token for authentication with the Webex API.</span>
+<span class="n">bot_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"BOT_TOKEN"</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">get_api</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">activity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Executes when a message is received by the bot.</span>
+<span class="sd">    """</span>
+    <span class="n">room_id</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">roomId</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">"text"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="c1"># Formatted messages keep their markdown in a separate field; plain ones only have text.</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">"markdown"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="n">text</span>
+
+    <span class="k">if</span> <span class="n">content</span><span class="p">:</span>
+        <span class="c1"># Echo back what they said</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"Echo: </span><span class="si">{</span><span class="n">content</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># Create a WebSocket Client object.</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">WebSocketClient</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="n">bot_token</span><span class="p">,</span>         <span class="c1"># Authenticate the bot with the provided token.</span>
+                      <span class="n">on_message</span><span class="o">=</span><span class="n">handle_message</span><span class="p">)</span>      <span class="c1"># Map the incoming messages to the echo handler.</span>
+
+<span class="c1"># Start the bot and make it listen for incoming messages.</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Execute the code with the following command and let it run:</p>
+<ul>
+<li>python 05_websocket_bot.py</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Wait until you see <strong>WebSocket connected as WebexOne-<em>USERNAME</em>, waiting for messages...</strong> in the console.</p>
+</div>
+</li>
+<li>
+<p>Send any message to your bot, and it will echo it back to you:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/bot_36.png" data-title="Bot" data-desc-position="top"><img alt="Bot" src="../assets/bot_36.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="450"></a></p>
+</li>
+<li>
+<p>Observe how the incoming events are printed in the console:</p>
+<div class="highlight"><pre><span></span><code>WebSocket connected as WebexOne-Pod0, waiting for messages...
+Message received from pod0@webexone-developer.wbx.ai: Hello
+</code></pre></div>
+</li>
+<li>
+<p>Stop the bot with <strong>Ctrl+C</strong> before moving to the next step.</p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Only run one bot at a time. All the exercises use the same bot token, so if two scripts run at once, you may get duplicate or missing replies.</p>
+</div>
+<h2 id="step-36-command-bot">Step 3.6: Command bot</h2>
+<p>In this step, you will replace the generic echo behavior with commands. Instead of repeating everything, the bot reads what the user typed and decides which action to run.</p>
+<ol>
+<li>
+<p>Navigate to <code>03-bots/06_command_bot.py</code> and review the code.</p>
+<p>Key concepts in this script:</p>
+<ul>
+<li><strong>Command routing:</strong> <code>handle_message()</code> takes the last word of the message and compares it with the known commands. Only the last word is checked because in group spaces the text starts with the bot mention (for example, <code>WebexOne-Pod0 help</code>).</li>
+<li><strong>Calling the API from a bot:</strong> the <code>whoami</code> command uses <code>api.people.get()</code> with the sender's ID, the same People API you used in Step 3.2.</li>
+<li><strong>Fallback reply:</strong> any unknown text gets a hint instead of silence, so users always know the bot is listening.</li>
+</ul>
+<details class="tip">
+<summary>Python Code</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">websocket_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSocketClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bot_helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_api</span><span class="p">,</span> <span class="n">send_message</span>
+
+<span class="c1"># Load environment variables from the .env file.</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Webex Bot Token for authentication.</span>
+<span class="n">bot_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"BOT_TOKEN"</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">get_api</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
+
+<span class="n">HELP_TEXT</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">"Here is what I can do:</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="s2">"- hello: I greet you back.</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="s2">"- whoami: I look you up in Webex and tell you who you are.</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="s2">"- help: I show this list."</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">activity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Reads the command the user typed and routes it to the right action.</span>
+<span class="sd">    """</span>
+    <span class="n">room_id</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">roomId</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">"text"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="c1"># In group spaces the text starts with the bot mention, so only check the last word.</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">text</span> <span class="k">else</span> <span class="s2">""</span>
+
+    <span class="k">if</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">"hello"</span><span class="p">:</span>
+        <span class="c1"># A simple reply that doesn't need any extra API call.</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="s2">"Hello! Type 'help' to see what I can do."</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">"whoami"</span><span class="p">:</span>
+        <span class="c1"># Use the Webex API from inside the bot to look up the sender.</span>
+        <span class="n">person</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">personId</span><span class="p">)</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"You are </span><span class="si">{</span><span class="n">person</span><span class="o">.</span><span class="n">displayName</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">person</span><span class="o">.</span><span class="n">emails</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">)."</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">"help"</span><span class="p">:</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="n">HELP_TEXT</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Any other text falls back to a hint instead of staying silent.</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"Sorry, I don't know '</span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2">'. Type 'help' to see what I can do."</span><span class="p">)</span>
+
+
+<span class="c1"># Create a WebSocket Client object.</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">WebSocketClient</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="n">bot_token</span><span class="p">,</span>         <span class="c1"># Authenticate the bot with the provided token.</span>
+                      <span class="n">on_message</span><span class="o">=</span><span class="n">handle_message</span><span class="p">)</span>      <span class="c1"># Map the incoming messages to the command router.</span>
+
+<span class="c1"># Start the bot and make it listen for incoming messages.</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Execute the code with the following command and let it run:</p>
+<ul>
+<li>python 06_command_bot.py</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Wait until you see <strong>WebSocket connected as WebexOne-<em>USERNAME</em>, waiting for messages...</strong> in the console.</p>
+</div>
+</li>
+<li>
+<p>Try the commands: send <strong>help</strong> to see the list, <strong>whoami</strong> to find out who you are, <strong>hello</strong>, and any other text to see the fallback reply:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/bot_37.png" data-title="Bot" data-desc-position="top"><img alt="Bot" src="../assets/bot_37.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="650"></a></p>
+</li>
+<li>
+<p>Stop the bot with <strong>Ctrl+C</strong> before moving to the next step.</p>
+</li>
+</ol>
+<h2 id="step-37-adaptive-card-bot">Step 3.7: Adaptive card bot</h2>
+<p>In Step 3.4, you sent an Adaptive Card, but nothing happened when someone used it. In this step, the bot sends a card with a text box and handles the submission through incoming events.</p>
+<ol>
+<li>
+<p>Navigate to <code>03-bots/07_card_bot.py</code> and review the code.</p>
+<p>The bot now handles two types of events:</p>
+<ul>
+<li><strong>Messages:</strong> <code>handle_message()</code> sends the card when the user types <strong>message</strong>. The card is built the same way as in Step 3.4, and its <strong>Submit</strong> button carries <code>callback_keyword</code> data so the bot knows which card was submitted.</li>
+<li><strong>Card submissions:</strong> when the user clicks <strong>Submit</strong>, Webex sends a <code>cardAction</code> event instead of a message. The client passes it to <code>handle_card_action()</code>, which reads the values the user typed from <code>inputs</code>, deletes the card so it cannot be submitted twice, and replies with the message and a formatted confirmation.</li>
+</ul>
+<p>Both handlers are registered when the bot is created: <code>on_message</code> for messages and <code>on_card_action</code> for card submissions.</p>
+<details class="tip">
+<summary>Python Code</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">websocket_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSocketClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bot_helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_api</span><span class="p">,</span> <span class="n">send_message</span><span class="p">,</span> <span class="n">send_card</span><span class="p">,</span> <span class="n">delete_message</span>
+
+<span class="c1"># Load environment variables from the .env file.</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Webex Bot Token for authentication with the Webex API.</span>
+<span class="n">bot_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"BOT_TOKEN"</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">get_api</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_card_action</span><span class="p">(</span><span class="n">attachment_action</span><span class="p">,</span> <span class="n">activity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Executes when an Adaptive Card with 'callback_keyword': 'message_callback' is submitted.</span>
+<span class="sd">    It extracts the message input from the card and sends it back to the user.</span>
+<span class="sd">    """</span>
+    <span class="n">room_id</span> <span class="o">=</span> <span class="n">attachment_action</span><span class="o">.</span><span class="n">roomId</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">attachment_action</span><span class="p">,</span> <span class="s2">"inputs"</span><span class="p">,</span> <span class="p">{})</span> <span class="ow">or</span> <span class="p">{}</span>
+
+    <span class="c1"># Extract the 'message' input from the submitted Adaptive Card's inputs.</span>
+    <span class="n">message_content</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"message"</span><span class="p">)</span>
+
+    <span class="c1"># Deletes the Adaptive Card message after submission.</span>
+    <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">attachment_action</span><span class="p">,</span> <span class="s2">"messageId"</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">delete_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">attachment_action</span><span class="o">.</span><span class="n">messageId</span><span class="p">)</span>
+
+    <span class="c1"># Create a direct message to the room with the extracted message content.</span>
+    <span class="k">if</span> <span class="n">message_content</span><span class="p">:</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="n">message_content</span><span class="p">)</span>
+        <span class="c1"># Return a confirmation message, formatted as an info quote.</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="s2">"&gt; **Info**</span><span class="se">\n</span><span class="s2">&gt; Message sent"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">activity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Executes the 'message' command. Constructs and sends an Adaptive Card</span>
+<span class="sd">    to the user for input.</span>
+<span class="sd">    """</span>
+    <span class="n">room_id</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">roomId</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">"text"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="c1"># In group spaces the text starts with the bot mention, so only check the last word.</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">text</span> <span class="k">else</span> <span class="s2">""</span>
+
+    <span class="c1"># The keyword users type to activate this command.</span>
+    <span class="k">if</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">"message"</span><span class="p">:</span>
+        <span class="c1"># Define the Adaptive Card structure for user input.</span>
+        <span class="n">card</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"AdaptiveCard"</span><span class="p">,</span>
+            <span class="s2">"body"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Input.Text"</span><span class="p">,</span>
+                    <span class="s2">"placeholder"</span><span class="p">:</span> <span class="s2">"Message"</span><span class="p">,</span>
+                    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"message"</span><span class="p">,</span>
+                    <span class="s2">"isRequired"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s2">"errorMessage"</span><span class="p">:</span> <span class="s2">"Message is required"</span><span class="p">,</span>
+                    <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Message:"</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">"$schema"</span><span class="p">:</span> <span class="s2">"http://adaptivecards.io/schemas/adaptive-card.json"</span><span class="p">,</span>
+            <span class="s2">"version"</span><span class="p">:</span> <span class="s2">"1.3"</span><span class="p">,</span>
+            <span class="s2">"actions"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Action.Submit"</span><span class="p">,</span>
+                    <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Submit"</span><span class="p">,</span>
+                    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"callback_keyword"</span><span class="p">:</span> <span class="s2">"message_callback"</span> <span class="c1"># This links to the card action handler.</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Attach the Adaptive Card to the response.</span>
+        <span class="n">send_card</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="n">card</span><span class="p">,</span> <span class="n">fallback_text</span><span class="o">=</span><span class="s2">"Please enter your message:"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Let the user know which keyword the bot understands.</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="s2">"Type 'message' to get the card."</span><span class="p">)</span>
+
+
+<span class="c1"># Create a WebSocket Client object.</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">WebSocketClient</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="n">bot_token</span><span class="p">,</span>         <span class="c1"># Authenticate the bot using its token.</span>
+                      <span class="n">on_message</span><span class="o">=</span><span class="n">handle_message</span><span class="p">,</span>      <span class="c1"># Registers the message handler.</span>
+                      <span class="n">on_card_action</span><span class="o">=</span><span class="n">handle_card_action</span><span class="p">)</span> <span class="c1"># Registers the callback command for card submissions.</span>
+
+<span class="c1"># Start the bot and make it listen for incoming messages.</span>
+<span class="c1"># This call is typically blocking and keeps the bot running, waiting for commands or card submissions.</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Execute the code with the following command and let it run:</p>
+<ul>
+<li>python 07_card_bot.py</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Wait until you see <strong>WebSocket connected as WebexOne-<em>USERNAME</em>, waiting for messages...</strong> in the console.</p>
+</div>
+</li>
+<li>
+<p>Send <strong>message</strong> to your bot to receive the card:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/bot_39.png" data-title="Bot" data-desc-position="top"><img alt="Bot" src="../assets/bot_39.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="450"></a></p>
+</li>
+<li>
+<p>Enter a message and click <strong>Submit</strong>.</p>
+<p>The previous card will be deleted. You should then receive both your message and a formatted notification confirming that your message has been sent:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/bot_38.png" data-title="Bot" data-desc-position="top"><img alt="Bot" src="../assets/bot_38.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="500"></a></p>
+</li>
+<li>
+<p>Observe how the card submission is printed in the console:</p>
+<div class="highlight"><pre><span></span><code>WebSocket connected as WebexOne-Pod0, waiting for messages...
+Message received from pod0@webexone-developer.wbx.ai: message
+Card action received: {'message': 'Hello from the card!'}
+</code></pre></div>
+</li>
+<li>
+<p>Stop the bot with <strong>Ctrl+C</strong> before moving to the next step.</p>
+</li>
+</ol>
+<h2 id="step-38-secure-bot">Step 3.8: Secure bot</h2>
+<p>Anyone in Webex can find your bot and send it a message, including users outside your organization. In this step, you will restrict the bot so it only answers users whose email belongs to the domain configured in your <code>.env</code> file.</p>
+<ol>
+<li>
+<p>In VS Code, navigate to your <code>.env</code> file and make sure that <code>DOMAIN</code> contains your organization's domain, without the <code>@</code> (for example, <code>webexone-developer.wbx.ai</code>).</p>
+</li>
+<li>
+<p>Navigate to <code>03-bots/08_secure_bot.py</code> and review the code.</p>
+<p>This bot does the same as the card bot from Step 3.7, with a security check added in front of both handlers:</p>
+<ul>
+<li><strong>Configuration:</strong> the allowed domain is read from <code>DOMAIN</code> in the <code>.env</code> file, never written in the code. If it is missing, the bot refuses to start instead of answering everyone.</li>
+<li><strong><code>is_authorized()</code>:</strong> uses <strong>is_allowed_domain()</strong> from the bot helpers to compare the domain of the sender's email with the allowed one. Blocked users receive a short explanation, and the attempt is printed in the console.</li>
+<li><strong>Messages:</strong> each message already includes the sender's email (<code>personEmail</code>), so <code>handle_message()</code> checks it before doing anything else.</li>
+<li><strong>Card submissions:</strong> a card submission only includes the sender's ID, so <code>handle_card_action()</code> looks up their email with <code>api.people.get()</code> first. This check is important too, because in a group space anyone can click <strong>Submit</strong> on a card the bot has sent.</li>
+</ul>
+<details class="tip">
+<summary>Python Code</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">websocket_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSocketClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bot_helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_api</span><span class="p">,</span> <span class="n">send_message</span><span class="p">,</span> <span class="n">send_card</span><span class="p">,</span> <span class="n">delete_message</span><span class="p">,</span> <span class="n">is_allowed_domain</span>
+
+<span class="c1"># Load environment variables from the .env file.</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Webex Bot Token for authentication with the Webex API.</span>
+<span class="n">bot_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"BOT_TOKEN"</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">get_api</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
+
+<span class="c1"># Only users whose email belongs to this domain can use the bot.</span>
+<span class="n">allowed_domain</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DOMAIN"</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">allowed_domain</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="s2">"Set DOMAIN in the .env file before starting the bot."</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_authorized</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Checks the sender's email domain and tells blocked users why they got no answer.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">is_allowed_domain</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="p">[</span><span class="n">allowed_domain</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Blocked request from </span><span class="si">{</span><span class="n">email</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"Sorry, this bot is only available to users in </span><span class="si">{</span><span class="n">allowed_domain</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_card_action</span><span class="p">(</span><span class="n">attachment_action</span><span class="p">,</span> <span class="n">activity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Executes when the Adaptive Card is submitted, but only for users in the allowed domain.</span>
+<span class="sd">    """</span>
+    <span class="n">room_id</span> <span class="o">=</span> <span class="n">attachment_action</span><span class="o">.</span><span class="n">roomId</span>
+
+    <span class="c1"># Card submissions only include the person ID, so look up their email first.</span>
+    <span class="c1"># In group spaces anyone can press Submit, so this check matters here too.</span>
+    <span class="n">person</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attachment_action</span><span class="o">.</span><span class="n">personId</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_authorized</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">emails</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">return</span>
+
+    <span class="n">inputs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">attachment_action</span><span class="p">,</span> <span class="s2">"inputs"</span><span class="p">,</span> <span class="p">{})</span> <span class="ow">or</span> <span class="p">{}</span>
+
+    <span class="c1"># Extract the 'message' input from the submitted Adaptive Card's inputs.</span>
+    <span class="n">message_content</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"message"</span><span class="p">)</span>
+
+    <span class="c1"># Deletes the Adaptive Card message after submission.</span>
+    <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">attachment_action</span><span class="p">,</span> <span class="s2">"messageId"</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">delete_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">attachment_action</span><span class="o">.</span><span class="n">messageId</span><span class="p">)</span>
+
+    <span class="c1"># Create a direct message to the room with the extracted message content.</span>
+    <span class="k">if</span> <span class="n">message_content</span><span class="p">:</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="n">message_content</span><span class="p">)</span>
+        <span class="c1"># Return a confirmation message, formatted as an info quote.</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="s2">"&gt; **Info**</span><span class="se">\n</span><span class="s2">&gt; Message sent"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">activity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Executes the 'message' command, but only for users in the allowed domain.</span>
+<span class="sd">    """</span>
+    <span class="n">room_id</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">roomId</span>
+
+    <span class="c1"># Messages already include the sender's email, so check it before doing anything else.</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_authorized</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">personEmail</span><span class="p">):</span>
+        <span class="k">return</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">"text"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="c1"># In group spaces the text starts with the bot mention, so only check the last word.</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">text</span> <span class="k">else</span> <span class="s2">""</span>
+
+    <span class="c1"># The keyword users type to activate this command.</span>
+    <span class="k">if</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">"message"</span><span class="p">:</span>
+        <span class="c1"># Define the Adaptive Card structure for user input.</span>
+        <span class="n">card</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"AdaptiveCard"</span><span class="p">,</span>
+            <span class="s2">"body"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Input.Text"</span><span class="p">,</span>
+                    <span class="s2">"placeholder"</span><span class="p">:</span> <span class="s2">"Message"</span><span class="p">,</span>
+                    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"message"</span><span class="p">,</span>
+                    <span class="s2">"isRequired"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s2">"errorMessage"</span><span class="p">:</span> <span class="s2">"Message is required"</span><span class="p">,</span>
+                    <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Message:"</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">"$schema"</span><span class="p">:</span> <span class="s2">"http://adaptivecards.io/schemas/adaptive-card.json"</span><span class="p">,</span>
+            <span class="s2">"version"</span><span class="p">:</span> <span class="s2">"1.3"</span><span class="p">,</span>
+            <span class="s2">"actions"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Action.Submit"</span><span class="p">,</span>
+                    <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Submit"</span><span class="p">,</span>
+                    <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"callback_keyword"</span><span class="p">:</span> <span class="s2">"message_callback"</span> <span class="c1"># This links to the card action handler.</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Attach the Adaptive Card to the response.</span>
+        <span class="n">send_card</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="n">card</span><span class="p">,</span> <span class="n">fallback_text</span><span class="o">=</span><span class="s2">"Please enter your message:"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Let the user know which keyword the bot understands.</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="s2">"Type 'message' to get the card."</span><span class="p">)</span>
+
+
+<span class="c1"># Create a WebSocket Client object.</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">WebSocketClient</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="n">bot_token</span><span class="p">,</span>         <span class="c1"># Authenticate the bot using its token.</span>
+                      <span class="n">on_message</span><span class="o">=</span><span class="n">handle_message</span><span class="p">,</span>      <span class="c1"># Registers the message handler.</span>
+                      <span class="n">on_card_action</span><span class="o">=</span><span class="n">handle_card_action</span><span class="p">)</span> <span class="c1"># Registers the callback command for card submissions.</span>
+
+<span class="c1"># Start the bot and make it listen for incoming messages.</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Execute the code with the following command and let it run:</p>
+<ul>
+<li>python 08_secure_bot.py</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Wait until you see <strong>WebSocket connected as WebexOne-<em>USERNAME</em>, waiting for messages...</strong> in the console.</p>
+</div>
+</li>
+<li>
+<p>Send <strong>message</strong> to your bot. Your email belongs to the allowed domain, so the bot works exactly like in Step 3.7:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/bot_40.png" data-title="Bot" data-desc-position="top"><img alt="Bot" src="../assets/bot_40.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="500"></a></p>
+</li>
+<li>
+<p>Now test what a user from another organization would see. Stop the bot with <strong>Ctrl+C</strong>, change <code>DOMAIN</code> in your <code>.env</code> file to <code>example.com</code>, save the file, and run the bot again:</p>
+<ul>
+<li>python 08_secure_bot.py</li>
+</ul>
+</li>
+<li>
+<p>Send <strong>message</strong> to your bot again. This time, the bot does not send the card and replies with:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/bot_41.png" data-title="Bot" data-desc-position="top"><img alt="Bot" src="../assets/bot_41.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="450"></a></p>
+<p>The blocked attempt is also printed in the console:</p>
+<div class="highlight"><pre><span></span><code>WebSocket connected as WebexOne-Pod0, waiting for messages...
+Message received from pod0@webexone-developer.wbx.ai: message
+Blocked request from pod0@webexone-developer.wbx.ai
+</code></pre></div>
+</li>
+<li>
+<p>Stop the bot with <strong>Ctrl+C</strong> and change <code>DOMAIN</code> in your <code>.env</code> file back to your organization's domain.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../lab2_creating-an-integration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lab 2 - Creating an Integration">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Lab 2 - Creating an Integration
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../lab4_deploying-a-meeting-scheduler-service-app/" class="md-footer__link md-footer__link--next" aria-label="Next: Lab 4 - Deploying a Meeting Scheduler Service App">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Lab 4 - Deploying a Meeting Scheduler Service App
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Cisco
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.instant", "navigation.top", "navigation.footer", "search.suggest", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../template_assets/js/newLoad.js"></script>
+      
+        <script src="../template_assets/js/setInfo.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": false, "openEffect": "fade", "closeEffect": "fade", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
