@@ -196,7 +196,7 @@ In this step, you will send your first 1:1 message using the bot you just create
 
     You should have received the following message:
 
-    ![Bot](./assets/bot_33.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+    ![Bot](./assets/bot_33.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
 ## Step 3.3: Create a Room and add yourself
 
