@@ -95,40 +95,75 @@ The Webex MCP Lab website is an AI assistant that works as your MCP client, so y
 
     ![MCP](./assets/mcp_1.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-2. Sign in using your key. Your key will be **LAB-21122-*XXXX***, where XXXX represents the characters assigned to your Pod card:
+2. Sign in using your key. Your key will be **LAB-21122-*XXXX***, where XXXX represents the characters assigned to your Pod. You can find the here:
+
+    ??? Note "Credentials"
+
+        | Pod | Key |
+        |---:|---|
+        | 1 | LAB-21122-8T9N |
+        | 3 | LAB-21122-4RXW |
+        | 4 | LAB-21122-6YDM |
+        | 5 | LAB-21122-EDSH |
+        | 7 | LAB-21122-9JV1 |
+        | 8 | LAB-21122-9VYM |
+        | 9 | LAB-21122-GNEV |
+        | 10 | LAB-21122-YFVA |
+        | 11 | LAB-21122-FP66 |
+        | 12 | LAB-21122-FNB3 |
+        | 13 | LAB-21122-QW2N |
+        | 14 | LAB-21122-3K6K |
+        | 15 | LAB-21122-S1R5 |
+        | 16 | LAB-21122-05MJ |
+        | 17 | LAB-21122-XX3N |
+        | 18 | LAB-21122-SCY2 |
+        | 19 | LAB-21122-J2KS |
+        | 21 | LAB-21122-79N7 |
+        | 22 | LAB-21122-WPHR |
+        | 23 | LAB-21122-MQW4 |
+        | 24 | LAB-21122-4KWZ |
+        | 25 | LAB-21122-ECP6 |
+        | 27 | LAB-21122-V9CS |
+        | 28 | LAB-21122-3C09 |
+        | 29 | LAB-21122-DS3T |
+        | 30 | LAB-21122-A92N |
+        | 31 | LAB-21122-629Z |
+        | 32 | LAB-21122-N8DR |
+        | 33 | LAB-21122-AHZ6 |
+        | 34 | LAB-21122-1ZMV |
 
     ![MCP](./assets/mcp_2.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-3. In the **Connected MCPs** panel on the right, click **Add MCP**:
+4. In the **Connected MCPs** panel on the right, click **Add MCP**:
 
     ![Add MCP](./assets/mcp_3.png){ width="450" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-4. From the list of available MCPs, choose **Webex Messaging**:
+5. From the list of available MCPs, choose **Webex Messaging**:
 
     ![Use another MCP server](./assets/mcp_26.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-5. Introduce your **WCIT Token** and click **Discover tools**:
+6. Introduce your **WCIT Token** and click **Discover tools**:
 
     ![Webex Messaging server details](./assets/mcp_27.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-6. You will see the list of tools available:
+7. You will see the list of tools available:
 
     ![Discovered tools](./assets/mcp_7.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
     !!! Note
         Destructive MCP tools are disabled for this lab.
 
-7. Click **Connect MCP** at the bottom of the page:
+8. Click **Connect MCP** at the bottom of the page:
 
     ![Connect MCP](./assets/mcp_8.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-8. After you click **Return to AI Agent**, you should be back at the chat interface and the MCP should be listed:
+9. After you click **Return to AI Agent**, you should be back at the chat interface and the MCP should be listed:
 
     ![Webex Messaging connected](./assets/mcp_9.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-9. Repeat steps 3 to 8 for the **Webex Meetings** server.
+10. Repeat steps 3 to 8 for the **Webex Meetings** server.
 
-10. Check that both servers now appear in the **Connected MCPs** panel:
+11. Check that both servers now appear in the **Connected MCPs** panel:
 
     ![Both MCP servers connected](./assets/mcp_10.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
