@@ -110,9 +110,16 @@ Visual Studio Code will be used for Python-based bot development, service app co
 3. Select a directory to save the project.
 4. Click **Yes, I trust the authors** if a pop-up appears.
 
+   !!! Warning "Important"
+       If the prompt does not appear, you must still manually trust the workspace. Click **Manage** in the top notification bar and select **Trust Workspace**.
+
 ### Virtual Environment
 
-1. Click **Terminal > New Terminal** from the top menu bar.
+1. Click **Terminal > New Terminal** from the top menu bar, or press **Ctrl+Shift+`** to open the terminal.
+
+    !!! Note
+        If you do not see **Terminal** in the top bar, click the **...** icon first.
+
 2. Create a virtual environment and install dependencies:
 
     ```bash
