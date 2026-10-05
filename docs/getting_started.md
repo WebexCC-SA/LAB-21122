@@ -34,7 +34,7 @@ To begin, you'll log into your dedicated Webex lab account. This will allow you 
 
     ![Webex](./assets/webex_app_logo.png){ width="150" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-   !!! Note
+    !!! Note
         You can also log in at [Webex](https://web.webex.com/){:target="_blank"}
     
 2. **Enter Lab Credentials:** When prompted, enter the **Webex email address and password** provided to you.
