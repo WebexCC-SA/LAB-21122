@@ -1,0 +1,1864 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="LAB-21122: Exploring the Webex Developer Ecosystem">
+      
+      
+        <meta name="author" content="Diego Manuel Jimenez Moreno">
+      
+      
+      
+        <link rel="prev" href="../lab5_webex_mcp_servers/">
+      
+      
+        <link rel="next" href="../conclusion/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../template_assets/webex75.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Lab 6 - Use Cases - LAB-21122: Exploring the Webex Developer Ecosystem</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-6-use-cases" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LAB-21122: Exploring the Webex Developer Ecosystem" class="md-header__button md-logo" aria-label="LAB-21122: Exploring the Webex Developer Ecosystem" data-md-component="logo">
+      
+  <img src="../template_assets/webexLogo91.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LAB-21122: Exploring the Webex Developer Ecosystem
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 6 - Use Cases
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LAB-21122: Exploring the Webex Developer Ecosystem" class="md-nav__button md-logo" aria-label="LAB-21122: Exploring the Webex Developer Ecosystem" data-md-component="logo">
+      
+  <img src="../template_assets/webexLogo91.png" alt="logo">
+
+    </a>
+    LAB-21122: Exploring the Webex Developer Ecosystem
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1_making-your-first-api-requests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 1 - Making Your First API Requests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2_creating-an-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2 - Creating an Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3_building-a-bot-websockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3 - Building a Bot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4_deploying-a-meeting-scheduler-service-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 4 - Deploying a Meeting Scheduler Service App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab5_webex_mcp_servers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 5 - Webex MCP Servers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 6 - Use Cases
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 6 - Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-space-directory-bot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1: Space Directory Bot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-end-user-phone-provisioning-assistant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2: End-User Phone Provisioning Assistant
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-create-a-feedback-bot-for-your-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3: Create a feedback bot for your organization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 3: Create a feedback bot for your organization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pagination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pagination
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conclusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conclusion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lab-6-use-cases">Lab 6 – Use Cases</h1>
+<p>In this section, you will put your Webex API knowledge into practice by building real-world solutions. You will explore how bots and Service Apps can help users find the right spaces, automate device provisioning, and collect feedback across an organization.</p>
+<p>All the bots in this section use the same <code>WebSocketClient</code> and bot helpers from Lab 3, and the same pattern: every message gets a menu card, and each button in a card is routed to its action with a <code>callback_keyword</code>.</p>
+<p>Upon completion of this section, you will be able to:</p>
+<ol>
+<li>Apply the concepts that you have learned to create practical solutions using Webex APIs.</li>
+<li>Build a bot that lets users join spaces from a shared directory and list their own spaces for everyone.</li>
+<li>Develop an interactive bot for end-users to provision their own devices using a MAC address.</li>
+<li>Build a bot that enables permitted users to collect feedback from all users in the organization.</li>
+<li>Integrate API calls, handle pagination, and manage bot interactions for real-world scenarios.</li>
+</ol>
+<h2 id="exercise-1-space-directory-bot">Exercise 1: Space Directory Bot</h2>
+<p>Create a bot that helps users find and join the spaces of the organization. Instead of asking around for an invite, users can browse a shared directory of spaces and join them, or list one of their own spaces so everyone can find it.</p>
+<p>Requirements:</p>
+<ol>
+<li>Only allow users in your organization's domain to use the bot.</li>
+<li>Present an Adaptive Card with two options: <strong>Join a space</strong> and <strong>List a space</strong>.</li>
+<li><strong>Join a space:</strong> show a dropdown with the spaces in the directory, and add the user to the selected space.</li>
+<li><strong>List a space:</strong> show a dropdown with the spaces the user could list, and add the selected space to the directory.</li>
+<li>
+<p>Only allow users to list spaces they are a member of, and only allow them to join spaces that are in the directory.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_1.png" data-title="Space Directory Bot" data-desc-position="top"><img alt="Space Directory Bot" src="../assets/usecase_1.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="850"></a></p>
+</li>
+</ol>
+<details class="tip">
+<summary>Solution</summary>
+<ol>
+<li>
+<p>Navigate to <code>05-usecases/01_space_bot.py</code> and review the code.</p>
+<p>These are the key points to understand how each requirement has been met:</p>
+<ol>
+<li><strong>Domain restriction</strong>
+    The <strong><code>is_authorized()</code></strong> function checks the sender's email domain against <code>DOMAIN</code> before any other action, just like the secure bot from Step 3.8.</li>
+<li><strong>Menu card</strong>
+    The <strong><code>handle_message()</code></strong> handler answers every message with the menu card, and <strong><code>handle_card_action()</code></strong> routes each button to its action using the <code>callback_keyword</code> of the card.</li>
+<li><strong>Join a space</strong>
+    The <strong><code>show_directory()</code></strong> function sends the spaces in the directory, and <strong><code>join_space()</code></strong> adds the user with the Memberships API. If the user is already a member, the API returns <code>409</code> and the bot lets them know.</li>
+<li><strong>List a space</strong>
+    The <strong><code>choose_space_to_list()</code></strong> function shows the group spaces where both the bot and the user are members, and <strong><code>list_space()</code></strong> saves the selected space in <code>spaces.json</code>, so the directory survives a restart.</li>
+<li><strong>Never trust card inputs</strong>
+    A card submission contains whatever the user sent, so the bot checks again that the space is in the directory before adding someone, and that the user is a member before listing a space.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The bot can only add people to spaces it is a member of. That is why a space must include the bot before it can be listed.</p>
+</div>
+<details class="tip">
+<summary>Python Code</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">webexpythonsdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApiError</span>
+
+<span class="c1"># Reuse the WebSocket client and helpers from Lab 3.</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">".."</span><span class="p">,</span> <span class="s2">"03-bots"</span><span class="p">))</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">websocket_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSocketClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bot_helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_api</span><span class="p">,</span> <span class="n">send_message</span><span class="p">,</span> <span class="n">send_card</span><span class="p">,</span> <span class="n">delete_message</span><span class="p">,</span> <span class="n">is_allowed_domain</span>
+
+<span class="c1"># Load environment variables from the .env file.</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Webex Bot Token for authentication with the Webex API.</span>
+<span class="n">bot_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"BOT_TOKEN"</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">get_api</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
+
+<span class="c1"># Only users whose email belongs to this domain can use the bot.</span>
+<span class="n">allowed_domain</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DOMAIN"</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">allowed_domain</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="s2">"Set DOMAIN in the .env file before starting the bot."</span><span class="p">)</span>
+
+<span class="c1"># The bot's own email, shown to users so they know who to add to their space.</span>
+<span class="n">bot_email</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">me</span><span class="p">()</span><span class="o">.</span><span class="n">emails</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># The directory of listed spaces is saved next to this script, so it survives a restart.</span>
+<span class="n">DIRECTORY_FILE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">"spaces.json"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_directory</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Returns the list of spaces everyone can join: [{"id": ..., "title": ...}, ...]</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">DIRECTORY_FILE</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">DIRECTORY_FILE</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">save_directory</span><span class="p">(</span><span class="n">spaces</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">DIRECTORY_FILE</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">spaces</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_member</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">person_id</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Checks whether a person is a member of a space.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="kc">True</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">api</span><span class="o">.</span><span class="n">memberships</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">roomId</span><span class="o">=</span><span class="n">room_id</span><span class="p">,</span> <span class="n">personId</span><span class="o">=</span><span class="n">person_id</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_authorized</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Checks the sender's email domain and tells blocked users why they got no answer.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">is_allowed_domain</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="p">[</span><span class="n">allowed_domain</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Blocked request from </span><span class="si">{</span><span class="n">email</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"Sorry, this bot is only available to users in </span><span class="si">{</span><span class="n">allowed_domain</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">menu_card</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    The main menu: every message to the bot answers with this card.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"AdaptiveCard"</span><span class="p">,</span>
+        <span class="s2">"body"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TextBlock"</span><span class="p">,</span>
+                <span class="s2">"text"</span><span class="p">:</span> <span class="s2">"Space Directory"</span><span class="p">,</span>
+                <span class="s2">"weight"</span><span class="p">:</span> <span class="s2">"Bolder"</span><span class="p">,</span>
+                <span class="s2">"size"</span><span class="p">:</span> <span class="s2">"Large"</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TextBlock"</span><span class="p">,</span>
+                <span class="s2">"text"</span><span class="p">:</span> <span class="s2">"Join one of the listed spaces, or list one of your spaces so everyone can find it."</span><span class="p">,</span>
+                <span class="s2">"wrap"</span><span class="p">:</span> <span class="kc">True</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">"$schema"</span><span class="p">:</span> <span class="s2">"http://adaptivecards.io/schemas/adaptive-card.json"</span><span class="p">,</span>
+        <span class="s2">"version"</span><span class="p">:</span> <span class="s2">"1.3"</span><span class="p">,</span>
+        <span class="s2">"actions"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Action.Submit"</span><span class="p">,</span>
+                <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Join a space"</span><span class="p">,</span>
+                <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"callback_keyword"</span><span class="p">:</span> <span class="s2">"browse"</span><span class="p">}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Action.Submit"</span><span class="p">,</span>
+                <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"List a space"</span><span class="p">,</span>
+                <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"callback_keyword"</span><span class="p">:</span> <span class="s2">"choose_space"</span><span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">spaces_card</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">spaces</span><span class="p">,</span> <span class="n">callback_keyword</span><span class="p">,</span> <span class="n">button_title</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    A card with a dropdown of spaces. The selected space ID is returned as 'room_id'.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"AdaptiveCard"</span><span class="p">,</span>
+        <span class="s2">"body"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TextBlock"</span><span class="p">,</span>
+                <span class="s2">"text"</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
+                <span class="s2">"weight"</span><span class="p">:</span> <span class="s2">"Bolder"</span><span class="p">,</span>
+                <span class="s2">"wrap"</span><span class="p">:</span> <span class="kc">True</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Input.ChoiceSet"</span><span class="p">,</span>
+                <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"room_id"</span><span class="p">,</span>
+                <span class="s2">"placeholder"</span><span class="p">:</span> <span class="s2">"Select a space"</span><span class="p">,</span>
+                <span class="s2">"choices"</span><span class="p">:</span> <span class="p">[{</span><span class="s2">"title"</span><span class="p">:</span> <span class="n">space</span><span class="p">[</span><span class="s2">"title"</span><span class="p">],</span> <span class="s2">"value"</span><span class="p">:</span> <span class="n">space</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]}</span> <span class="k">for</span> <span class="n">space</span> <span class="ow">in</span> <span class="n">spaces</span><span class="p">],</span>
+                <span class="s2">"isRequired"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="s2">"errorMessage"</span><span class="p">:</span> <span class="s2">"Select a space"</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">"$schema"</span><span class="p">:</span> <span class="s2">"http://adaptivecards.io/schemas/adaptive-card.json"</span><span class="p">,</span>
+        <span class="s2">"version"</span><span class="p">:</span> <span class="s2">"1.3"</span><span class="p">,</span>
+        <span class="s2">"actions"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Action.Submit"</span><span class="p">,</span>
+                <span class="s2">"title"</span><span class="p">:</span> <span class="n">button_title</span><span class="p">,</span>
+                <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"callback_keyword"</span><span class="p">:</span> <span class="n">callback_keyword</span><span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">show_directory</span><span class="p">(</span><span class="n">room_id</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Sends the list of spaces the user can join.</span>
+<span class="sd">    """</span>
+    <span class="n">spaces</span> <span class="o">=</span> <span class="n">load_directory</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">spaces</span><span class="p">:</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="s2">"No spaces are listed yet. Use **List a space** to add the first one."</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">send_card</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="n">spaces_card</span><span class="p">(</span><span class="s2">"Which space do you want to join?"</span><span class="p">,</span> <span class="n">spaces</span><span class="p">,</span> <span class="s2">"join"</span><span class="p">,</span> <span class="s2">"Join"</span><span class="p">),</span>
+              <span class="n">fallback_text</span><span class="o">=</span><span class="s2">"Select a space to join"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">join_space</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">selected_room_id</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Adds the user to the selected space, as long as it is in the directory.</span>
+<span class="sd">    """</span>
+    <span class="c1"># Never trust card inputs blindly: only spaces from the directory can be joined.</span>
+    <span class="n">space</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">space</span> <span class="k">for</span> <span class="n">space</span> <span class="ow">in</span> <span class="n">load_directory</span><span class="p">()</span> <span class="k">if</span> <span class="n">space</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span> <span class="o">==</span> <span class="n">selected_room_id</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">space</span><span class="p">:</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="s2">"That space is not in the directory."</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">api</span><span class="o">.</span><span class="n">memberships</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">roomId</span><span class="o">=</span><span class="n">space</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="n">personId</span><span class="o">=</span><span class="n">person_id</span><span class="p">)</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"&gt; **Info**</span><span class="se">\n</span><span class="s2">&gt; You have been added to **</span><span class="si">{</span><span class="n">space</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2">**."</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">ApiError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">error</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">409</span><span class="p">:</span>
+            <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"You are already a member of **</span><span class="si">{</span><span class="n">space</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2">**."</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Could not add </span><span class="si">{</span><span class="n">person_id</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">space</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"Sorry, I could not add you to **</span><span class="si">{</span><span class="n">space</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2">**."</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">choose_space_to_list</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">person_id</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Sends the spaces that the user could list: group spaces where both the bot</span>
+<span class="sd">    and the user are members, and that are not listed yet.</span>
+<span class="sd">    """</span>
+    <span class="n">listed_ids</span> <span class="o">=</span> <span class="p">{</span><span class="n">space</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span> <span class="k">for</span> <span class="n">space</span> <span class="ow">in</span> <span class="n">load_directory</span><span class="p">()}</span>
+    <span class="n">candidates</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">"id"</span><span class="p">:</span> <span class="n">room</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">"title"</span><span class="p">:</span> <span class="n">room</span><span class="o">.</span><span class="n">title</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">room</span> <span class="ow">in</span> <span class="n">api</span><span class="o">.</span><span class="n">rooms</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">"group"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">room</span><span class="o">.</span><span class="n">id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">listed_ids</span> <span class="ow">and</span> <span class="n">is_member</span><span class="p">(</span><span class="n">room</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">person_id</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">candidates</span><span class="p">:</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"To list a space, first add me (**</span><span class="si">{</span><span class="n">bot_email</span><span class="si">}</span><span class="s2">**) to it, then try again."</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">send_card</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="n">spaces_card</span><span class="p">(</span><span class="s2">"Which space do you want to list?"</span><span class="p">,</span> <span class="n">candidates</span><span class="p">,</span> <span class="s2">"list_space"</span><span class="p">,</span> <span class="s2">"List it"</span><span class="p">),</span>
+              <span class="n">fallback_text</span><span class="o">=</span><span class="s2">"Select a space to list"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">list_space</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">selected_room_id</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Adds the selected space to the directory, so everyone can join it.</span>
+<span class="sd">    """</span>
+    <span class="c1"># Check again when the card is submitted: only members can list their own spaces.</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_member</span><span class="p">(</span><span class="n">selected_room_id</span><span class="p">,</span> <span class="n">person_id</span><span class="p">):</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="s2">"You can only list spaces you are a member of."</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">spaces</span> <span class="o">=</span> <span class="n">load_directory</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">space</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span> <span class="o">==</span> <span class="n">selected_room_id</span> <span class="k">for</span> <span class="n">space</span> <span class="ow">in</span> <span class="n">spaces</span><span class="p">):</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="s2">"That space is already listed."</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">title</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">rooms</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">selected_room_id</span><span class="p">)</span><span class="o">.</span><span class="n">title</span>
+    <span class="n">spaces</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"id"</span><span class="p">:</span> <span class="n">selected_room_id</span><span class="p">,</span> <span class="s2">"title"</span><span class="p">:</span> <span class="n">title</span><span class="p">})</span>
+    <span class="n">save_directory</span><span class="p">(</span><span class="n">spaces</span><span class="p">)</span>
+    <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"&gt; **Info**</span><span class="se">\n</span><span class="s2">&gt; **</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">** is now listed. Everyone can join it with **Join a space**."</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_card_action</span><span class="p">(</span><span class="n">attachment_action</span><span class="p">,</span> <span class="n">activity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Routes each card submission to the right action using its 'callback_keyword'.</span>
+<span class="sd">    """</span>
+    <span class="n">room_id</span> <span class="o">=</span> <span class="n">attachment_action</span><span class="o">.</span><span class="n">roomId</span>
+    <span class="n">person_id</span> <span class="o">=</span> <span class="n">attachment_action</span><span class="o">.</span><span class="n">personId</span>
+
+    <span class="c1"># Card submissions only include the person ID, so look up their email first.</span>
+    <span class="n">person</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">person_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_authorized</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">emails</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">return</span>
+
+    <span class="n">inputs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">attachment_action</span><span class="p">,</span> <span class="s2">"inputs"</span><span class="p">,</span> <span class="p">{})</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"callback_keyword"</span><span class="p">)</span>
+
+    <span class="c1"># Deletes the submitted card, so it cannot be submitted twice.</span>
+    <span class="n">delete_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">attachment_action</span><span class="o">.</span><span class="n">messageId</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"browse"</span><span class="p">:</span>
+        <span class="n">show_directory</span><span class="p">(</span><span class="n">room_id</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"join"</span><span class="p">:</span>
+        <span class="n">join_space</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"room_id"</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"choose_space"</span><span class="p">:</span>
+        <span class="n">choose_space_to_list</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">person_id</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"list_space"</span><span class="p">:</span>
+        <span class="n">list_space</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"room_id"</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">activity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Any message from an allowed user gets the main menu.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_authorized</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">roomId</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">personEmail</span><span class="p">):</span>
+        <span class="k">return</span>
+
+    <span class="n">send_card</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">roomId</span><span class="p">,</span> <span class="n">menu_card</span><span class="p">(),</span> <span class="n">fallback_text</span><span class="o">=</span><span class="s2">"Space Directory"</span><span class="p">)</span>
+
+
+<span class="c1"># Create a WebSocket Client object.</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">WebSocketClient</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="n">bot_token</span><span class="p">,</span>         <span class="c1"># Authenticate the bot using its token.</span>
+                      <span class="n">on_message</span><span class="o">=</span><span class="n">handle_message</span><span class="p">,</span>      <span class="c1"># Registers the message handler.</span>
+                      <span class="n">on_card_action</span><span class="o">=</span><span class="n">handle_card_action</span><span class="p">)</span> <span class="c1"># Registers the handler for card submissions.</span>
+
+<span class="c1"># Start the bot and make it listen for incoming messages.</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Change your directory in the terminal:</p>
+<ul>
+<li>cd ../06-usecases</li>
+</ul>
+</li>
+<li>
+<p>Execute the code with the following command and let it run:</p>
+<ul>
+<li>python 01_space_bot.py</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Wait until you see <strong>WebSocket connected as WebexOne-<em>USERNAME</em>, waiting for messages...</strong> in the console.</p>
+</div>
+</li>
+<li>
+<p>Send any message to your bot in your 1:1 space to get the menu card:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_2.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_2.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="450"></a></p>
+</li>
+<li>
+<p>Click <strong>List a space</strong> and you will see the <strong>WebexOne Room</strong> space you created in Step 3.3. The bot created it, so both you and the bot are already members:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_3.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_3.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="450"></a>        </p>
+</li>
+<li>
+<p>Select <strong>WebexOne Room</strong> and click <strong>List it</strong>. You will receive a confirmation that the space is now listed:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_4.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_4.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="450"></a></p>
+</li>
+<li>
+<p>In Webex, leave <strong>WebexOne Room</strong>, so you can join it again from the directory:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_5.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_5.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="450"></a></p>
+</li>
+<li>
+<p>Send another message to your bot, click <strong>Join a space</strong>, select <strong>WebexOne Room</strong>, and click <strong>Join</strong>. You will be added back to the space:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_6.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_6.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="650"></a></p>
+</li>
+<li>
+<p>Repeat the previous step. This time, the bot lets you know that you are already a member of the space:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_7.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_7.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="400"></a></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To list any other space, first add your bot to it with its email address, then click <strong>List a space</strong> again. You can also ask someone next to you to send a message to your bot and join your space from the directory.</p>
+</div>
+</li>
+<li>
+<p>Stop the bot with <strong>Ctrl+C</strong> before moving to the next exercise.</p>
+</li>
+</ol>
+</details>
+<h2 id="exercise-2-end-user-phone-provisioning-assistant">Exercise 2: End-User Phone Provisioning Assistant</h2>
+<p>Create an interactive Webex bot that enables end-users to auto-provision their new phones by submitting the device's MAC address. The bot will guide the user through the process using an Adaptive Card and interact with backend services to complete the provisioning.</p>
+<p>Requirements:</p>
+<ol>
+<li>Validate that the MAC address provided by the user follows the correct format (e.g., <code>AA:BB:CC:DD:EE:FF</code> or <code>AABBCCDDEEFF</code>).</li>
+<li>Present an Adaptive Card to the user with:<ol>
+<li>An input field for the MAC address.</li>
+<li>A choice set (dropdown) for selecting the phone model, with the following pre-defined options:<ul>
+<li>DMS Cisco 8851</li>
+<li>DMS Cisco 8861</li>
+<li>DMS Cisco 8865</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Use the submitted data (MAC address and selected phone model) to initiate device provisioning through the backend or relevant API.</li>
+<li>
+<p>Notify the user in Webex of the provisioning result (success or error).</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/docx-image-058.png" data-title="docx-image-058" data-desc-position="top"><img alt="docx-image-058" src="../assets/docx-image-058.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="850"></a></p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this exercise, you will need to add the <strong>spark-admin:devices_write</strong> scope to your Service App.
+The next exercise also needs the <strong>spark-admin:people_read</strong> scope, so add both now and you will only need one approval.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please notify us to have your Service App rights approved.</p>
+</div>
+<p>Once approved, generate new tokens as in Step 4.3 and update <code>WEBEX_ACCESS_TOKEN</code> in your <code>.env</code> file, because a token only includes the scopes that were approved when it was generated.</p>
+</div>
+<details class="tip">
+<summary>Solution</summary>
+<ol>
+<li>
+<p>Navigate to <code>06-usecases/02_device_bot.py</code> and review the code.</p>
+<p>These are the key points to understand how each requirement has been met:</p>
+<ol>
+<li><strong>MAC address validation</strong>
+    The <strong><code>normalize_mac_address()</code></strong> function uses a regular expression to check the MAC format before calling the API. It accepts <code>AA:BB:CC:DD:EE:FF</code>, <code>AA-BB-CC-DD-EE-FF</code>, and <code>AABBCCDDEEFF</code>, and converts them to the format the API expects.</li>
+<li><strong>Adaptive Card presentation</strong>
+    The <strong><code>handle_message()</code></strong> handler sends the menu card, and the <strong>Provision your new IP Phone</strong> button sends the provisioning card with the MAC input and the phone model dropdown.</li>
+<li><strong>Device provisioning</strong>
+    The <strong><code>provision_device()</code></strong> function sends the card data to the <code>/v1/devices</code> API with the Service App token. The device is assigned to the user who submitted the card.</li>
+<li><strong>Provisioning result notification</strong>
+    <strong><code>provision_device()</code></strong> replies with a success, duplicate, or error message based on the API's response status.</li>
+</ol>
+<details class="tip">
+<summary>Python Code</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+
+<span class="c1"># Reuse the WebSocket client and helpers from Lab 3.</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">".."</span><span class="p">,</span> <span class="s2">"03-bots"</span><span class="p">))</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">websocket_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSocketClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bot_helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_api</span><span class="p">,</span> <span class="n">send_message</span><span class="p">,</span> <span class="n">send_card</span><span class="p">,</span> <span class="n">delete_message</span><span class="p">,</span> <span class="n">is_allowed_domain</span>
+
+<span class="c1"># Load environment variables from the .env file.</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Webex Bot Token for authentication with the Webex API.</span>
+<span class="n">bot_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"BOT_TOKEN"</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">get_api</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
+
+<span class="c1"># Service App access token with the spark-admin:devices_write scope, used to create devices.</span>
+<span class="n">access_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"WEBEX_ACCESS_TOKEN"</span><span class="p">)</span>
+
+<span class="c1"># Only users whose email belongs to this domain can use the bot.</span>
+<span class="n">allowed_domain</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DOMAIN"</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">allowed_domain</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="s2">"Set DOMAIN in the .env file before starting the bot."</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_authorized</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Checks the sender's email domain and tells blocked users why they got no answer.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">is_allowed_domain</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="p">[</span><span class="n">allowed_domain</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Blocked request from </span><span class="si">{</span><span class="n">email</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"Sorry, this bot is only available to users in </span><span class="si">{</span><span class="n">allowed_domain</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">normalize_mac_address</span><span class="p">(</span><span class="n">mac</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Accepts AA:BB:CC:DD:EE:FF, AA-BB-CC-DD-EE-FF or AABBCCDDEEFF.</span>
+<span class="sd">    Returns the MAC address as 12 uppercase characters, or None if the format is wrong.</span>
+<span class="sd">    """</span>
+    <span class="n">mac</span> <span class="o">=</span> <span class="p">(</span><span class="n">mac</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">"([0-9A-F]</span><span class="si">{2}</span><span class="s2">[:-])</span><span class="si">{5}</span><span class="s2">[0-9A-F]</span><span class="si">{2}</span><span class="s2">|[0-9A-F]</span><span class="si">{12}</span><span class="s2">"</span><span class="p">,</span> <span class="n">mac</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[:-]"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="n">mac</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">menu_card</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    The main menu: every message to the bot answers with this card.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"AdaptiveCard"</span><span class="p">,</span>
+        <span class="s2">"body"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TextBlock"</span><span class="p">,</span>
+                <span class="s2">"text"</span><span class="p">:</span> <span class="s2">"Welcome to the Auto-Provisioning Bot!"</span><span class="p">,</span>
+                <span class="s2">"weight"</span><span class="p">:</span> <span class="s2">"Bolder"</span><span class="p">,</span>
+                <span class="s2">"size"</span><span class="p">:</span> <span class="s2">"Large"</span><span class="p">,</span>
+                <span class="s2">"wrap"</span><span class="p">:</span> <span class="kc">True</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">"$schema"</span><span class="p">:</span> <span class="s2">"http://adaptivecards.io/schemas/adaptive-card.json"</span><span class="p">,</span>
+        <span class="s2">"version"</span><span class="p">:</span> <span class="s2">"1.3"</span><span class="p">,</span>
+        <span class="s2">"actions"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Action.Submit"</span><span class="p">,</span>
+                <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Provision your new IP Phone"</span><span class="p">,</span>
+                <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"callback_keyword"</span><span class="p">:</span> <span class="s2">"provision"</span><span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">provision_card</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    The provisioning form: phone model and MAC address.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"AdaptiveCard"</span><span class="p">,</span>
+        <span class="s2">"body"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TextBlock"</span><span class="p">,</span>
+                <span class="s2">"text"</span><span class="p">:</span> <span class="s2">"Please select the model and enter the MAC address of your new phone:"</span><span class="p">,</span>
+                <span class="s2">"wrap"</span><span class="p">:</span> <span class="kc">True</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Input.ChoiceSet"</span><span class="p">,</span>
+                <span class="s2">"choices"</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"DMS Cisco 8851"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"DMS Cisco 8851"</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"DMS Cisco 8861"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"DMS Cisco 8861"</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"DMS Cisco 8865"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"DMS Cisco 8865"</span><span class="p">}</span>
+                <span class="p">],</span>
+                <span class="s2">"placeholder"</span><span class="p">:</span> <span class="s2">"Phone model"</span><span class="p">,</span>
+                <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"model"</span><span class="p">,</span>
+                <span class="s2">"isRequired"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="s2">"errorMessage"</span><span class="p">:</span> <span class="s2">"Model is required"</span><span class="p">,</span>
+                <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Select model:"</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Input.Text"</span><span class="p">,</span>
+                <span class="s2">"placeholder"</span><span class="p">:</span> <span class="s2">"AA:BB:CC:DD:EE:FF"</span><span class="p">,</span>
+                <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"mac_address"</span><span class="p">,</span>
+                <span class="s2">"isRequired"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="s2">"errorMessage"</span><span class="p">:</span> <span class="s2">"MAC is required"</span><span class="p">,</span>
+                <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"MAC Address:"</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">"$schema"</span><span class="p">:</span> <span class="s2">"http://adaptivecards.io/schemas/adaptive-card.json"</span><span class="p">,</span>
+        <span class="s2">"version"</span><span class="p">:</span> <span class="s2">"1.3"</span><span class="p">,</span>
+        <span class="s2">"actions"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Action.Submit"</span><span class="p">,</span>
+                <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Submit"</span><span class="p">,</span>
+                <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"callback_keyword"</span><span class="p">:</span> <span class="s2">"provision_callback"</span><span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">provision_device</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">person_id</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Validates the submitted data and creates the device for the user with the Devices API.</span>
+<span class="sd">    """</span>
+    <span class="n">mac_address</span> <span class="o">=</span> <span class="n">normalize_mac_address</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"mac_address"</span><span class="p">))</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"model"</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">mac_address</span><span class="p">:</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="s2">"&gt; **Error**</span><span class="se">\n</span><span class="s2">&gt; MAC Address format is incorrect. Use a format like AA:BB:CC:DD:EE:FF or AABBCCDDEEFF."</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"mac"</span><span class="p">:</span> <span class="n">mac_address</span><span class="p">,</span>
+        <span class="s2">"model"</span><span class="p">:</span> <span class="n">model</span><span class="p">,</span>
+        <span class="s2">"personId"</span><span class="p">:</span> <span class="n">person_id</span>
+    <span class="p">}</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+        <span class="s2">"Accept"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="n">access_token</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">}</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"https://webexapis.com/v1/devices"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Provisioning </span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">mac_address</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"&gt; **Info**</span><span class="se">\n</span><span class="s2">&gt; Your </span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">mac_address</span><span class="si">}</span><span class="s2">) has been added successfully."</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">409</span><span class="p">:</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="s2">"&gt; **Error**</span><span class="se">\n</span><span class="s2">&gt; This MAC Address is already registered."</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="s2">"&gt; **Error**</span><span class="se">\n</span><span class="s2">&gt; There was an error provisioning your phone."</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_card_action</span><span class="p">(</span><span class="n">attachment_action</span><span class="p">,</span> <span class="n">activity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Routes each card submission to the right action using its 'callback_keyword'.</span>
+<span class="sd">    """</span>
+    <span class="n">room_id</span> <span class="o">=</span> <span class="n">attachment_action</span><span class="o">.</span><span class="n">roomId</span>
+
+    <span class="c1"># Card submissions only include the person ID, so look up their email first.</span>
+    <span class="n">person</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attachment_action</span><span class="o">.</span><span class="n">personId</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_authorized</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">person</span><span class="o">.</span><span class="n">emails</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">return</span>
+
+    <span class="n">inputs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">attachment_action</span><span class="p">,</span> <span class="s2">"inputs"</span><span class="p">,</span> <span class="p">{})</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"callback_keyword"</span><span class="p">)</span>
+
+    <span class="c1"># Deletes the submitted card, so it cannot be submitted twice.</span>
+    <span class="n">delete_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">attachment_action</span><span class="o">.</span><span class="n">messageId</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"provision"</span><span class="p">:</span>
+        <span class="n">send_card</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="n">provision_card</span><span class="p">(),</span> <span class="n">fallback_text</span><span class="o">=</span><span class="s2">"Provision your new IP Phone"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"provision_callback"</span><span class="p">:</span>
+        <span class="n">provision_device</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">attachment_action</span><span class="o">.</span><span class="n">personId</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">activity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Any message from an allowed user gets the main menu.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_authorized</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">roomId</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">personEmail</span><span class="p">):</span>
+        <span class="k">return</span>
+
+    <span class="n">send_card</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">roomId</span><span class="p">,</span> <span class="n">menu_card</span><span class="p">(),</span> <span class="n">fallback_text</span><span class="o">=</span><span class="s2">"Auto-Provisioning Bot"</span><span class="p">)</span>
+
+
+<span class="c1"># Create a WebSocket Client object.</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">WebSocketClient</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="n">bot_token</span><span class="p">,</span>         <span class="c1"># Authenticate the bot using its token.</span>
+                      <span class="n">on_message</span><span class="o">=</span><span class="n">handle_message</span><span class="p">,</span>      <span class="c1"># Registers the message handler.</span>
+                      <span class="n">on_card_action</span><span class="o">=</span><span class="n">handle_card_action</span><span class="p">)</span> <span class="c1"># Registers the handler for card submissions.</span>
+
+<span class="c1"># Start the bot and make it listen for incoming messages.</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Execute the code with the following command and let it run:</p>
+<ul>
+<li>python 02_device_bot.py</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Wait until you see <strong>WebSocket connected as WebexOne-<em>USERNAME</em>, waiting for messages...</strong> in the console.</p>
+</div>
+</li>
+<li>
+<p>Send any message to your bot to get the following card:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_8.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_8.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="450"></a></p>
+</li>
+<li>
+<p>Click <strong>Provision your new IP Phone</strong> to get the following provisioning card:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_9.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_9.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="450"></a></p>
+</li>
+<li>
+<p>If you submit a MAC address in the wrong format, such as "54G3152300C8", you will receive a notification about the error:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_10.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_10.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="450"></a></p>
+</li>
+<li>
+<p>If you submit a duplicate MAC address, such as "54A3152300C8", you will receive a notification about the duplication:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_11.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_11.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="400"></a></p>
+</li>
+<li>
+<p>If you submit a valid MAC address, you will receive a message like the following:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_12.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_12.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="450"></a></p>
+</li>
+<li>
+<p>The device will be visible in Control Hub:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_13.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_13.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="650"></a></p>
+</li>
+<li>
+<p>Stop the bot with <strong>Ctrl+C</strong> before moving to the next exercise.</p>
+</li>
+</ol>
+</details>
+<h2 id="exercise-3-create-a-feedback-bot-for-your-organization">Exercise 3: Create a feedback bot for your organization</h2>
+<p>Develop an assistant bot that allows only permitted users to collect feedback from all users in the organization.</p>
+<p>Requirements:</p>
+<ol>
+<li>Only allow permitted users to access the bot's feedback functionality.</li>
+<li>Provide access through the menu card to send a feedback request to all users in the organization.</li>
+<li>Present an Adaptive Card with a text input box for each user to enter their feedback.</li>
+<li>
+<p>Collect responses from recipients and send a confirmation or error notification to the user after feedback is submitted.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/docx-image-049.png" data-title="docx-image-049" data-desc-position="top"><img alt="docx-image-049" src="../assets/docx-image-049.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="850"></a></p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In this exercise, you will need the <strong>spark-admin:people_read</strong> scope. If you did not add it in Exercise 2, add it to your Service App now.</p>
+<p>Please notify us to have your Service App rights approved. Once approved, generate new tokens as in Step 4.3 and update <code>WEBEX_ACCESS_TOKEN</code> in your <code>.env</code> file.</p>
+</div>
+<h3 id="pagination">Pagination</h3>
+<p>When retrieving a large amount of information, you need to handle pagination. With pagination, the API returns a limited set of results per request. If more data is available, the response includes a <code>Link</code> header with <code>rel="next"</code>, which provides the URL to fetch the next page of results. This process continues until all results have been retrieved.</p>
+<ol>
+<li>
+<p>Navigate to <code>06-usecases/03_pagination.py</code> and review the code.</p>
+<p>In this example, a pagination limit of 2 users is used.</p>
+<details class="tip">
+<summary>Python Code</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Service App access token with the spark-admin:people_read scope.</span>
+<span class="n">access_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"WEBEX_ACCESS_TOKEN"</span><span class="p">)</span>
+<span class="n">MAX</span> <span class="o">=</span> <span class="mi">2</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">list_people_page</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="n">access_token</span><span class="si">}</span><span class="s2">"</span><span class="p">}</span>
+    <span class="c1"># The 'next' link already includes the page size, so only send it on the first request.</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">url</span> <span class="k">else</span> <span class="p">{</span><span class="s2">"max"</span><span class="p">:</span> <span class="n">MAX</span><span class="p">}</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span> <span class="ow">or</span> <span class="s2">"https://webexapis.com/v1/people"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"items"</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Name: </span><span class="si">{</span><span class="n">person</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'displayName'</span><span class="p">)</span><span class="si">}</span><span class="s2"> | Email: </span><span class="si">{</span><span class="n">person</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'emails'</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">''</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="c1"># Webex returns the next page URL in the 'Link' header with rel="next".</span>
+    <span class="k">if</span> <span class="s2">"next"</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">links</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- Next page ---</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">list_people_page</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">links</span><span class="p">[</span><span class="s2">"next"</span><span class="p">][</span><span class="s2">"url"</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">list_people_page</span><span class="p">()</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Execute the code with the following command:</p>
+<ul>
+<li>python 03_pagination.py</li>
+</ul>
+</li>
+<li>
+<p>You will now see all the users listed in the console, displayed in pages of size 2:</p>
+<div class="highlight"><pre><span></span><code>Name: admin@webexone-developer.wbx.ai | Email: admin@webexone-developer.wbx.ai
+Name: Pod 0 | Email: pod0@webexone-developer.wbx.ai
+
+--- Next page ---
+
+Name: Pod 10 | Email: pod10@webexone-developer.wbx.ai
+Name: Pod 11 | Email: pod11@webexone-developer.wbx.ai
+
+--- Next page ---
+
+Name: Pod 12 | Email: pod12@webexone-developer.wbx.ai
+Name: Pod 13 | Email: pod13@webexone-developer.wbx.ai
+...
+</code></pre></div>
+</li>
+</ol>
+<details class="tip">
+<summary>Solution</summary>
+<ol>
+<li>
+<p>Navigate to <code>06-usecases/03_feedback_bot.py</code> and review the code.</p>
+<p>These are the key points to understand how each requirement has been met:</p>
+<ol>
+<li><strong>Permitted User Access Only</strong>
+    The <strong><code>is_allowed_sender()</code></strong> function verifies that the user's email matches <code>EMAIL</code> in your <code>.env</code> file before sending feedback requests. All other users in the domain can still submit feedback.</li>
+<li><strong>Org-wide Feedback Card Distribution</strong>
+    The <strong>Send feedback card to all users in the organization</strong> button calls <strong><code>send_feedback_to_all()</code></strong>, which lists every user with the Service App token and sends each of them the feedback card. The SDK follows the pagination links automatically, just like <code>03_pagination.py</code> does by hand.</li>
+<li><strong>Adaptive Card Feedback Input</strong>
+    The <strong><code>feedback_card()</code></strong> function builds a card with a multi-line <strong>Input.Text</strong> element for the feedback.</li>
+<li><strong>Collect Responses, Notify Sender</strong>
+    The <strong><code>submit_feedback()</code></strong> function forwards the submitted feedback to <code>EMAIL</code> and sends a confirmation or error message back to the user who submitted it.</li>
+</ol>
+<details class="tip">
+<summary>Python Code</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">webexpythonsdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebexAPI</span>  <span class="c1"># Import the Webex API SDK for making direct Webex API calls.</span>
+
+<span class="c1"># Reuse the WebSocket client and helpers from Lab 3.</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">".."</span><span class="p">,</span> <span class="s2">"03-bots"</span><span class="p">))</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">websocket_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSocketClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bot_helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_api</span><span class="p">,</span> <span class="n">send_message</span><span class="p">,</span> <span class="n">send_card</span><span class="p">,</span> <span class="n">delete_message</span><span class="p">,</span> <span class="n">is_allowed_domain</span>
+
+<span class="c1"># Load environment variables from the .env file.</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Webex Bot Token for authentication with the Webex API.</span>
+<span class="n">bot_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"BOT_TOKEN"</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">get_api</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
+
+<span class="c1"># Service App access token with the spark-admin:people_read scope, used to list all people in the org.</span>
+<span class="n">access_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"WEBEX_ACCESS_TOKEN"</span><span class="p">)</span>
+
+<span class="c1"># The only user allowed to send feedback requests. This user also receives all the feedback.</span>
+<span class="n">email</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"EMAIL"</span><span class="p">)</span>
+
+<span class="c1"># Only users whose email belongs to this domain can use the bot.</span>
+<span class="n">allowed_domain</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DOMAIN"</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">allowed_domain</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="s2">"Set DOMAIN in the .env file before starting the bot."</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_authorized</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">sender_email</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Checks the sender's email domain and tells blocked users why they got no answer.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">is_allowed_domain</span><span class="p">(</span><span class="n">sender_email</span><span class="p">,</span> <span class="p">[</span><span class="n">allowed_domain</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Blocked request from </span><span class="si">{</span><span class="n">sender_email</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"Sorry, this bot is only available to users in </span><span class="si">{</span><span class="n">allowed_domain</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_allowed_sender</span><span class="p">(</span><span class="n">sender_email</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Checks if the sender is the admin configured in EMAIL. Case-insensitive comparison.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">email</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"EMAIL is not set in .env. All users are blocked from sending feedback requests."</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">sender_email</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">email</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">menu_card</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    The main menu: every message to the bot answers with this card.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"AdaptiveCard"</span><span class="p">,</span>
+        <span class="s2">"body"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TextBlock"</span><span class="p">,</span>
+                <span class="s2">"text"</span><span class="p">:</span> <span class="s2">"Feedback Bot"</span><span class="p">,</span>
+                <span class="s2">"weight"</span><span class="p">:</span> <span class="s2">"Bolder"</span><span class="p">,</span>
+                <span class="s2">"size"</span><span class="p">:</span> <span class="s2">"Large"</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">"$schema"</span><span class="p">:</span> <span class="s2">"http://adaptivecards.io/schemas/adaptive-card.json"</span><span class="p">,</span>
+        <span class="s2">"version"</span><span class="p">:</span> <span class="s2">"1.3"</span><span class="p">,</span>
+        <span class="s2">"actions"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Action.Submit"</span><span class="p">,</span>
+                <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Send feedback card to all users in the organization"</span><span class="p">,</span>
+                <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"callback_keyword"</span><span class="p">:</span> <span class="s2">"feedback"</span><span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">feedback_card</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    The card every user in the organization receives.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"AdaptiveCard"</span><span class="p">,</span>
+        <span class="s2">"body"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"TextBlock"</span><span class="p">,</span>
+                <span class="s2">"text"</span><span class="p">:</span> <span class="s2">"We'd love to hear your thoughts!"</span><span class="p">,</span>
+                <span class="s2">"wrap"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="s2">"size"</span><span class="p">:</span> <span class="s2">"Medium"</span><span class="p">,</span>
+                <span class="s2">"weight"</span><span class="p">:</span> <span class="s2">"Bolder"</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Input.Text"</span><span class="p">,</span>
+                <span class="s2">"placeholder"</span><span class="p">:</span> <span class="s2">"Enter your feedback here..."</span><span class="p">,</span>
+                <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"feedback_input"</span><span class="p">,</span> <span class="c1"># This ID will be used to extract the input value.</span>
+                <span class="s2">"isMultiline"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="s2">"isRequired"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="s2">"errorMessage"</span><span class="p">:</span> <span class="s2">"Feedback cannot be empty."</span><span class="p">,</span>
+                <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Your Feedback:"</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">"$schema"</span><span class="p">:</span> <span class="s2">"http://adaptivecards.io/schemas/adaptive-card.json"</span><span class="p">,</span>
+        <span class="s2">"version"</span><span class="p">:</span> <span class="s2">"1.3"</span><span class="p">,</span>
+        <span class="s2">"actions"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Action.Submit"</span><span class="p">,</span>
+                <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Submit Feedback"</span><span class="p">,</span>
+                <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"callback_keyword"</span><span class="p">:</span> <span class="s2">"feedback_submit"</span><span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">send_feedback_to_all</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">sender_email</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Sends the feedback card to every user in the organization. Only the admin in EMAIL can do this.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_allowed_sender</span><span class="p">(</span><span class="n">sender_email</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unauthorized user </span><span class="si">{</span><span class="n">sender_email</span><span class="si">}</span><span class="s2"> tried to send feedback requests."</span><span class="p">)</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="s2">"&gt; **Error**</span><span class="se">\n</span><span class="s2">&gt; You are not authorized to send feedback requests to the entire organization."</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># Bots cannot list everyone in the organization, so use the Service App token.</span>
+    <span class="c1"># The SDK follows the pagination links automatically, like 03_pagination.py does by hand.</span>
+    <span class="n">service_app</span> <span class="o">=</span> <span class="n">WebexAPI</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="n">access_token</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">all_people</span> <span class="o">=</span> <span class="p">[</span><span class="n">person</span> <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">service_app</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">list</span><span class="p">()</span> <span class="k">if</span> <span class="n">person</span><span class="o">.</span><span class="n">emails</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error listing people: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="s2">"&gt; **Error**</span><span class="se">\n</span><span class="s2">&gt; I could not list the users in the organization."</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Sending the feedback card to </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_people</span><span class="p">)</span><span class="si">}</span><span class="s2"> people"</span><span class="p">)</span>
+    <span class="n">failed</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">all_people</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">api</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">toPersonEmail</span><span class="o">=</span><span class="n">person</span><span class="o">.</span><span class="n">emails</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">text</span><span class="o">=</span><span class="s2">"Please provide your feedback:"</span><span class="p">,</span> <span class="c1"># Fallback text.</span>
+                <span class="n">attachments</span><span class="o">=</span><span class="p">[{</span><span class="s2">"contentType"</span><span class="p">:</span> <span class="s2">"application/vnd.microsoft.card.adaptive"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="n">feedback_card</span><span class="p">()}]</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="n">failed</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error sending the feedback card to </span><span class="si">{</span><span class="n">person</span><span class="o">.</span><span class="n">emails</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="n">summary</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Feedback cards have been sent to </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_people</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">failed</span><span class="si">}</span><span class="s2"> users in the organization."</span>
+    <span class="k">if</span> <span class="n">failed</span><span class="p">:</span>
+        <span class="n">summary</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="n">failed</span><span class="si">}</span><span class="s2"> could not be sent, check the console for details."</span>
+    <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"&gt; **Info**</span><span class="se">\n</span><span class="s2">&gt; </span><span class="si">{</span><span class="n">summary</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">submit_feedback</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">sender_email</span><span class="p">,</span> <span class="n">feedback_text</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Forwards the submitted feedback to the admin in EMAIL and thanks the user.</span>
+<span class="sd">    """</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Feedback submitted by </span><span class="si">{</span><span class="n">sender_email</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">api</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">toPersonEmail</span><span class="o">=</span><span class="n">email</span><span class="p">,</span>
+            <span class="n">markdown</span><span class="o">=</span><span class="sa">f</span><span class="s2">"**New Feedback Received!**</span><span class="se">\n\n</span><span class="s2">**From:** </span><span class="si">{</span><span class="n">sender_email</span><span class="si">}</span><span class="se">\n</span><span class="s2">**Feedback:**</span><span class="se">\n</span><span class="s2">```</span><span class="se">\n</span><span class="si">{</span><span class="n">feedback_text</span><span class="si">}</span><span class="se">\n</span><span class="s2">```"</span>
+        <span class="p">)</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="s2">"&gt; **Info**</span><span class="se">\n</span><span class="s2">&gt; Thank you for your feedback! It has been submitted."</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error forwarding feedback to </span><span class="si">{</span><span class="n">email</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">send_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">room_id</span><span class="p">,</span> <span class="s2">"&gt; **Error**</span><span class="se">\n</span><span class="s2">&gt; There was an error submitting your feedback. Please try again later."</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_card_action</span><span class="p">(</span><span class="n">attachment_action</span><span class="p">,</span> <span class="n">activity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Routes each card submission to the right action using its 'callback_keyword'.</span>
+<span class="sd">    """</span>
+    <span class="n">room_id</span> <span class="o">=</span> <span class="n">attachment_action</span><span class="o">.</span><span class="n">roomId</span>
+
+    <span class="c1"># Card submissions only include the person ID, so look up their email first.</span>
+    <span class="n">sender_email</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">people</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attachment_action</span><span class="o">.</span><span class="n">personId</span><span class="p">)</span><span class="o">.</span><span class="n">emails</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_authorized</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">sender_email</span><span class="p">):</span>
+        <span class="k">return</span>
+
+    <span class="n">inputs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">attachment_action</span><span class="p">,</span> <span class="s2">"inputs"</span><span class="p">,</span> <span class="p">{})</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"callback_keyword"</span><span class="p">)</span>
+
+    <span class="c1"># Deletes the submitted card, so it cannot be submitted twice.</span>
+    <span class="n">delete_message</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">attachment_action</span><span class="o">.</span><span class="n">messageId</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"feedback"</span><span class="p">:</span>
+        <span class="n">send_feedback_to_all</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">sender_email</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"feedback_submit"</span><span class="p">:</span>
+        <span class="n">submit_feedback</span><span class="p">(</span><span class="n">room_id</span><span class="p">,</span> <span class="n">sender_email</span><span class="p">,</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"feedback_input"</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">activity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Any message from an allowed user gets the main menu.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_authorized</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">roomId</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">personEmail</span><span class="p">):</span>
+        <span class="k">return</span>
+
+    <span class="n">send_card</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">roomId</span><span class="p">,</span> <span class="n">menu_card</span><span class="p">(),</span> <span class="n">fallback_text</span><span class="o">=</span><span class="s2">"Feedback Bot"</span><span class="p">)</span>
+
+
+<span class="c1"># Create a WebSocket Client object.</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">WebSocketClient</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="n">bot_token</span><span class="p">,</span>         <span class="c1"># Authenticate the bot using its token.</span>
+                      <span class="n">on_message</span><span class="o">=</span><span class="n">handle_message</span><span class="p">,</span>      <span class="c1"># Registers the message handler.</span>
+                      <span class="n">on_card_action</span><span class="o">=</span><span class="n">handle_card_action</span><span class="p">)</span> <span class="c1"># Registers the handler for card submissions.</span>
+
+<span class="c1"># Start the bot and make it listen for incoming messages.</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Execute the code with the following command and let it run:</p>
+<ul>
+<li>python 03_feedback_bot.py</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Wait until you see <strong>WebSocket connected as WebexOne-<em>USERNAME</em>, waiting for messages...</strong> in the console.</p>
+</div>
+</li>
+<li>
+<p>Send any message to your bot to get the following card:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_14.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_14.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="450"></a></p>
+</li>
+<li>
+<p>Once you click <strong>Send feedback card to all users in the organization</strong>, the cards will begin sending. You will receive the following notification message once the process is completed:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_15.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_15.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="450"></a></p>
+</li>
+<li>
+<p>At this point, all users will receive the following feedback card:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_16.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_16.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="500"></a></p>
+</li>
+<li>
+<p>Once users submit their feedback, they will receive the following notification message:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_17.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_17.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="450"></a></p>
+</li>
+<li>
+<p>At the same time, you, as an admin, will be notified with the user's feedback:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../assets/usecase_18.png" data-title="Use Case" data-desc-position="top"><img alt="Use Case" src="../assets/usecase_18.png" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" width="400"></a></p>
+</li>
+<li>
+<p>Stop the bot with <strong>Ctrl+C</strong> when you are done.</p>
+</li>
+</ol>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../lab5_webex_mcp_servers/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lab 5 - Webex MCP Servers">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Lab 5 - Webex MCP Servers
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../conclusion/" class="md-footer__link md-footer__link--next" aria-label="Next: Conclusion">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Conclusion
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Cisco
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.instant", "navigation.top", "navigation.footer", "search.suggest", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../template_assets/js/newLoad.js"></script>
+      
+        <script src="../template_assets/js/setInfo.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": false, "openEffect": "fade", "closeEffect": "fade", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
