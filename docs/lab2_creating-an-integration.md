@@ -194,7 +194,6 @@ Manually performing the OAuth flow is cumbersome. Postman has built-in support t
     * Click **"Use Token"**.
 6. **Verify Collection Authorization:**
     * Back in the collection's "Authorization" tab, the "Token" field should now show your `Webex Lab Integration Token` selected.
-    * Click **"Save"** for the collection.
 
         ![Integration](./assets/integration_9.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
