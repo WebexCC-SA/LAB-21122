@@ -482,6 +482,18 @@ In this lab, your bot connects to Webex Websockets. You will implement event han
 
 In this step, you will open a persistent connection to Webex Websockets and handle incoming messages. All the connection logic lives in a shared class, so every bot in the following steps only needs to define what to do with each event.
 
+!!! Warning
+    You need to run all the following commands to be able to run this bot:
+
+    - deactivate
+    - winget install -e --id Python.Python.3.12
+    - cd ..
+    - py -3.12 -m venv venv
+    - .\venv\Scripts\Activate.ps1
+    - pip install "requests>=2.32.0" "python-dotenv>=1.0.0" "webexpythonsdk>=2.0.4" "websockets>=14.0" "certifi>=2024.0.0"
+    - cd 03-bots
+    - python 05_websocket_bot.py
+
 ### WebSocket client
 
 1. Navigate to `03-bots/websocket_client.py` and review the code.
