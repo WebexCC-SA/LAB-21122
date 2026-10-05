@@ -232,7 +232,7 @@ Finally, let's see how to make an API call directly from your command line using
     !!! Warning "Important"
         This command won't work in Windows Command Prompt; for that, you need to change:
 
-        - **Line continuation character**: ^
+        - **Line continuation character**: /
         - **Quote Type**: double
 
         ![Postman](./assets/postman_55.png){ width="600" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
