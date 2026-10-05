@@ -125,7 +125,7 @@ Now, let's explore the Webex Public Workspace in Postman, which provides a much 
 
         ![Postman](./assets/postman_35.png){ width="300" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
-    !!! Warning "Remember"
+    !!! Tip "Remember"
         A Postman Workspace can contain multiple Collections, Environments, and other elements.
 
 ## Step 1.3: Use the "Webex Messaging" Collection in Postman
@@ -156,7 +156,7 @@ We'll now fork the "Webex Messaging" collection into your personal Postman space
         * **VARIABLE:** `webex_token`
         * **VALUE:** Paste the **Bearer Token** you copied from the Webex Developer Portal in Step 1.1.2 here.
 
-        ![Postman](./assets/postman_57.png){ width="650" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Postman](./assets/postman_57.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
     * Now, back to the collection, click the **"Authorization"** tab, and select **"Bearer Token"**:
 
@@ -221,9 +221,9 @@ Finally, let's see how to make an API call directly from your command line using
 
 1. **Generate cURL from Postman:**
     * Go back to the **GET Get My Own Details** request you successfully ran in Postman (under "People API").
-    * On the right side of the request window, to the right of the "Send" button, click the **"Code"** link:
+    * On the right side of the request window, to the right of the "Send" button, click the **"Code"** icon:
 
-        ![Postman](./assets/postman_53.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Postman](./assets/postman_73.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
         
     * Open the dropdown where you see "Postman CLI". From the dropdown menu, select **"cURL"**:
 
