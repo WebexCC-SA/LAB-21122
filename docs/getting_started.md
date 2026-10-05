@@ -71,9 +71,7 @@ Postman will be our primary tool for making API requests and working with OAuth 
 
     ![Postman](./assets/postman_logo.png){ width="100" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-2. Close the first window if it appears, and then click on **Sign in**:
-
-    ![Postman](./assets/postman_31.png){ width="750" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
+2. Click **Sign in** at the top:
     
     ![Postman](./assets/postman_32.png){ width="350" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
