@@ -250,7 +250,7 @@ The app runs on your laptop as a tiny Python web server. The server exchanges th
     * Save the file.
 
 3. **Run the Web App:**
-    * In the VS Code terminal, make sure you are in the right folder:
+    * In the VS Code terminal, run the following command to navigate to the exercise folder:
    
         - cd 02-integration
         
@@ -274,7 +274,7 @@ The app runs on your laptop as a tiny Python web server. The server exchanges th
 
         ![Integration](./assets/integration_18.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;"}
 
-    !!! Note
+    !!! Warning "Important"
         When you are done, stop the app with `Ctrl+C` in the terminal.
 
 ---
