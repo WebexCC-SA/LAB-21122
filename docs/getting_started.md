@@ -125,14 +125,10 @@ Visual Studio Code will be used for Python-based bot development, service app co
 
 2. Create a virtual environment and install dependencies:
 
-    ```bash
-    python -m venv webexone
-    .\webexone\Scripts\Activate.ps1
-    pip install -r requirements.txt
-    ```
+    - python -m venv webexone
+    - .\webexone\Scripts\Activate.ps1
+    - pip install -r requirements.txt
 
 3. Copy the environment template:
 
-    ```bash
-    cp .env.example .env
-    ```
+    - cp .env.example .env
