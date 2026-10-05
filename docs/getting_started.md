@@ -131,7 +131,7 @@ Visual Studio Code will be used for Python-based bot development, service app co
     pip install -r requirements.txt
     ```
 
-3. Copy the environment template and fill in your values:
+3. Copy the environment template:
 
     ```bash
     cp .env.example .env
