@@ -112,16 +112,17 @@ In this step, you will send your first 1:1 message using the bot you just create
 
 4. Run your code with the following command:
 
+    - pip install dotenv
     - python 01_people.py
 
-5. You should see something like the following in the console:
+6. You should see something like the following in the console:
 
     ```terminal
     Name: Pod 0, Email: ['pod0@webexone-developer.wbx.ai']
     An error occurred while listing all people: [400] Bad Request - Email, displayName, role, or id list should be specified. [Tracking ID: ROUTERGW_40944853-1355-40da-8e76-7de0f601e18b]
     ```
 
-6. Navigate to `03-bots/02_message.py` and review the code. You will use the function you created earlier to find yourself, so you can send a message to your own account.
+7. Navigate to `03-bots/02_message.py` and review the code. You will use the function you created earlier to find yourself, so you can send a message to your own account.
 
     ??? Tip "Python Code"
         ```python
@@ -190,7 +191,7 @@ In this step, you will send your first 1:1 message using the bot you just create
             print(f"Could not find a person with email: {email}. Message not sent.")
         ```
 
-7. Run your code with the following command:
+8. Run your code with the following command:
 
     - python 02_message.py
 
