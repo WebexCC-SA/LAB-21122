@@ -105,11 +105,11 @@ The Webex Developer Portal is an excellent resource for documentation and quick,
 Now, let's explore the Webex Public Workspace in Postman, which provides a much richer environment for API development.
 
 1. **Open the Webex Public Workspace:**
-    * In your Postman application, navigate to the Webex Public Workspace by searching for **“Webex Public Workspace”**.
+    * In Postman, use the search bar at the top to find and select the **“Webex Public Workspace”**:
     
         ![Postman](./assets/postman_34.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
-        !!! Warning
+        !!! Warning "Important"
             Make sure "Visibility" is set to "Public".
 
 2. **Observe the Workspace Structure:**
@@ -117,7 +117,7 @@ Now, let's explore the Webex Public Workspace in Postman, which provides a much 
 
         ![Postman](./assets/postman_36.png){ width="300" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
-   * You will now see the Workspace:
+    * You will now see the Workspace:
    
         ![Postman](./assets/postman_37.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
     
