@@ -115,7 +115,10 @@ Now, let's explore the Webex Public Workspace in Postman, which provides a much 
 2. **Observe the Workspace Structure:**
     * You will now see the **"Webex Public Workspace"** listed, you can click on **Open workspace overview**:
 
-        ![Postman](./assets/postman_36.png){ width="400" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+        ![Postman](./assets/postman_36.png){ width="300" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
+
+   * You will now see the Workspace:
+   
         ![Postman](./assets/postman_37.png){ width="950" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
     
     * Below it, notice the various **Collections** available (e.g., "Webex Messaging", "Webex Meetings", "Webex Calling", etc.). These collections organize different sets of Webex APIs.
