@@ -365,7 +365,8 @@ Requirements:
     In this exercise, you will need to add the **spark-admin:devices_write** scope to your Service App.
     The next exercise also needs the **spark-admin:people_read** scope, so add both now and you will only need one approval.
 
-    Please notify us to have your Service App rights approved.
+    !!! Warning
+        Please notify us to have your Service App rights approved.
 
     Once approved, generate new tokens as in Step 4.3 and update `WEBEX_ACCESS_TOKEN` in your `.env` file, because a token only includes the scopes that were approved when it was generated.
 
