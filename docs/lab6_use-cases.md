@@ -361,7 +361,7 @@ Requirements:
 
     ![docx-image-058](./assets/docx-image-058.png){ width="850" style="display: block; margin: 0 auto; border: 1px solid lightgray; border-radius: 8px;" }
 
-!!! Warning
+!!! Note
     In this exercise, you will need to add the **spark-admin:devices_write** scope to your Service App.
     The next exercise also needs the **spark-admin:people_read** scope, so add both now and you will only need one approval.
 
